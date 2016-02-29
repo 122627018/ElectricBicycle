@@ -19,10 +19,6 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040007;
         public static final int abc_slide_out_bottom=0x7f040008;
         public static final int abc_slide_out_top=0x7f040009;
-        public static final int design_fab_in=0x7f04000a;
-        public static final int design_fab_out=0x7f04000b;
-        public static final int design_snackbar_in=0x7f04000c;
-        public static final int design_snackbar_out=0x7f04000d;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -352,28 +348,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int barLength=0x7f0100bc;
-        /**  The amount that the scrolling view should overlap the bottom of any AppBarLayout 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int behavior_overlapTop=0x7f0100fc;
-        /**  The width of the border around the FAB. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int borderWidth=0x7f0100d1;
         /**  Style for buttons without an explicit border, often used in groups. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -480,32 +454,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int collapseIcon=0x7f0100ad;
-        /**  Specifies how the title should be positioned when collapsed. 
-         <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>top</code></td><td>0x30</td><td> Push title to the top of its container, not changing its size. </td></tr>
-<tr><td><code>bottom</code></td><td>0x50</td><td> Push title to the bottom of its container, not changing its size. </td></tr>
-<tr><td><code>left</code></td><td>0x03</td><td> Push title to the left of its container, not changing its size. </td></tr>
-<tr><td><code>right</code></td><td>0x05</td><td> Push title to the right of its container, not changing its size. </td></tr>
-<tr><td><code>center_vertical</code></td><td>0x10</td><td> Place title in the vertical center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_vertical</code></td><td>0x70</td><td> Grow the vertical size of the title if needed so it completely fills its container. </td></tr>
-<tr><td><code>center_horizontal</code></td><td>0x01</td><td> Place title in the horizontal center of its container, not changing its size. </td></tr>
-<tr><td><code>center</code></td><td>0x11</td><td> Place the title in the center of its container in both the vertical and horizontal axis, not changing its size. </td></tr>
-<tr><td><code>start</code></td><td>0x00800003</td><td> Push title to the beginning of its container, not changing its size. </td></tr>
-<tr><td><code>end</code></td><td>0x00800005</td><td> Push title to the end of its container, not changing its size. </td></tr>
-</table>
-         */
-        public static final int collapsedTitleGravity=0x7f010107;
-        /**  The text appearance of the CollapsingToolbarLayouts title when it is fully
-             'collapsed' 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int collapsedTitleTextAppearance=0x7f010103;
         /**  The drawing color for the bars 
          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
@@ -652,50 +600,11 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int contentInsetStart=0x7f010081;
-        /**  The drawable to use as a scrim on top of the CollapsingToolbarLayouts content when
-             it has been scrolled sufficiently off screen. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int contentScrim=0x7f010104;
         /**  The background used by framework controls. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int controlBackground=0x7f01005b;
-        /**  Whether the layout is laid out as if the character counter will be displayed 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int counterEnabled=0x7f0100f3;
-        /**  The max length to display in the character counter 
-         <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int counterMaxLength=0x7f0100f4;
-        /**  TextAppearance of the character counter when the text is longer than the max 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int counterOverflowTextAppearance=0x7f0100f6;
-        /**  TextAppearance of the character counter 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int counterTextAppearance=0x7f0100f5;
         /**  Specifies a layout for custom navigation. Overrides navigationMode. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -829,20 +738,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int elevation=0x7f010085;
-        /**  Whether the layout is laid out as if an error will be displayed 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int errorEnabled=0x7f0100f1;
-        /**  TextAppearance of any error message displayed 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int errorTextAppearance=0x7f0100f2;
         /**  The drawable to show in the button for expanding the activities overflow popup.
              <strong>Note:</strong> Clients would like to set this drawable
              as a clue about the action the chosen activity will perform. For
@@ -853,122 +748,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int expandActivityOverflowButtonDrawable=0x7f0100a0;
-        /**  The initial expanded state for the AppBarLayout. This only takes effect when this
-             view is a direct child of a CoordinatorLayout. 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int expanded=0x7f0100f9;
-        /**  Specifies how the title should be positioned when expanded. 
-         <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>top</code></td><td>0x30</td><td> Push title to the top of its container, not changing its size. </td></tr>
-<tr><td><code>bottom</code></td><td>0x50</td><td> Push title to the bottom of its container, not changing its size. </td></tr>
-<tr><td><code>left</code></td><td>0x03</td><td> Push title to the left of its container, not changing its size. </td></tr>
-<tr><td><code>right</code></td><td>0x05</td><td> Push title to the right of its container, not changing its size. </td></tr>
-<tr><td><code>center_vertical</code></td><td>0x10</td><td> Place title in the vertical center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_vertical</code></td><td>0x70</td><td> Grow the vertical size of the title if needed so it completely fills its container. </td></tr>
-<tr><td><code>center_horizontal</code></td><td>0x01</td><td> Place title in the horizontal center of its container, not changing its size. </td></tr>
-<tr><td><code>center</code></td><td>0x11</td><td> Place the title in the center of its container in both the vertical and horizontal axis, not changing its size. </td></tr>
-<tr><td><code>start</code></td><td>0x00800003</td><td> Push title to the beginning of its container, not changing its size. </td></tr>
-<tr><td><code>end</code></td><td>0x00800005</td><td> Push title to the end of its container, not changing its size. </td></tr>
-</table>
-         */
-        public static final int expandedTitleGravity=0x7f010108;
-        /**   Specifies extra space on the start, top, end and bottom
-              sides of the the expanded title text. Margin values should be positive. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int expandedTitleMargin=0x7f0100fd;
-        /**   Specifies extra space on the bottom side of the the expanded title text.
-              Margin values should be positive. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int expandedTitleMarginBottom=0x7f010101;
-        /**   Specifies extra space on the end side of the the expanded title text.
-              Margin values should be positive. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int expandedTitleMarginEnd=0x7f010100;
-        /**   Specifies extra space on the start side of the the expanded title text.
-              Margin values should be positive. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int expandedTitleMarginStart=0x7f0100fe;
-        /**   Specifies extra space on the top side of the the expanded title text.
-              Margin values should be positive. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int expandedTitleMarginTop=0x7f0100ff;
-        /**  The text appearance of the CollapsingToolbarLayout's title when it is fully
-             'expanded' 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int expandedTitleTextAppearance=0x7f010102;
-        /**  Size for the FAB. 
-         <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>normal</code></td><td>0</td><td></td></tr>
-<tr><td><code>mini</code></td><td>1</td><td></td></tr>
-</table>
-         */
-        public static final int fabSize=0x7f0100cf;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int foregroundInsidePadding=0x7f0100d9;
         /**  The max gap between the bars when they are parallel to each other 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
@@ -985,11 +764,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int goIcon=0x7f010097;
-        /**  Layout resource to inflate as the header 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int headerLayout=0x7f0100d8;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1009,19 +783,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int hideOnContentScroll=0x7f010080;
-        /**  Whether to animate hint state changes. 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int hintAnimationEnabled=0x7f0100f7;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int hintTextAppearance=0x7f0100f0;
         /**  Specifies a drawable to use for the 'home as up' indicator. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1066,12 +827,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int initialActivityCount=0x7f01009f;
-        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-         */
-        public static final int insetForeground=0x7f0100d2;
         /**  Specifies whether the theme is light, otherwise it is dark. 
          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
@@ -1081,19 +836,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int isLightTheme=0x7f010002;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int itemBackground=0x7f0100d6;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int itemIconTint=0x7f0100d4;
         /**  Specifies padding that should be applied to the left and right sides of
              system-provided items in the bar. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1106,142 +848,11 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int itemPadding=0x7f01007f;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int itemTextAppearance=0x7f0100d7;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int itemTextColor=0x7f0100d5;
-        /**  A reference to an array of integers representing the
-             locations of horizontal keylines in dp from the starting edge.
-             Child views can refer to these keylines for alignment using
-             layout_keyline="index" where index is a 0-based index into
-             this array. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int keylines=0x7f0100ea;
         /**  The layout to use for the search view. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int layout=0x7f010092;
-        /**  The id of an anchor view that this view should position relative to. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int layout_anchor=0x7f0100ed;
-        /**  Specifies how an object should position relative to an anchor, on both the X and Y axes,
-             within its parent's bounds.  
-         <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>top</code></td><td>0x30</td><td> Push object to the top of its container, not changing its size. </td></tr>
-<tr><td><code>bottom</code></td><td>0x50</td><td> Push object to the bottom of its container, not changing its size. </td></tr>
-<tr><td><code>left</code></td><td>0x03</td><td> Push object to the left of its container, not changing its size. </td></tr>
-<tr><td><code>right</code></td><td>0x05</td><td> Push object to the right of its container, not changing its size. </td></tr>
-<tr><td><code>center_vertical</code></td><td>0x10</td><td> Place object in the vertical center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_vertical</code></td><td>0x70</td><td> Grow the vertical size of the object if needed so it completely fills its container. </td></tr>
-<tr><td><code>center_horizontal</code></td><td>0x01</td><td> Place object in the horizontal center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_horizontal</code></td><td>0x07</td><td> Grow the horizontal size of the object if needed so it completely fills its container. </td></tr>
-<tr><td><code>center</code></td><td>0x11</td><td> Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. </td></tr>
-<tr><td><code>fill</code></td><td>0x77</td><td> Grow the horizontal and vertical size of the object if needed so it completely fills its container. </td></tr>
-<tr><td><code>clip_vertical</code></td><td>0x80</td><td> Additional option that can be set to have the top and/or bottom edges of
-                 the child clipped to its container's bounds.
-                 The clip will be based on the vertical gravity: a top gravity will clip the bottom
-                 edge, a bottom gravity will clip the top edge, and neither will clip both edges. </td></tr>
-<tr><td><code>clip_horizontal</code></td><td>0x08</td><td> Additional option that can be set to have the left and/or right edges of
-                 the child clipped to its container's bounds.
-                 The clip will be based on the horizontal gravity: a left gravity will clip the right
-                 edge, a right gravity will clip the left edge, and neither will clip both edges. </td></tr>
-<tr><td><code>start</code></td><td>0x00800003</td><td> Push object to the beginning of its container, not changing its size. </td></tr>
-<tr><td><code>end</code></td><td>0x00800005</td><td> Push object to the end of its container, not changing its size. </td></tr>
-</table>
-         */
-        public static final int layout_anchorGravity=0x7f0100ef;
-        /**  The class name of a Behavior class defining special runtime behavior
-             for this child view. 
-         <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int layout_behavior=0x7f0100ec;
-        /** <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>none</code></td><td>0</td><td> The view will act as normal with no collapsing behavior. </td></tr>
-<tr><td><code>pin</code></td><td>1</td><td> The view will pin in place. </td></tr>
-<tr><td><code>parallax</code></td><td>2</td><td> The view will scroll in a parallax fashion. See the
-                 layout_collapseParallaxMultiplier attribute to change the multiplier. </td></tr>
-</table>
-         */
-        public static final int layout_collapseMode=0x7f01010a;
-        /**  The multiplier used when layout_collapseMode is set to 'parallax'. The value should
-             be between 0.0 and 1.0. 
-         <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int layout_collapseParallaxMultiplier=0x7f01010b;
-        /**  The index of a keyline this view should position relative to.
-             android:layout_gravity will affect how the view aligns to the
-             specified keyline. 
-         <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int layout_keyline=0x7f0100ee;
-        /** <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>scroll</code></td><td>0x1</td><td> The view will be scroll in direct relation to scroll events. This flag needs to be
-                 set for any of the other flags to take effect. If any sibling views
-                 before this one do not have this flag, then this value has no effect. </td></tr>
-<tr><td><code>exitUntilCollapsed</code></td><td>0x2</td><td> When exiting (scrolling off screen) the view will be scrolled until it is
-                 'collapsed'. The collapsed height is defined by the view's minimum height. </td></tr>
-<tr><td><code>enterAlways</code></td><td>0x4</td><td> When entering (scrolling on screen) the view will scroll on any downwards
-                 scroll event, regardless of whether the scrolling view is also scrolling. This
-                 is commonly referred to as the 'quick return' pattern. </td></tr>
-<tr><td><code>enterAlwaysCollapsed</code></td><td>0x8</td><td> An additional flag for 'enterAlways' which modifies the returning view to
-                 only initially scroll back to it's collapsed height. Once the scrolling view has
-                 reached the end of it's scroll range, the remainder of this view will be scrolled
-                 into view. </td></tr>
-<tr><td><code>snap</code></td><td>0x10</td><td> Upon a scroll ending, if the view is only partially visible then it will be
-                 snapped and scrolled to it's closest edge. </td></tr>
-</table>
-         */
-        public static final int layout_scrollFlags=0x7f0100fa;
-        /**  An interpolator to use when scrolling this View. Only takes effect when View
-             is scrollable. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int layout_scrollInterpolator=0x7f0100fb;
         /**  Drawable used as a background for selected list items. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1343,16 +954,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int maxActionInlineWidth=0x7f0100f8;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
         public static final int maxButtonHeight=0x7f0100ac;
         /**  When set to true, all children with a weight will be considered having
              the minimum size of the largest child. If false, all children are
@@ -1365,11 +966,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int measureWithLargestChild=0x7f0100a2;
-        /**  The menu resource to inflate and populate items from. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int menu=0x7f0100d3;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
@@ -1480,17 +1076,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int preserveIconSpacing=0x7f01008d;
-        /**  TranslationZ value for the FAB when pressed
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int pressedTranslationZ=0x7f0100d0;
         /**  Specifies the horizontal padding on either end for an embedded progress bar. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
@@ -1531,16 +1116,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int ratingBarStyle=0x7f01006b;
-        /**  Ripple color for the FAB. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int rippleColor=0x7f0100ce;
         /**  Search icon displayed as a text field hint 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1661,23 +1236,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int state_above_anchor=0x7f0100b4;
-        /**  Drawable to display behind the status bar when the view is set to draw behind it. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int statusBarBackground=0x7f0100eb;
-        /**  The drawable to use as a scrim for the status bar content when the
-             CollapsingToolbarLayout has been scrolled sufficiently off screen. Only works on
-             Lollipop with the correct setup. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int statusBarScrim=0x7f010105;
         /**  Background for the section containing the action (e.g. voice search) 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1748,156 +1306,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int switchTextAppearance=0x7f0100c3;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int tabBackground=0x7f0100dd;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabContentStart=0x7f0100dc;
-        /**  Standard gravity constant that a child supplies to its parent.
-             Defines how the child view should be positioned, on both the X and Y axes,
-             within its enclosing layout. 
-         <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>fill</code></td><td>0</td><td></td></tr>
-<tr><td><code>center</code></td><td>1</td><td></td></tr>
-</table>
-         */
-        public static final int tabGravity=0x7f0100df;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabIndicatorColor=0x7f0100da;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabIndicatorHeight=0x7f0100db;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabMaxWidth=0x7f0100e1;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabMinWidth=0x7f0100e0;
-        /** <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>scrollable</code></td><td>0</td><td></td></tr>
-<tr><td><code>fixed</code></td><td>1</td><td></td></tr>
-</table>
-         */
-        public static final int tabMode=0x7f0100de;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabPadding=0x7f0100e9;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabPaddingBottom=0x7f0100e8;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabPaddingEnd=0x7f0100e7;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabPaddingStart=0x7f0100e5;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabPaddingTop=0x7f0100e6;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabSelectedTextColor=0x7f0100e4;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int tabTextAppearance=0x7f0100e2;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int tabTextColor=0x7f0100e3;
         /**  Present the text in ALL CAPS. This may use a small-caps form when available. 
          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1983,15 +1391,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int title=0x7f010000;
-        /**  Whether the CollapsingToolbarLayout should draw its own shrinking/growing title. 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int titleEnabled=0x7f010109;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -2061,12 +1460,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int titleTextStyle=0x7f010072;
-        /**  The id of the primary Toolbar child that you wish to use for the purpose of collapsing.
-             If you do not set this then the first Toolbar child found will be used. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int toolbarId=0x7f010106;
         /**  Default Toolar NavigationButtonStyle 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -2251,20 +1644,20 @@ containing a value of this type.
         public static final int abc_config_showMenuShortcutsWhenKeyboardPresent=0x7f050003;
     }
     public static final class color {
-        public static final int abc_background_cache_hint_selector_material_dark=0x7f060043;
-        public static final int abc_background_cache_hint_selector_material_light=0x7f060044;
-        public static final int abc_color_highlight_material=0x7f060045;
+        public static final int abc_background_cache_hint_selector_material_dark=0x7f06003a;
+        public static final int abc_background_cache_hint_selector_material_light=0x7f06003b;
+        public static final int abc_color_highlight_material=0x7f06003c;
         public static final int abc_input_method_navigation_guard=0x7f060003;
-        public static final int abc_primary_text_disable_only_material_dark=0x7f060046;
-        public static final int abc_primary_text_disable_only_material_light=0x7f060047;
-        public static final int abc_primary_text_material_dark=0x7f060048;
-        public static final int abc_primary_text_material_light=0x7f060049;
-        public static final int abc_search_url_text=0x7f06004a;
+        public static final int abc_primary_text_disable_only_material_dark=0x7f06003d;
+        public static final int abc_primary_text_disable_only_material_light=0x7f06003e;
+        public static final int abc_primary_text_material_dark=0x7f06003f;
+        public static final int abc_primary_text_material_light=0x7f060040;
+        public static final int abc_search_url_text=0x7f060041;
         public static final int abc_search_url_text_normal=0x7f060000;
         public static final int abc_search_url_text_pressed=0x7f060002;
         public static final int abc_search_url_text_selected=0x7f060001;
-        public static final int abc_secondary_text_material_dark=0x7f06004b;
-        public static final int abc_secondary_text_material_light=0x7f06004c;
+        public static final int abc_secondary_text_material_dark=0x7f060042;
+        public static final int abc_secondary_text_material_light=0x7f060043;
         public static final int accent_material_dark=0x7f060011;
         public static final int accent_material_light=0x7f060010;
         public static final int background_floating_material_dark=0x7f060008;
@@ -2283,29 +1676,6 @@ containing a value of this type.
         public static final int bright_foreground_material_light=0x7f060019;
         public static final int button_material_dark=0x7f060012;
         public static final int button_material_light=0x7f060013;
-        /**  Shadow color for the furthest pixels of a shadow 
-         */
-        public static final int design_fab_shadow_end_color=0x7f060040;
-        /**  Shadow color for the middle pixels of a shadow 
-         */
-        public static final int design_fab_shadow_mid_color=0x7f06003f;
-        /**  Shadow color for the first pixels of a shadow 
-         */
-        public static final int design_fab_shadow_start_color=0x7f06003e;
-        /**  Color for the bottom inner pixels in the stroke: 4% black (these are multiplied) 
-         */
-        public static final int design_fab_stroke_end_inner_color=0x7f06003d;
-        /**  Color for the bottom outer pixels in the stroke: 6% black (these are multiplied) 
-         */
-        public static final int design_fab_stroke_end_outer_color=0x7f06003c;
-        /**  Color for the top inner pixels in the stroke: 10% white (these are multiplied) 
-         */
-        public static final int design_fab_stroke_top_inner_color=0x7f06003b;
-        /**  Color for the top outer pixels in the stroke: 18% white (these are multiplied) 
-         */
-        public static final int design_fab_stroke_top_outer_color=0x7f06003a;
-        public static final int design_snackbar_background_color=0x7f060042;
-        public static final int design_textinput_error_color=0x7f060041;
         public static final int dim_foreground_disabled_material_dark=0x7f060020;
         public static final int dim_foreground_disabled_material_light=0x7f060021;
         public static final int dim_foreground_material_dark=0x7f06001e;
@@ -2364,8 +1734,8 @@ containing a value of this type.
         public static final int secondary_text_disabled_material_light=0x7f06002b;
         public static final int switch_thumb_disabled_material_dark=0x7f060016;
         public static final int switch_thumb_disabled_material_light=0x7f060017;
-        public static final int switch_thumb_material_dark=0x7f06004d;
-        public static final int switch_thumb_material_light=0x7f06004e;
+        public static final int switch_thumb_material_dark=0x7f060044;
+        public static final int switch_thumb_material_light=0x7f060045;
         public static final int switch_thumb_normal_material_dark=0x7f060014;
         public static final int switch_thumb_normal_material_light=0x7f060015;
     }
@@ -2541,41 +1911,8 @@ containing a value of this type.
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f070067;
-        public static final int activity_vertical_margin=0x7f070068;
-        public static final int design_appbar_elevation=0x7f070066;
-        public static final int design_fab_border_width=0x7f070050;
-        public static final int design_fab_content_size=0x7f07004d;
-        public static final int design_fab_elevation=0x7f07004b;
-        public static final int design_fab_size_mini=0x7f07004f;
-        public static final int design_fab_size_normal=0x7f07004e;
-        public static final int design_fab_translation_z_pressed=0x7f07004c;
-        public static final int design_navigation_elevation=0x7f070052;
-        public static final int design_navigation_icon_padding=0x7f070053;
-        public static final int design_navigation_icon_size=0x7f070054;
-        public static final int design_navigation_max_width=0x7f070051;
-        public static final int design_navigation_padding_bottom=0x7f070057;
-        public static final int design_navigation_padding_top_default=0x7f070056;
-        public static final int design_navigation_separator_vertical_padding=0x7f070055;
-        /**  The maximum width for a Snackbar's inline action. If the view is width than this then
-         the Snackbar will change to vertical stacking 
-         */
-        public static final int design_snackbar_action_inline_max_width=0x7f070064;
-        public static final int design_snackbar_background_corner_radius=0x7f07005f;
-        public static final int design_snackbar_elevation=0x7f07005e;
-        /**  Extra spacing between the action and message views 
-         */
-        public static final int design_snackbar_extra_spacing_horizontal=0x7f070063;
-        public static final int design_snackbar_max_width=0x7f07005d;
-        public static final int design_snackbar_min_width=0x7f07005c;
-        public static final int design_snackbar_padding_horizontal=0x7f070060;
-        public static final int design_snackbar_padding_vertical=0x7f070061;
-        public static final int design_snackbar_padding_vertical_2lines=0x7f070062;
-        public static final int design_snackbar_text_size=0x7f070065;
-        public static final int design_tab_max_width=0x7f070059;
-        public static final int design_tab_scrollable_min_width=0x7f070058;
-        public static final int design_tab_text_size=0x7f07005a;
-        public static final int design_tab_text_size_2line=0x7f07005b;
+        public static final int activity_horizontal_margin=0x7f07004b;
+        public static final int activity_vertical_margin=0x7f07004c;
         public static final int disabled_alpha_material_dark=0x7f070001;
         public static final int disabled_alpha_material_light=0x7f070000;
         public static final int highlight_alpha_material_colored=0x7f070004;
@@ -2662,148 +1999,117 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020042;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020043;
         public static final int abc_textfield_search_material=0x7f020044;
-        public static final int design_fab_background=0x7f020045;
-        public static final int design_snackbar_background=0x7f020046;
-        public static final int eat_icon=0x7f020047;
-        public static final int ic_launcher=0x7f020048;
-        public static final int notification_template_icon_bg=0x7f02004c;
-        public static final int popupmap=0x7f020049;
-        public static final int roads=0x7f02004a;
-        public static final int round=0x7f02004b;
+        public static final int eat_icon=0x7f020045;
+        public static final int ic_launcher=0x7f020046;
+        public static final int notification_template_icon_bg=0x7f02004a;
+        public static final int popupmap=0x7f020047;
+        public static final int roads=0x7f020048;
+        public static final int round=0x7f020049;
     }
     public static final class id {
-        public static final int action0=0x7f090073;
-        public static final int action_bar=0x7f090059;
+        public static final int action0=0x7f090056;
+        public static final int action_bar=0x7f090041;
         public static final int action_bar_activity_content=0x7f090003;
-        public static final int action_bar_container=0x7f090058;
-        public static final int action_bar_root=0x7f090054;
+        public static final int action_bar_container=0x7f090040;
+        public static final int action_bar_root=0x7f09003c;
         public static final int action_bar_spinner=0x7f090002;
-        public static final int action_bar_subtitle=0x7f09003a;
-        public static final int action_bar_title=0x7f090039;
-        public static final int action_context_bar=0x7f09005a;
-        public static final int action_divider=0x7f090077;
+        public static final int action_bar_subtitle=0x7f090022;
+        public static final int action_bar_title=0x7f090021;
+        public static final int action_context_bar=0x7f090042;
+        public static final int action_divider=0x7f09005a;
         public static final int action_menu_divider=0x7f090005;
         public static final int action_menu_presenter=0x7f090006;
-        public static final int action_mode_bar=0x7f090056;
-        public static final int action_mode_bar_stub=0x7f090055;
-        public static final int action_mode_close_button=0x7f09003b;
-        public static final int action_settings=0x7f090083;
-        public static final int activity_chooser_view_content=0x7f09003c;
-        public static final int alertTitle=0x7f090048;
-        public static final int always=0x7f09001a;
-        public static final int beginning=0x7f09001f;
-        public static final int bottom=0x7f090027;
-        public static final int btn_ok=0x7f09006b;
-        public static final int buttonPanel=0x7f090043;
-        public static final int cancel_action=0x7f090074;
-        public static final int center=0x7f090025;
-        public static final int center_horizontal=0x7f090028;
-        public static final int center_vertical=0x7f090029;
-        public static final int checkbox=0x7f090051;
-        public static final int chronometer=0x7f09007a;
-        public static final int clip_horizontal=0x7f09002a;
-        public static final int clip_vertical=0x7f09002b;
-        public static final int collapseActionView=0x7f09001b;
-        public static final int contentPanel=0x7f090049;
-        public static final int custom=0x7f09004f;
-        public static final int customPanel=0x7f09004e;
-        public static final int decor_content_parent=0x7f090057;
-        public static final int default_activity_button=0x7f09003f;
-        public static final int design_menu_item_action_area=0x7f090072;
-        public static final int design_menu_item_action_area_stub=0x7f090071;
-        public static final int design_menu_item_text=0x7f090070;
-        public static final int design_navigation_view=0x7f09006f;
-        public static final int disableHome=0x7f09000e;
-        public static final int edit_query=0x7f09005b;
-        public static final int end=0x7f090020;
-        public static final int end_padder=0x7f09007f;
-        public static final int enterAlways=0x7f090032;
-        public static final int enterAlwaysCollapsed=0x7f090033;
-        public static final int et_password=0x7f09006a;
-        public static final int et_username=0x7f090069;
-        public static final int exitUntilCollapsed=0x7f090034;
-        public static final int expand_activities_button=0x7f09003d;
-        public static final int expanded_menu=0x7f090050;
-        public static final int fill=0x7f090026;
-        public static final int fill_horizontal=0x7f09002c;
-        public static final int fill_vertical=0x7f09002d;
-        public static final int fixed=0x7f090023;
+        public static final int action_mode_bar=0x7f09003e;
+        public static final int action_mode_bar_stub=0x7f09003d;
+        public static final int action_mode_close_button=0x7f090023;
+        public static final int action_settings=0x7f090066;
+        public static final int activity_chooser_view_content=0x7f090024;
+        public static final int alertTitle=0x7f090030;
+        public static final int always=0x7f090019;
+        public static final int beginning=0x7f09001e;
+        public static final int btn_ok=0x7f090053;
+        public static final int btn_register=0x7f090054;
+        public static final int buttonPanel=0x7f09002b;
+        public static final int cancel_action=0x7f090057;
+        public static final int checkbox=0x7f090039;
+        public static final int chronometer=0x7f09005d;
+        public static final int collapseActionView=0x7f09001a;
+        public static final int contentPanel=0x7f090031;
+        public static final int custom=0x7f090037;
+        public static final int customPanel=0x7f090036;
+        public static final int decor_content_parent=0x7f09003f;
+        public static final int default_activity_button=0x7f090027;
+        public static final int disableHome=0x7f09000d;
+        public static final int edit_query=0x7f090043;
+        public static final int end=0x7f09001f;
+        public static final int end_padder=0x7f090062;
+        public static final int et_name=0x7f090055;
+        public static final int et_password=0x7f090052;
+        public static final int et_username=0x7f090051;
+        public static final int expand_activities_button=0x7f090025;
+        public static final int expanded_menu=0x7f090038;
         public static final int home=0x7f090000;
-        public static final int homeAsUp=0x7f09000f;
-        public static final int icon=0x7f090041;
-        public static final int ifRoom=0x7f09001c;
-        public static final int image=0x7f09003e;
-        public static final int info=0x7f09007e;
-        public static final int left=0x7f09002e;
-        public static final int line1=0x7f090078;
-        public static final int line3=0x7f09007c;
-        public static final int listMode=0x7f09000b;
-        public static final int list_item=0x7f090040;
-        public static final int media_actions=0x7f090076;
-        public static final int middle=0x7f090021;
-        public static final int mini=0x7f090022;
-        public static final int mpaview=0x7f090068;
-        public static final int multiply=0x7f090015;
-        public static final int navigation_header_container=0x7f09006e;
-        public static final int never=0x7f09001d;
-        public static final int none=0x7f090010;
-        public static final int normal=0x7f09000c;
-        public static final int parallax=0x7f090037;
-        public static final int parentPanel=0x7f090045;
-        public static final int pin=0x7f090038;
+        public static final int homeAsUp=0x7f09000e;
+        public static final int icon=0x7f090029;
+        public static final int ifRoom=0x7f09001b;
+        public static final int image=0x7f090026;
+        public static final int info=0x7f090061;
+        public static final int line1=0x7f09005b;
+        public static final int line3=0x7f09005f;
+        public static final int listMode=0x7f09000a;
+        public static final int list_item=0x7f090028;
+        public static final int media_actions=0x7f090059;
+        public static final int middle=0x7f090020;
+        public static final int mpaview=0x7f090050;
+        public static final int multiply=0x7f090014;
+        public static final int never=0x7f09001c;
+        public static final int none=0x7f09000f;
+        public static final int normal=0x7f09000b;
+        public static final int parentPanel=0x7f09002d;
         public static final int progress_circular=0x7f090007;
         public static final int progress_horizontal=0x7f090008;
-        public static final int radio=0x7f090053;
-        public static final int right=0x7f09002f;
-        public static final int roads=0x7f090082;
-        public static final int round=0x7f090081;
-        public static final int screen=0x7f090016;
-        public static final int scroll=0x7f090035;
-        public static final int scrollIndicatorDown=0x7f09004d;
-        public static final int scrollIndicatorUp=0x7f09004a;
-        public static final int scrollView=0x7f09004b;
-        public static final int scrollable=0x7f090024;
-        public static final int search_badge=0x7f09005d;
-        public static final int search_bar=0x7f09005c;
-        public static final int search_button=0x7f09005e;
-        public static final int search_close_btn=0x7f090063;
-        public static final int search_edit_frame=0x7f09005f;
-        public static final int search_go_btn=0x7f090065;
-        public static final int search_mag_icon=0x7f090060;
-        public static final int search_plate=0x7f090061;
-        public static final int search_src_text=0x7f090062;
-        public static final int search_voice_btn=0x7f090066;
-        public static final int select_dialog_listview=0x7f090067;
-        public static final int shortcut=0x7f090052;
-        public static final int showCustom=0x7f090011;
-        public static final int showHome=0x7f090012;
-        public static final int showTitle=0x7f090013;
-        public static final int snackbar_action=0x7f09006d;
-        public static final int snackbar_text=0x7f09006c;
-        public static final int snap=0x7f090036;
-        public static final int spacer=0x7f090044;
+        public static final int radio=0x7f09003b;
+        public static final int roads=0x7f090065;
+        public static final int round=0x7f090064;
+        public static final int screen=0x7f090015;
+        public static final int scrollIndicatorDown=0x7f090035;
+        public static final int scrollIndicatorUp=0x7f090032;
+        public static final int scrollView=0x7f090033;
+        public static final int search_badge=0x7f090045;
+        public static final int search_bar=0x7f090044;
+        public static final int search_button=0x7f090046;
+        public static final int search_close_btn=0x7f09004b;
+        public static final int search_edit_frame=0x7f090047;
+        public static final int search_go_btn=0x7f09004d;
+        public static final int search_mag_icon=0x7f090048;
+        public static final int search_plate=0x7f090049;
+        public static final int search_src_text=0x7f09004a;
+        public static final int search_voice_btn=0x7f09004e;
+        public static final int select_dialog_listview=0x7f09004f;
+        public static final int shortcut=0x7f09003a;
+        public static final int showCustom=0x7f090010;
+        public static final int showHome=0x7f090011;
+        public static final int showTitle=0x7f090012;
+        public static final int spacer=0x7f09002c;
         public static final int split_action_bar=0x7f090004;
-        public static final int src_atop=0x7f090017;
-        public static final int src_in=0x7f090018;
-        public static final int src_over=0x7f090019;
-        public static final int start=0x7f090030;
-        public static final int status_bar_latest_event_content=0x7f090075;
-        public static final int submit_area=0x7f090064;
-        public static final int tabMode=0x7f09000d;
-        public static final int text=0x7f09007d;
-        public static final int text2=0x7f09007b;
-        public static final int textSpacerNoButtons=0x7f09004c;
-        public static final int time=0x7f090079;
-        public static final int title=0x7f090042;
-        public static final int title_template=0x7f090047;
-        public static final int top=0x7f090031;
-        public static final int topPanel=0x7f090046;
+        public static final int src_atop=0x7f090016;
+        public static final int src_in=0x7f090017;
+        public static final int src_over=0x7f090018;
+        public static final int status_bar_latest_event_content=0x7f090058;
+        public static final int submit_area=0x7f09004c;
+        public static final int tabMode=0x7f09000c;
+        public static final int text=0x7f090060;
+        public static final int text2=0x7f09005e;
+        public static final int textSpacerNoButtons=0x7f090034;
+        public static final int time=0x7f09005c;
+        public static final int title=0x7f09002a;
+        public static final int title_template=0x7f09002f;
+        public static final int topPanel=0x7f09002e;
         public static final int up=0x7f090001;
-        public static final int useLogo=0x7f090014;
-        public static final int user_info=0x7f090080;
-        public static final int view_offset_helper=0x7f090009;
-        public static final int withText=0x7f09001e;
-        public static final int wrap_content=0x7f09000a;
+        public static final int useLogo=0x7f090013;
+        public static final int user_info=0x7f090063;
+        public static final int withText=0x7f09001d;
+        public static final int wrap_content=0x7f090009;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur=0x7f080001;
@@ -2834,7 +2140,6 @@ containing a value of this type.
          */
         public static final int abc_max_action_buttons=0x7f080004;
         public static final int cancel_button_image_alpha=0x7f080003;
-        public static final int design_snackbar_text_max_lines=0x7f080005;
         /**  Maximum numerical value that will be shown in a status bar
          notification icon or in the notification itself. Will be replaced
          with @string/status_bar_notification_info_overflow when shown in the
@@ -2871,31 +2176,21 @@ containing a value of this type.
         public static final int activity_home=0x7f030019;
         public static final int activity_login=0x7f03001a;
         public static final int activity_main=0x7f03001b;
-        public static final int design_layout_snackbar=0x7f03001c;
-        public static final int design_layout_snackbar_include=0x7f03001d;
-        public static final int design_layout_tab_icon=0x7f03001e;
-        public static final int design_layout_tab_text=0x7f03001f;
-        public static final int design_menu_item_action_area=0x7f030020;
-        public static final int design_navigation_item=0x7f030021;
-        public static final int design_navigation_item_header=0x7f030022;
-        public static final int design_navigation_item_separator=0x7f030023;
-        public static final int design_navigation_item_subheader=0x7f030024;
-        public static final int design_navigation_menu=0x7f030025;
-        public static final int design_navigation_menu_item=0x7f030026;
-        public static final int dialog_loading=0x7f030027;
-        public static final int notification_media_action=0x7f030028;
-        public static final int notification_media_cancel_action=0x7f030029;
-        public static final int notification_template_big_media=0x7f03002a;
-        public static final int notification_template_big_media_narrow=0x7f03002b;
-        public static final int notification_template_lines=0x7f03002c;
-        public static final int notification_template_media=0x7f03002d;
-        public static final int notification_template_part_chronometer=0x7f03002e;
-        public static final int notification_template_part_time=0x7f03002f;
-        public static final int pop=0x7f030030;
-        public static final int select_dialog_item_material=0x7f030031;
-        public static final int select_dialog_multichoice_material=0x7f030032;
-        public static final int select_dialog_singlechoice_material=0x7f030033;
-        public static final int support_simple_spinner_dropdown_item=0x7f030034;
+        public static final int activity_register=0x7f03001c;
+        public static final int dialog_loading=0x7f03001d;
+        public static final int notification_media_action=0x7f03001e;
+        public static final int notification_media_cancel_action=0x7f03001f;
+        public static final int notification_template_big_media=0x7f030020;
+        public static final int notification_template_big_media_narrow=0x7f030021;
+        public static final int notification_template_lines=0x7f030022;
+        public static final int notification_template_media=0x7f030023;
+        public static final int notification_template_part_chronometer=0x7f030024;
+        public static final int notification_template_part_time=0x7f030025;
+        public static final int pop=0x7f030026;
+        public static final int select_dialog_item_material=0x7f030027;
+        public static final int select_dialog_multichoice_material=0x7f030028;
+        public static final int select_dialog_singlechoice_material=0x7f030029;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002a;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
@@ -2966,15 +2261,9 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
-        public static final int action_settings=0x7f0a0018;
-        public static final int app_name=0x7f0a0016;
-        /**  The class name to the ScrollingChildBehavior required for AppBarLayout 
-         */
-        public static final int appbar_scrolling_view_behavior=0x7f0a0014;
-        /**  The text pattern for the character counter 
-         */
-        public static final int character_counter_pattern=0x7f0a0015;
-        public static final int hello_world=0x7f0a0017;
+        public static final int action_settings=0x7f0a0016;
+        public static final int app_name=0x7f0a0014;
+        public static final int hello_world=0x7f0a0015;
         /**  Text to use when the number in a notification info is too large
          (greater than status_bar_notification_info_maxnum, defined in
          values/config.xml) and must be truncated. May need to be localized
@@ -3009,11 +2298,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0b0144;
+        public static final int AppBaseTheme=0x7f0b0133;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0145;
+        public static final int AppTheme=0x7f0b0134;
         public static final int Base_AlertDialog_AppCompat=0x7f0b00cc;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f0b00cd;
         public static final int Base_Animation_AppCompat_Dialog=0x7f0b00c8;
@@ -3201,7 +2490,6 @@ containing a value of this type.
     
          */
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b00ae;
-        public static final int Base_Widget_Design_TabLayout=0x7f0b0137;
         public static final int Platform_AppCompat=0x7f0b0109;
         public static final int Platform_AppCompat_Light=0x7f0b010a;
         /**  Overlay themes 
@@ -3274,13 +2562,6 @@ containing a value of this type.
         public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small=0x7f0b002a;
         public static final int TextAppearance_AppCompat_Widget_Switch=0x7f0b0063;
         public static final int TextAppearance_AppCompat_Widget_TextView_SpinnerItem=0x7f0b0064;
-        public static final int TextAppearance_Design_CollapsingToolbar_Expanded=0x7f0b0143;
-        public static final int TextAppearance_Design_Counter=0x7f0b013c;
-        public static final int TextAppearance_Design_Counter_Overflow=0x7f0b013d;
-        public static final int TextAppearance_Design_Error=0x7f0b013b;
-        public static final int TextAppearance_Design_Hint=0x7f0b013a;
-        public static final int TextAppearance_Design_Snackbar_Message=0x7f0b013e;
-        public static final int TextAppearance_Design_Tab=0x7f0b0138;
         /**  These styles didn't exist on v7. Since we only use the media template in later versions
          (ICS+), just define it here and use the correct references in values/v14 
  Use platform styles 
@@ -3431,15 +2712,6 @@ containing a value of this type.
          */
         public static final int Widget_AppCompat_Toolbar=0x7f0b0045;
         public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0b0046;
-        public static final int Widget_Design_AppBarLayout=0x7f0b0141;
-        public static final int Widget_Design_CollapsingToolbar=0x7f0b0140;
-        public static final int Widget_Design_CoordinatorLayout=0x7f0b0142;
-        public static final int Widget_Design_FloatingActionButton=0x7f0b0133;
-        public static final int Widget_Design_NavigationView=0x7f0b0135;
-        public static final int Widget_Design_ScrimInsetsFrameLayout=0x7f0b0134;
-        public static final int Widget_Design_Snackbar=0x7f0b013f;
-        public static final int Widget_Design_TabLayout=0x7f0b0136;
-        public static final int Widget_Design_TextInputLayout=0x7f0b0139;
     }
     public static final class styleable {
         /**  ============================================ 
@@ -4211,121 +3483,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.wxxiaomi.electricbicycle:singleChoiceItemLayout
         */
         public static final int AlertDialog_singleChoiceItemLayout = 4;
-        /** Attributes that can be used with a AppBarLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AppBarLayout_android_background android:background}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayout_elevation com.wxxiaomi.electricbicycle:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #AppBarLayout_expanded com.wxxiaomi.electricbicycle:expanded}</code></td><td> The initial expanded state for the AppBarLayout.</td></tr>
-           </table>
-           @see #AppBarLayout_android_background
-           @see #AppBarLayout_elevation
-           @see #AppBarLayout_expanded
-         */
-        public static final int[] AppBarLayout = {
-            0x010100d4, 0x7f010085, 0x7f0100f9
-        };
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#background}
-          attribute's value can be found in the {@link #AppBarLayout} array.
-          @attr name android:background
-        */
-        public static final int AppBarLayout_android_background = 0;
-        /**
-          <p>
-          @attr description
-           Elevation for the action bar itself 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:elevation
-        */
-        public static final int AppBarLayout_elevation = 1;
-        /**
-          <p>
-          @attr description
-           The initial expanded state for the AppBarLayout. This only takes effect when this
-             view is a direct child of a CoordinatorLayout. 
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expanded
-        */
-        public static final int AppBarLayout_expanded = 2;
-        /** Attributes that can be used with a AppBarLayout_LayoutParams.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #AppBarLayout_LayoutParams_layout_scrollFlags com.wxxiaomi.electricbicycle:layout_scrollFlags}</code></td><td></td></tr>
-           <tr><td><code>{@link #AppBarLayout_LayoutParams_layout_scrollInterpolator com.wxxiaomi.electricbicycle:layout_scrollInterpolator}</code></td><td> An interpolator to use when scrolling this View.</td></tr>
-           </table>
-           @see #AppBarLayout_LayoutParams_layout_scrollFlags
-           @see #AppBarLayout_LayoutParams_layout_scrollInterpolator
-         */
-        public static final int[] AppBarLayout_LayoutParams = {
-            0x7f0100fa, 0x7f0100fb
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#layout_scrollFlags}
-          attribute's value can be found in the {@link #AppBarLayout_LayoutParams} array.
-
-
-          <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>scroll</code></td><td>0x1</td><td> The view will be scroll in direct relation to scroll events. This flag needs to be
-                 set for any of the other flags to take effect. If any sibling views
-                 before this one do not have this flag, then this value has no effect. </td></tr>
-<tr><td><code>exitUntilCollapsed</code></td><td>0x2</td><td> When exiting (scrolling off screen) the view will be scrolled until it is
-                 'collapsed'. The collapsed height is defined by the view's minimum height. </td></tr>
-<tr><td><code>enterAlways</code></td><td>0x4</td><td> When entering (scrolling on screen) the view will scroll on any downwards
-                 scroll event, regardless of whether the scrolling view is also scrolling. This
-                 is commonly referred to as the 'quick return' pattern. </td></tr>
-<tr><td><code>enterAlwaysCollapsed</code></td><td>0x8</td><td> An additional flag for 'enterAlways' which modifies the returning view to
-                 only initially scroll back to it's collapsed height. Once the scrolling view has
-                 reached the end of it's scroll range, the remainder of this view will be scrolled
-                 into view. </td></tr>
-<tr><td><code>snap</code></td><td>0x10</td><td> Upon a scroll ending, if the view is only partially visible then it will be
-                 snapped and scrolled to it's closest edge. </td></tr>
-</table>
-          @attr name com.wxxiaomi.electricbicycle:layout_scrollFlags
-        */
-        public static final int AppBarLayout_LayoutParams_layout_scrollFlags = 0;
-        /**
-          <p>
-          @attr description
-           An interpolator to use when scrolling this View. Only takes effect when View
-             is scrollable. 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:layout_scrollInterpolator
-        */
-        public static final int AppBarLayout_LayoutParams_layout_scrollInterpolator = 1;
         /** Attributes that can be used with a AppCompatTextView.
            <p>Includes the following attributes:</p>
            <table>
@@ -4391,361 +3548,6 @@ containing a value of this type.
           @attr name com.wxxiaomi.electricbicycle:allowStacking
         */
         public static final int ButtonBarLayout_allowStacking = 0;
-        /** Attributes that can be used with a CollapsingAppBarLayout_LayoutParams.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CollapsingAppBarLayout_LayoutParams_layout_collapseMode com.wxxiaomi.electricbicycle:layout_collapseMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier com.wxxiaomi.electricbicycle:layout_collapseParallaxMultiplier}</code></td><td> The multiplier used when layout_collapseMode is set to 'parallax'.</td></tr>
-           </table>
-           @see #CollapsingAppBarLayout_LayoutParams_layout_collapseMode
-           @see #CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier
-         */
-        public static final int[] CollapsingAppBarLayout_LayoutParams = {
-            0x7f01010a, 0x7f01010b
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#layout_collapseMode}
-          attribute's value can be found in the {@link #CollapsingAppBarLayout_LayoutParams} array.
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>none</code></td><td>0</td><td> The view will act as normal with no collapsing behavior. </td></tr>
-<tr><td><code>pin</code></td><td>1</td><td> The view will pin in place. </td></tr>
-<tr><td><code>parallax</code></td><td>2</td><td> The view will scroll in a parallax fashion. See the
-                 layout_collapseParallaxMultiplier attribute to change the multiplier. </td></tr>
-</table>
-          @attr name com.wxxiaomi.electricbicycle:layout_collapseMode
-        */
-        public static final int CollapsingAppBarLayout_LayoutParams_layout_collapseMode = 0;
-        /**
-          <p>
-          @attr description
-           The multiplier used when layout_collapseMode is set to 'parallax'. The value should
-             be between 0.0 and 1.0. 
-
-
-          <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:layout_collapseParallaxMultiplier
-        */
-        public static final int CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = 1;
-        /** Attributes that can be used with a CollapsingToolbarLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleGravity com.wxxiaomi.electricbicycle:collapsedTitleGravity}</code></td><td> Specifies how the title should be positioned when collapsed.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_collapsedTitleTextAppearance com.wxxiaomi.electricbicycle:collapsedTitleTextAppearance}</code></td><td> The text appearance of the CollapsingToolbarLayouts title when it is fully
-             'collapsed' </td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_contentScrim com.wxxiaomi.electricbicycle:contentScrim}</code></td><td> The drawable to use as a scrim on top of the CollapsingToolbarLayouts content when
-             it has been scrolled sufficiently off screen.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleGravity com.wxxiaomi.electricbicycle:expandedTitleGravity}</code></td><td> Specifies how the title should be positioned when expanded.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMargin com.wxxiaomi.electricbicycle:expandedTitleMargin}</code></td><td>  Specifies extra space on the start, top, end and bottom
-              sides of the the expanded title text.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginBottom com.wxxiaomi.electricbicycle:expandedTitleMarginBottom}</code></td><td>  Specifies extra space on the bottom side of the the expanded title text.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginEnd com.wxxiaomi.electricbicycle:expandedTitleMarginEnd}</code></td><td>  Specifies extra space on the end side of the the expanded title text.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginStart com.wxxiaomi.electricbicycle:expandedTitleMarginStart}</code></td><td>  Specifies extra space on the start side of the the expanded title text.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleMarginTop com.wxxiaomi.electricbicycle:expandedTitleMarginTop}</code></td><td>  Specifies extra space on the top side of the the expanded title text.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_expandedTitleTextAppearance com.wxxiaomi.electricbicycle:expandedTitleTextAppearance}</code></td><td> The text appearance of the CollapsingToolbarLayout's title when it is fully
-             'expanded' </td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_statusBarScrim com.wxxiaomi.electricbicycle:statusBarScrim}</code></td><td> The drawable to use as a scrim for the status bar content when the
-             CollapsingToolbarLayout has been scrolled sufficiently off screen.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_title com.wxxiaomi.electricbicycle:title}</code></td><td> The title to show when titleEnabled is set to true.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_titleEnabled com.wxxiaomi.electricbicycle:titleEnabled}</code></td><td> Whether the CollapsingToolbarLayout should draw its own shrinking/growing title.</td></tr>
-           <tr><td><code>{@link #CollapsingToolbarLayout_toolbarId com.wxxiaomi.electricbicycle:toolbarId}</code></td><td> The id of the primary Toolbar child that you wish to use for the purpose of collapsing.</td></tr>
-           </table>
-           @see #CollapsingToolbarLayout_collapsedTitleGravity
-           @see #CollapsingToolbarLayout_collapsedTitleTextAppearance
-           @see #CollapsingToolbarLayout_contentScrim
-           @see #CollapsingToolbarLayout_expandedTitleGravity
-           @see #CollapsingToolbarLayout_expandedTitleMargin
-           @see #CollapsingToolbarLayout_expandedTitleMarginBottom
-           @see #CollapsingToolbarLayout_expandedTitleMarginEnd
-           @see #CollapsingToolbarLayout_expandedTitleMarginStart
-           @see #CollapsingToolbarLayout_expandedTitleMarginTop
-           @see #CollapsingToolbarLayout_expandedTitleTextAppearance
-           @see #CollapsingToolbarLayout_statusBarScrim
-           @see #CollapsingToolbarLayout_title
-           @see #CollapsingToolbarLayout_titleEnabled
-           @see #CollapsingToolbarLayout_toolbarId
-         */
-        public static final int[] CollapsingToolbarLayout = {
-            0x7f010000, 0x7f0100fd, 0x7f0100fe, 0x7f0100ff,
-            0x7f010100, 0x7f010101, 0x7f010102, 0x7f010103,
-            0x7f010104, 0x7f010105, 0x7f010106, 0x7f010107,
-            0x7f010108, 0x7f010109
-        };
-        /**
-          <p>
-          @attr description
-           Specifies how the title should be positioned when collapsed. 
-
-
-          <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>top</code></td><td>0x30</td><td> Push title to the top of its container, not changing its size. </td></tr>
-<tr><td><code>bottom</code></td><td>0x50</td><td> Push title to the bottom of its container, not changing its size. </td></tr>
-<tr><td><code>left</code></td><td>0x03</td><td> Push title to the left of its container, not changing its size. </td></tr>
-<tr><td><code>right</code></td><td>0x05</td><td> Push title to the right of its container, not changing its size. </td></tr>
-<tr><td><code>center_vertical</code></td><td>0x10</td><td> Place title in the vertical center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_vertical</code></td><td>0x70</td><td> Grow the vertical size of the title if needed so it completely fills its container. </td></tr>
-<tr><td><code>center_horizontal</code></td><td>0x01</td><td> Place title in the horizontal center of its container, not changing its size. </td></tr>
-<tr><td><code>center</code></td><td>0x11</td><td> Place the title in the center of its container in both the vertical and horizontal axis, not changing its size. </td></tr>
-<tr><td><code>start</code></td><td>0x00800003</td><td> Push title to the beginning of its container, not changing its size. </td></tr>
-<tr><td><code>end</code></td><td>0x00800005</td><td> Push title to the end of its container, not changing its size. </td></tr>
-</table>
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:collapsedTitleGravity
-        */
-        public static final int CollapsingToolbarLayout_collapsedTitleGravity = 11;
-        /**
-          <p>
-          @attr description
-           The text appearance of the CollapsingToolbarLayouts title when it is fully
-             'collapsed' 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:collapsedTitleTextAppearance
-        */
-        public static final int CollapsingToolbarLayout_collapsedTitleTextAppearance = 7;
-        /**
-          <p>
-          @attr description
-           The drawable to use as a scrim on top of the CollapsingToolbarLayouts content when
-             it has been scrolled sufficiently off screen. 
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:contentScrim
-        */
-        public static final int CollapsingToolbarLayout_contentScrim = 8;
-        /**
-          <p>
-          @attr description
-           Specifies how the title should be positioned when expanded. 
-
-
-          <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>top</code></td><td>0x30</td><td> Push title to the top of its container, not changing its size. </td></tr>
-<tr><td><code>bottom</code></td><td>0x50</td><td> Push title to the bottom of its container, not changing its size. </td></tr>
-<tr><td><code>left</code></td><td>0x03</td><td> Push title to the left of its container, not changing its size. </td></tr>
-<tr><td><code>right</code></td><td>0x05</td><td> Push title to the right of its container, not changing its size. </td></tr>
-<tr><td><code>center_vertical</code></td><td>0x10</td><td> Place title in the vertical center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_vertical</code></td><td>0x70</td><td> Grow the vertical size of the title if needed so it completely fills its container. </td></tr>
-<tr><td><code>center_horizontal</code></td><td>0x01</td><td> Place title in the horizontal center of its container, not changing its size. </td></tr>
-<tr><td><code>center</code></td><td>0x11</td><td> Place the title in the center of its container in both the vertical and horizontal axis, not changing its size. </td></tr>
-<tr><td><code>start</code></td><td>0x00800003</td><td> Push title to the beginning of its container, not changing its size. </td></tr>
-<tr><td><code>end</code></td><td>0x00800005</td><td> Push title to the end of its container, not changing its size. </td></tr>
-</table>
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleGravity
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleGravity = 12;
-        /**
-          <p>
-          @attr description
-            Specifies extra space on the start, top, end and bottom
-              sides of the the expanded title text. Margin values should be positive. 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleMargin
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleMargin = 1;
-        /**
-          <p>
-          @attr description
-            Specifies extra space on the bottom side of the the expanded title text.
-              Margin values should be positive. 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleMarginBottom
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleMarginBottom = 5;
-        /**
-          <p>
-          @attr description
-            Specifies extra space on the end side of the the expanded title text.
-              Margin values should be positive. 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleMarginEnd
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleMarginEnd = 4;
-        /**
-          <p>
-          @attr description
-            Specifies extra space on the start side of the the expanded title text.
-              Margin values should be positive. 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleMarginStart
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleMarginStart = 2;
-        /**
-          <p>
-          @attr description
-            Specifies extra space on the top side of the the expanded title text.
-              Margin values should be positive. 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleMarginTop
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleMarginTop = 3;
-        /**
-          <p>
-          @attr description
-           The text appearance of the CollapsingToolbarLayout's title when it is fully
-             'expanded' 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:expandedTitleTextAppearance
-        */
-        public static final int CollapsingToolbarLayout_expandedTitleTextAppearance = 6;
-        /**
-          <p>
-          @attr description
-           The drawable to use as a scrim for the status bar content when the
-             CollapsingToolbarLayout has been scrolled sufficiently off screen. Only works on
-             Lollipop with the correct setup. 
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:statusBarScrim
-        */
-        public static final int CollapsingToolbarLayout_statusBarScrim = 9;
-        /**
-          <p>
-          @attr description
-           The title to show when titleEnabled is set to true. 
-
-
-          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:title
-        */
-        public static final int CollapsingToolbarLayout_title = 0;
-        /**
-          <p>
-          @attr description
-           Whether the CollapsingToolbarLayout should draw its own shrinking/growing title. 
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:titleEnabled
-        */
-        public static final int CollapsingToolbarLayout_titleEnabled = 13;
-        /**
-          <p>
-          @attr description
-           The id of the primary Toolbar child that you wish to use for the purpose of collapsing.
-             If you do not set this then the first Toolbar child found will be used. 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:toolbarId
-        */
-        public static final int CollapsingToolbarLayout_toolbarId = 10;
         /** Attributes that can be used with a CompoundButton.
            <p>Includes the following attributes:</p>
            <table>
@@ -4812,165 +3614,6 @@ containing a value of this type.
           @attr name com.wxxiaomi.electricbicycle:buttonTintMode
         */
         public static final int CompoundButton_buttonTintMode = 2;
-        /** Attributes that can be used with a CoordinatorLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CoordinatorLayout_keylines com.wxxiaomi.electricbicycle:keylines}</code></td><td> A reference to an array of integers representing the
-             locations of horizontal keylines in dp from the starting edge.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_statusBarBackground com.wxxiaomi.electricbicycle:statusBarBackground}</code></td><td> Drawable to display behind the status bar when the view is set to draw behind it.</td></tr>
-           </table>
-           @see #CoordinatorLayout_keylines
-           @see #CoordinatorLayout_statusBarBackground
-         */
-        public static final int[] CoordinatorLayout = {
-            0x7f0100ea, 0x7f0100eb
-        };
-        /**
-          <p>
-          @attr description
-           A reference to an array of integers representing the
-             locations of horizontal keylines in dp from the starting edge.
-             Child views can refer to these keylines for alignment using
-             layout_keyline="index" where index is a 0-based index into
-             this array. 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:keylines
-        */
-        public static final int CoordinatorLayout_keylines = 0;
-        /**
-          <p>
-          @attr description
-           Drawable to display behind the status bar when the view is set to draw behind it. 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:statusBarBackground
-        */
-        public static final int CoordinatorLayout_statusBarBackground = 1;
-        /** Attributes that can be used with a CoordinatorLayout_LayoutParams.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CoordinatorLayout_LayoutParams_android_layout_gravity android:layout_gravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_LayoutParams_layout_anchor com.wxxiaomi.electricbicycle:layout_anchor}</code></td><td> The id of an anchor view that this view should position relative to.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_LayoutParams_layout_anchorGravity com.wxxiaomi.electricbicycle:layout_anchorGravity}</code></td><td> Specifies how an object should position relative to an anchor, on both the X and Y axes,
-             within its parent's bounds.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_LayoutParams_layout_behavior com.wxxiaomi.electricbicycle:layout_behavior}</code></td><td> The class name of a Behavior class defining special runtime behavior
-             for this child view.</td></tr>
-           <tr><td><code>{@link #CoordinatorLayout_LayoutParams_layout_keyline com.wxxiaomi.electricbicycle:layout_keyline}</code></td><td> The index of a keyline this view should position relative to.</td></tr>
-           </table>
-           @see #CoordinatorLayout_LayoutParams_android_layout_gravity
-           @see #CoordinatorLayout_LayoutParams_layout_anchor
-           @see #CoordinatorLayout_LayoutParams_layout_anchorGravity
-           @see #CoordinatorLayout_LayoutParams_layout_behavior
-           @see #CoordinatorLayout_LayoutParams_layout_keyline
-         */
-        public static final int[] CoordinatorLayout_LayoutParams = {
-            0x010100b3, 0x7f0100ec, 0x7f0100ed, 0x7f0100ee,
-            0x7f0100ef
-        };
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#layout_gravity}
-          attribute's value can be found in the {@link #CoordinatorLayout_LayoutParams} array.
-          @attr name android:layout_gravity
-        */
-        public static final int CoordinatorLayout_LayoutParams_android_layout_gravity = 0;
-        /**
-          <p>
-          @attr description
-           The id of an anchor view that this view should position relative to. 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:layout_anchor
-        */
-        public static final int CoordinatorLayout_LayoutParams_layout_anchor = 2;
-        /**
-          <p>
-          @attr description
-           Specifies how an object should position relative to an anchor, on both the X and Y axes,
-             within its parent's bounds.  
-
-
-          <p>Must be one or more (separated by '|') of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>top</code></td><td>0x30</td><td> Push object to the top of its container, not changing its size. </td></tr>
-<tr><td><code>bottom</code></td><td>0x50</td><td> Push object to the bottom of its container, not changing its size. </td></tr>
-<tr><td><code>left</code></td><td>0x03</td><td> Push object to the left of its container, not changing its size. </td></tr>
-<tr><td><code>right</code></td><td>0x05</td><td> Push object to the right of its container, not changing its size. </td></tr>
-<tr><td><code>center_vertical</code></td><td>0x10</td><td> Place object in the vertical center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_vertical</code></td><td>0x70</td><td> Grow the vertical size of the object if needed so it completely fills its container. </td></tr>
-<tr><td><code>center_horizontal</code></td><td>0x01</td><td> Place object in the horizontal center of its container, not changing its size. </td></tr>
-<tr><td><code>fill_horizontal</code></td><td>0x07</td><td> Grow the horizontal size of the object if needed so it completely fills its container. </td></tr>
-<tr><td><code>center</code></td><td>0x11</td><td> Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. </td></tr>
-<tr><td><code>fill</code></td><td>0x77</td><td> Grow the horizontal and vertical size of the object if needed so it completely fills its container. </td></tr>
-<tr><td><code>clip_vertical</code></td><td>0x80</td><td> Additional option that can be set to have the top and/or bottom edges of
-                 the child clipped to its container's bounds.
-                 The clip will be based on the vertical gravity: a top gravity will clip the bottom
-                 edge, a bottom gravity will clip the top edge, and neither will clip both edges. </td></tr>
-<tr><td><code>clip_horizontal</code></td><td>0x08</td><td> Additional option that can be set to have the left and/or right edges of
-                 the child clipped to its container's bounds.
-                 The clip will be based on the horizontal gravity: a left gravity will clip the right
-                 edge, a right gravity will clip the left edge, and neither will clip both edges. </td></tr>
-<tr><td><code>start</code></td><td>0x00800003</td><td> Push object to the beginning of its container, not changing its size. </td></tr>
-<tr><td><code>end</code></td><td>0x00800005</td><td> Push object to the end of its container, not changing its size. </td></tr>
-</table>
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:layout_anchorGravity
-        */
-        public static final int CoordinatorLayout_LayoutParams_layout_anchorGravity = 4;
-        /**
-          <p>
-          @attr description
-           The class name of a Behavior class defining special runtime behavior
-             for this child view. 
-
-
-          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:layout_behavior
-        */
-        public static final int CoordinatorLayout_LayoutParams_layout_behavior = 1;
-        /**
-          <p>
-          @attr description
-           The index of a keyline this view should position relative to.
-             android:layout_gravity will affect how the view aligns to the
-             specified keyline. 
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:layout_keyline
-        */
-        public static final int CoordinatorLayout_LayoutParams_layout_keyline = 3;
         /** Attributes that can be used with a DrawerArrowToggle.
            <p>Includes the following attributes:</p>
            <table>
@@ -5140,208 +3783,6 @@ containing a value of this type.
           @attr name com.wxxiaomi.electricbicycle:thickness
         */
         public static final int DrawerArrowToggle_thickness = 7;
-        /** Attributes that can be used with a FloatingActionButton.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #FloatingActionButton_backgroundTint com.wxxiaomi.electricbicycle:backgroundTint}</code></td><td> Background for the FloatingActionButton </td></tr>
-           <tr><td><code>{@link #FloatingActionButton_backgroundTintMode com.wxxiaomi.electricbicycle:backgroundTintMode}</code></td><td> Blending mode used to apply the background tint.</td></tr>
-           <tr><td><code>{@link #FloatingActionButton_borderWidth com.wxxiaomi.electricbicycle:borderWidth}</code></td><td> The width of the border around the FAB.</td></tr>
-           <tr><td><code>{@link #FloatingActionButton_elevation com.wxxiaomi.electricbicycle:elevation}</code></td><td> Elevation value for the FAB </td></tr>
-           <tr><td><code>{@link #FloatingActionButton_fabSize com.wxxiaomi.electricbicycle:fabSize}</code></td><td> Size for the FAB.</td></tr>
-           <tr><td><code>{@link #FloatingActionButton_pressedTranslationZ com.wxxiaomi.electricbicycle:pressedTranslationZ}</code></td><td> TranslationZ value for the FAB when pressed</td></tr>
-           <tr><td><code>{@link #FloatingActionButton_rippleColor com.wxxiaomi.electricbicycle:rippleColor}</code></td><td> Ripple color for the FAB.</td></tr>
-           </table>
-           @see #FloatingActionButton_backgroundTint
-           @see #FloatingActionButton_backgroundTintMode
-           @see #FloatingActionButton_borderWidth
-           @see #FloatingActionButton_elevation
-           @see #FloatingActionButton_fabSize
-           @see #FloatingActionButton_pressedTranslationZ
-           @see #FloatingActionButton_rippleColor
-         */
-        public static final int[] FloatingActionButton = {
-            0x7f010085, 0x7f01008b, 0x7f01008c, 0x7f0100ce,
-            0x7f0100cf, 0x7f0100d0, 0x7f0100d1
-        };
-        /**
-          <p>
-          @attr description
-           Background for the FloatingActionButton 
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:backgroundTint
-        */
-        public static final int FloatingActionButton_backgroundTint = 1;
-        /**
-          <p>
-          @attr description
-           Blending mode used to apply the background tint. 
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>src_over</code></td><td>3</td><td> The tint is drawn on top of the drawable.
-                 [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] </td></tr>
-<tr><td><code>src_in</code></td><td>5</td><td> The tint is masked by the alpha channel of the drawable. The drawable’s
-                 color channels are thrown out. [Sa * Da, Sc * Da] </td></tr>
-<tr><td><code>src_atop</code></td><td>9</td><td> The tint is drawn above the drawable, but with the drawable’s alpha
-                 channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] </td></tr>
-<tr><td><code>multiply</code></td><td>14</td><td> Multiplies the color and alpha channels of the drawable with those of
-                 the tint. [Sa * Da, Sc * Dc] </td></tr>
-<tr><td><code>screen</code></td><td>15</td><td> [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] </td></tr>
-</table>
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:backgroundTintMode
-        */
-        public static final int FloatingActionButton_backgroundTintMode = 2;
-        /**
-          <p>
-          @attr description
-           The width of the border around the FAB. 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:borderWidth
-        */
-        public static final int FloatingActionButton_borderWidth = 6;
-        /**
-          <p>
-          @attr description
-           Elevation value for the FAB 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:elevation
-        */
-        public static final int FloatingActionButton_elevation = 0;
-        /**
-          <p>
-          @attr description
-           Size for the FAB. 
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>normal</code></td><td>0</td><td></td></tr>
-<tr><td><code>mini</code></td><td>1</td><td></td></tr>
-</table>
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:fabSize
-        */
-        public static final int FloatingActionButton_fabSize = 4;
-        /**
-          <p>
-          @attr description
-           TranslationZ value for the FAB when pressed
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:pressedTranslationZ
-        */
-        public static final int FloatingActionButton_pressedTranslationZ = 5;
-        /**
-          <p>
-          @attr description
-           Ripple color for the FAB. 
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:rippleColor
-        */
-        public static final int FloatingActionButton_rippleColor = 3;
-        /** Attributes that can be used with a ForegroundLinearLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ForegroundLinearLayout_android_foreground android:foreground}</code></td><td></td></tr>
-           <tr><td><code>{@link #ForegroundLinearLayout_android_foregroundGravity android:foregroundGravity}</code></td><td></td></tr>
-           <tr><td><code>{@link #ForegroundLinearLayout_foregroundInsidePadding com.wxxiaomi.electricbicycle:foregroundInsidePadding}</code></td><td></td></tr>
-           </table>
-           @see #ForegroundLinearLayout_android_foreground
-           @see #ForegroundLinearLayout_android_foregroundGravity
-           @see #ForegroundLinearLayout_foregroundInsidePadding
-         */
-        public static final int[] ForegroundLinearLayout = {
-            0x01010109, 0x01010200, 0x7f0100d9
-        };
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#foreground}
-          attribute's value can be found in the {@link #ForegroundLinearLayout} array.
-          @attr name android:foreground
-        */
-        public static final int ForegroundLinearLayout_android_foreground = 0;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#foregroundGravity}
-          attribute's value can be found in the {@link #ForegroundLinearLayout} array.
-          @attr name android:foregroundGravity
-        */
-        public static final int ForegroundLinearLayout_android_foregroundGravity = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#foregroundInsidePadding}
-          attribute's value can be found in the {@link #ForegroundLinearLayout} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:foregroundInsidePadding
-        */
-        public static final int ForegroundLinearLayout_foregroundInsidePadding = 2;
         /** Attributes that can be used with a LinearLayoutCompat.
            <p>Includes the following attributes:</p>
            <table>
@@ -6021,149 +4462,6 @@ containing a value of this type.
           @attr name com.wxxiaomi.electricbicycle:preserveIconSpacing
         */
         public static final int MenuView_preserveIconSpacing = 7;
-        /** Attributes that can be used with a NavigationView.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #NavigationView_android_background android:background}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_android_fitsSystemWindows android:fitsSystemWindows}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_android_maxWidth android:maxWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_elevation com.wxxiaomi.electricbicycle:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #NavigationView_headerLayout com.wxxiaomi.electricbicycle:headerLayout}</code></td><td> Layout resource to inflate as the header </td></tr>
-           <tr><td><code>{@link #NavigationView_itemBackground com.wxxiaomi.electricbicycle:itemBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemIconTint com.wxxiaomi.electricbicycle:itemIconTint}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemTextAppearance com.wxxiaomi.electricbicycle:itemTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_itemTextColor com.wxxiaomi.electricbicycle:itemTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #NavigationView_menu com.wxxiaomi.electricbicycle:menu}</code></td><td> The menu resource to inflate and populate items from.</td></tr>
-           </table>
-           @see #NavigationView_android_background
-           @see #NavigationView_android_fitsSystemWindows
-           @see #NavigationView_android_maxWidth
-           @see #NavigationView_elevation
-           @see #NavigationView_headerLayout
-           @see #NavigationView_itemBackground
-           @see #NavigationView_itemIconTint
-           @see #NavigationView_itemTextAppearance
-           @see #NavigationView_itemTextColor
-           @see #NavigationView_menu
-         */
-        public static final int[] NavigationView = {
-            0x010100d4, 0x010100dd, 0x0101011f, 0x7f010085,
-            0x7f0100d3, 0x7f0100d4, 0x7f0100d5, 0x7f0100d6,
-            0x7f0100d7, 0x7f0100d8
-        };
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#background}
-          attribute's value can be found in the {@link #NavigationView} array.
-          @attr name android:background
-        */
-        public static final int NavigationView_android_background = 0;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#fitsSystemWindows}
-          attribute's value can be found in the {@link #NavigationView} array.
-          @attr name android:fitsSystemWindows
-        */
-        public static final int NavigationView_android_fitsSystemWindows = 1;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#maxWidth}
-          attribute's value can be found in the {@link #NavigationView} array.
-          @attr name android:maxWidth
-        */
-        public static final int NavigationView_android_maxWidth = 2;
-        /**
-          <p>
-          @attr description
-           Elevation for the action bar itself 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:elevation
-        */
-        public static final int NavigationView_elevation = 3;
-        /**
-          <p>
-          @attr description
-           Layout resource to inflate as the header 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:headerLayout
-        */
-        public static final int NavigationView_headerLayout = 9;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#itemBackground}
-          attribute's value can be found in the {@link #NavigationView} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.wxxiaomi.electricbicycle:itemBackground
-        */
-        public static final int NavigationView_itemBackground = 7;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#itemIconTint}
-          attribute's value can be found in the {@link #NavigationView} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:itemIconTint
-        */
-        public static final int NavigationView_itemIconTint = 5;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#itemTextAppearance}
-          attribute's value can be found in the {@link #NavigationView} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.wxxiaomi.electricbicycle:itemTextAppearance
-        */
-        public static final int NavigationView_itemTextAppearance = 8;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#itemTextColor}
-          attribute's value can be found in the {@link #NavigationView} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:itemTextColor
-        */
-        public static final int NavigationView_itemTextColor = 6;
-        /**
-          <p>
-          @attr description
-           The menu resource to inflate and populate items from. 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:menu
-        */
-        public static final int NavigationView_menu = 4;
         /** Attributes that can be used with a PopupWindow.
            <p>Includes the following attributes:</p>
            <table>
@@ -6230,62 +4528,6 @@ containing a value of this type.
           @attr name com.wxxiaomi.electricbicycle:state_above_anchor
         */
         public static final int PopupWindowBackgroundState_state_above_anchor = 0;
-        /** Attributes that can be used with a ScrimInsetsFrameLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ScrimInsetsFrameLayout_insetForeground com.wxxiaomi.electricbicycle:insetForeground}</code></td><td></td></tr>
-           </table>
-           @see #ScrimInsetsFrameLayout_insetForeground
-         */
-        public static final int[] ScrimInsetsFrameLayout = {
-            0x7f0100d2
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#insetForeground}
-          attribute's value can be found in the {@link #ScrimInsetsFrameLayout} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name com.wxxiaomi.electricbicycle:insetForeground
-        */
-        public static final int ScrimInsetsFrameLayout_insetForeground = 0;
-        /** Attributes that can be used with a ScrollingViewBehavior_Params.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ScrollingViewBehavior_Params_behavior_overlapTop com.wxxiaomi.electricbicycle:behavior_overlapTop}</code></td><td> The amount that the scrolling view should overlap the bottom of any AppBarLayout </td></tr>
-           </table>
-           @see #ScrollingViewBehavior_Params_behavior_overlapTop
-         */
-        public static final int[] ScrollingViewBehavior_Params = {
-            0x7f0100fc
-        };
-        /**
-          <p>
-          @attr description
-           The amount that the scrolling view should overlap the bottom of any AppBarLayout 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:behavior_overlapTop
-        */
-        public static final int ScrollingViewBehavior_Params_behavior_overlapTop = 0;
         /** Attributes that can be used with a SearchView.
            <p>Includes the following attributes:</p>
            <table>
@@ -6539,63 +4781,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.wxxiaomi.electricbicycle:voiceIcon
         */
         public static final int SearchView_voiceIcon = 12;
-        /** Attributes that can be used with a SnackbarLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #SnackbarLayout_android_maxWidth android:maxWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #SnackbarLayout_elevation com.wxxiaomi.electricbicycle:elevation}</code></td><td> Elevation for the action bar itself </td></tr>
-           <tr><td><code>{@link #SnackbarLayout_maxActionInlineWidth com.wxxiaomi.electricbicycle:maxActionInlineWidth}</code></td><td></td></tr>
-           </table>
-           @see #SnackbarLayout_android_maxWidth
-           @see #SnackbarLayout_elevation
-           @see #SnackbarLayout_maxActionInlineWidth
-         */
-        public static final int[] SnackbarLayout = {
-            0x0101011f, 0x7f010085, 0x7f0100f8
-        };
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#maxWidth}
-          attribute's value can be found in the {@link #SnackbarLayout} array.
-          @attr name android:maxWidth
-        */
-        public static final int SnackbarLayout_android_maxWidth = 0;
-        /**
-          <p>
-          @attr description
-           Elevation for the action bar itself 
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:elevation
-        */
-        public static final int SnackbarLayout_elevation = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#maxActionInlineWidth}
-          attribute's value can be found in the {@link #SnackbarLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:maxActionInlineWidth
-        */
-        public static final int SnackbarLayout_maxActionInlineWidth = 2;
         /** Attributes that can be used with a Spinner.
            <p>Includes the following attributes:</p>
            <table>
@@ -6824,299 +5009,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.wxxiaomi.electricbicycle:track
         */
         public static final int SwitchCompat_track = 3;
-        /** Attributes that can be used with a TabLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #TabLayout_tabBackground com.wxxiaomi.electricbicycle:tabBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabContentStart com.wxxiaomi.electricbicycle:tabContentStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabGravity com.wxxiaomi.electricbicycle:tabGravity}</code></td><td> Standard gravity constant that a child supplies to its parent.</td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorColor com.wxxiaomi.electricbicycle:tabIndicatorColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabIndicatorHeight com.wxxiaomi.electricbicycle:tabIndicatorHeight}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabMaxWidth com.wxxiaomi.electricbicycle:tabMaxWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabMinWidth com.wxxiaomi.electricbicycle:tabMinWidth}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabMode com.wxxiaomi.electricbicycle:tabMode}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPadding com.wxxiaomi.electricbicycle:tabPadding}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingBottom com.wxxiaomi.electricbicycle:tabPaddingBottom}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingEnd com.wxxiaomi.electricbicycle:tabPaddingEnd}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingStart com.wxxiaomi.electricbicycle:tabPaddingStart}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabPaddingTop com.wxxiaomi.electricbicycle:tabPaddingTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabSelectedTextColor com.wxxiaomi.electricbicycle:tabSelectedTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabTextAppearance com.wxxiaomi.electricbicycle:tabTextAppearance}</code></td><td></td></tr>
-           <tr><td><code>{@link #TabLayout_tabTextColor com.wxxiaomi.electricbicycle:tabTextColor}</code></td><td></td></tr>
-           </table>
-           @see #TabLayout_tabBackground
-           @see #TabLayout_tabContentStart
-           @see #TabLayout_tabGravity
-           @see #TabLayout_tabIndicatorColor
-           @see #TabLayout_tabIndicatorHeight
-           @see #TabLayout_tabMaxWidth
-           @see #TabLayout_tabMinWidth
-           @see #TabLayout_tabMode
-           @see #TabLayout_tabPadding
-           @see #TabLayout_tabPaddingBottom
-           @see #TabLayout_tabPaddingEnd
-           @see #TabLayout_tabPaddingStart
-           @see #TabLayout_tabPaddingTop
-           @see #TabLayout_tabSelectedTextColor
-           @see #TabLayout_tabTextAppearance
-           @see #TabLayout_tabTextColor
-         */
-        public static final int[] TabLayout = {
-            0x7f0100da, 0x7f0100db, 0x7f0100dc, 0x7f0100dd,
-            0x7f0100de, 0x7f0100df, 0x7f0100e0, 0x7f0100e1,
-            0x7f0100e2, 0x7f0100e3, 0x7f0100e4, 0x7f0100e5,
-            0x7f0100e6, 0x7f0100e7, 0x7f0100e8, 0x7f0100e9
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabBackground}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.wxxiaomi.electricbicycle:tabBackground
-        */
-        public static final int TabLayout_tabBackground = 3;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabContentStart}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabContentStart
-        */
-        public static final int TabLayout_tabContentStart = 2;
-        /**
-          <p>
-          @attr description
-           Standard gravity constant that a child supplies to its parent.
-             Defines how the child view should be positioned, on both the X and Y axes,
-             within its enclosing layout. 
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>fill</code></td><td>0</td><td></td></tr>
-<tr><td><code>center</code></td><td>1</td><td></td></tr>
-</table>
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:tabGravity
-        */
-        public static final int TabLayout_tabGravity = 5;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabIndicatorColor}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabIndicatorColor
-        */
-        public static final int TabLayout_tabIndicatorColor = 0;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabIndicatorHeight}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabIndicatorHeight
-        */
-        public static final int TabLayout_tabIndicatorHeight = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabMaxWidth}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabMaxWidth
-        */
-        public static final int TabLayout_tabMaxWidth = 7;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabMinWidth}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabMinWidth
-        */
-        public static final int TabLayout_tabMinWidth = 6;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabMode}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>scrollable</code></td><td>0</td><td></td></tr>
-<tr><td><code>fixed</code></td><td>1</td><td></td></tr>
-</table>
-          @attr name com.wxxiaomi.electricbicycle:tabMode
-        */
-        public static final int TabLayout_tabMode = 4;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabPadding}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabPadding
-        */
-        public static final int TabLayout_tabPadding = 15;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabPaddingBottom}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabPaddingBottom
-        */
-        public static final int TabLayout_tabPaddingBottom = 14;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabPaddingEnd}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabPaddingEnd
-        */
-        public static final int TabLayout_tabPaddingEnd = 13;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabPaddingStart}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabPaddingStart
-        */
-        public static final int TabLayout_tabPaddingStart = 11;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabPaddingTop}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabPaddingTop
-        */
-        public static final int TabLayout_tabPaddingTop = 12;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabSelectedTextColor}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabSelectedTextColor
-        */
-        public static final int TabLayout_tabSelectedTextColor = 10;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabTextAppearance}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.wxxiaomi.electricbicycle:tabTextAppearance
-        */
-        public static final int TabLayout_tabTextAppearance = 8;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#tabTextColor}
-          attribute's value can be found in the {@link #TabLayout} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.wxxiaomi.electricbicycle:tabTextColor
-        */
-        public static final int TabLayout_tabTextColor = 9;
         /** Attributes that can be used with a TextAppearance.
            <p>Includes the following attributes:</p>
            <table>
@@ -7209,164 +5101,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.wxxiaomi.electricbicycle:textAllCaps
         */
         public static final int TextAppearance_textAllCaps = 8;
-        /** Attributes that can be used with a TextInputLayout.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #TextInputLayout_android_hint android:hint}</code></td><td> The hint to display in the floating label </td></tr>
-           <tr><td><code>{@link #TextInputLayout_android_textColorHint android:textColorHint}</code></td><td></td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterEnabled com.wxxiaomi.electricbicycle:counterEnabled}</code></td><td> Whether the layout is laid out as if the character counter will be displayed </td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterMaxLength com.wxxiaomi.electricbicycle:counterMaxLength}</code></td><td> The max length to display in the character counter </td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterOverflowTextAppearance com.wxxiaomi.electricbicycle:counterOverflowTextAppearance}</code></td><td> TextAppearance of the character counter when the text is longer than the max </td></tr>
-           <tr><td><code>{@link #TextInputLayout_counterTextAppearance com.wxxiaomi.electricbicycle:counterTextAppearance}</code></td><td> TextAppearance of the character counter </td></tr>
-           <tr><td><code>{@link #TextInputLayout_errorEnabled com.wxxiaomi.electricbicycle:errorEnabled}</code></td><td> Whether the layout is laid out as if an error will be displayed </td></tr>
-           <tr><td><code>{@link #TextInputLayout_errorTextAppearance com.wxxiaomi.electricbicycle:errorTextAppearance}</code></td><td> TextAppearance of any error message displayed </td></tr>
-           <tr><td><code>{@link #TextInputLayout_hintAnimationEnabled com.wxxiaomi.electricbicycle:hintAnimationEnabled}</code></td><td> Whether to animate hint state changes.</td></tr>
-           <tr><td><code>{@link #TextInputLayout_hintTextAppearance com.wxxiaomi.electricbicycle:hintTextAppearance}</code></td><td></td></tr>
-           </table>
-           @see #TextInputLayout_android_hint
-           @see #TextInputLayout_android_textColorHint
-           @see #TextInputLayout_counterEnabled
-           @see #TextInputLayout_counterMaxLength
-           @see #TextInputLayout_counterOverflowTextAppearance
-           @see #TextInputLayout_counterTextAppearance
-           @see #TextInputLayout_errorEnabled
-           @see #TextInputLayout_errorTextAppearance
-           @see #TextInputLayout_hintAnimationEnabled
-           @see #TextInputLayout_hintTextAppearance
-         */
-        public static final int[] TextInputLayout = {
-            0x0101009a, 0x01010150, 0x7f0100f0, 0x7f0100f1,
-            0x7f0100f2, 0x7f0100f3, 0x7f0100f4, 0x7f0100f5,
-            0x7f0100f6, 0x7f0100f7
-        };
-        /**
-          <p>
-          @attr description
-           The hint to display in the floating label 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#hint}.
-          @attr name android:hint
-        */
-        public static final int TextInputLayout_android_hint = 1;
-        /**
-          <p>This symbol is the offset where the {@link android.R.attr#textColorHint}
-          attribute's value can be found in the {@link #TextInputLayout} array.
-          @attr name android:textColorHint
-        */
-        public static final int TextInputLayout_android_textColorHint = 0;
-        /**
-          <p>
-          @attr description
-           Whether the layout is laid out as if the character counter will be displayed 
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:counterEnabled
-        */
-        public static final int TextInputLayout_counterEnabled = 5;
-        /**
-          <p>
-          @attr description
-           The max length to display in the character counter 
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:counterMaxLength
-        */
-        public static final int TextInputLayout_counterMaxLength = 6;
-        /**
-          <p>
-          @attr description
-           TextAppearance of the character counter when the text is longer than the max 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:counterOverflowTextAppearance
-        */
-        public static final int TextInputLayout_counterOverflowTextAppearance = 8;
-        /**
-          <p>
-          @attr description
-           TextAppearance of the character counter 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:counterTextAppearance
-        */
-        public static final int TextInputLayout_counterTextAppearance = 7;
-        /**
-          <p>
-          @attr description
-           Whether the layout is laid out as if an error will be displayed 
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:errorEnabled
-        */
-        public static final int TextInputLayout_errorEnabled = 3;
-        /**
-          <p>
-          @attr description
-           TextAppearance of any error message displayed 
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:errorTextAppearance
-        */
-        public static final int TextInputLayout_errorTextAppearance = 4;
-        /**
-          <p>
-          @attr description
-           Whether to animate hint state changes. 
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          <p>This is a private symbol.
-          @attr name com.wxxiaomi.electricbicycle:hintAnimationEnabled
-        */
-        public static final int TextInputLayout_hintAnimationEnabled = 9;
-        /**
-          <p>This symbol is the offset where the {@link com.wxxiaomi.electricbicycle.R.attr#hintTextAppearance}
-          attribute's value can be found in the {@link #TextInputLayout} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.wxxiaomi.electricbicycle:hintTextAppearance
-        */
-        public static final int TextInputLayout_hintTextAppearance = 2;
         /**  These are the standard attributes that make up a complete theme. 
            <p>Includes the following attributes:</p>
            <table>

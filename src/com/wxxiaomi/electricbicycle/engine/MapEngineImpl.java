@@ -16,7 +16,7 @@ public class MapEngineImpl {
 	 * @param longitude
 	 */
 	public ReceiceData<NearByPerson> getNearByFromServer(double latitude, double longitude){
-		String url = ConstantValue.SERVER_URL+"/ActionServlet?action=getnearby&userid="+GlobalParams.user.id
+		String url = ConstantValue.SERVER_URL+"ActionServlet?action=getnearby&userid="+GlobalParams.user.id
 				+"&latitude="+latitude
 				+"&longitude="+longitude;
 		String json = HttpClientUtil.doGet(url);

@@ -8,87 +8,77 @@ import android.widget.EditText;
 
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
-import com.wxxiaomi.electricbicycle.bean.format.Login;
+import com.wxxiaomi.electricbicycle.bean.format.Register;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
-public class LoginActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity {
 
 	private EditText et_username;
 	private EditText et_password;
+	private EditText et_name;
 	private Button btn_ok;
-	private Button btn_register;
 	
 	@Override
 	protected void initView() {
-		setContentView(R.layout.activity_login);
+		setContentView(R.layout.activity_register);
 		et_username = (EditText) findViewById(R.id.et_username);
 		et_password = (EditText) findViewById(R.id.et_password);
+		et_name = (EditText) findViewById(R.id.et_name);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
 		btn_ok.setOnClickListener(this);
-		btn_register = (Button) findViewById(R.id.btn_register);
-		btn_register.setOnClickListener(this);
 	}
 
 	@Override
 	protected void initData() {
+		
 	}
 
-	/**
-	 * 处理点击事件
-	 */
 	@Override
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_ok:
-			//点击确定按钮
-			showLoadingDialog("正在登录..");
+			showLoadingDialog("正在注册..");
+			//确定按钮
 			String username = et_username.getText().toString().trim();
 			String password = et_password.getText().toString().trim();
-			LoginFromServer(username,password);
-			break;
-		case R.id.btn_register:
-			Intent intent = new Intent(ct,RegisterActivity.class);
-			startActivity(intent);
-			finish();
+			String name = et_name.getText().toString().trim();
+			RegisterFromServer(username,password,name);
+			
 			break;
 
 		default:
 			break;
 		}
-
+		
 	}
 
-	/**
-	 * 连接服务器，执行登录操作
-	 * @param username
-	 * @param password
-	 */
-	private void LoginFromServer(final String username, final String password) {
-		new AsyncTask<String, Void, ReceiceData<Login>>() {
+	private void RegisterFromServer(final String username, final String password,
+			final String name) {
+		new AsyncTask<String, Void, ReceiceData<Register>>() {
 			@Override
-			protected ReceiceData<Login> doInBackground(String... params) {
+			protected ReceiceData<Register> doInBackground(String... params) {
 				UserEngineImpl engine = new UserEngineImpl();
-				return engine.Login(username, password);
+				return engine.Register(username, password, name);
 			}
 
 			@Override
-			protected void onPostExecute(ReceiceData<Login> result) {
+			protected void onPostExecute(ReceiceData<Register> result) {
 				closeLoadingDialog();
 				if (result!=null) {
 					if(result.state == 200){
 						//登录成功
 						GlobalParams.user = result.infos.userInfo;
-						Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+						Intent intent = new Intent(ct,HomeActivity.class);
 						startActivity(intent);
 						finish();
 					}else{
 //						Log.i("wang", "登录失败，错误信息："+result.error);
-						showMsgDialog("登录失败"+result.error);
+						showMsgDialog("注册失败"+result.error);
 					}
 				} else {
-					showMsgDialog("登录失败，连接不上服务器");
+					showMsgDialog("注册失败，连接不上服务器");
 //					Log.i("wang", "登录失败，连接不上服务器");
 				}
 			}

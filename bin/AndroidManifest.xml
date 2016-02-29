@@ -49,6 +49,10 @@
             android:name="com.wxxiaomi.electricbicycle.view.activity.LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
+         <activity
+            android:name="com.wxxiaomi.electricbicycle.view.activity.RegisterActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
