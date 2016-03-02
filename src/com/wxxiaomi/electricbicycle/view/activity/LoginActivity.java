@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity {
 			LoginFromServer(username,password);
 			break;
 		case R.id.btn_register:
-			Intent intent = new Intent(ct,RegisterActivity.class);
+			Intent intent = new Intent(ct,RegisterTwoActivity.class);
 			startActivity(intent);
 			finish();
 			break;

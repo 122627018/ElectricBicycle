@@ -32,7 +32,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="7586D98848407A4891F6FBA3C2E64ACD1F4D08BE" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +50,11 @@
             android:screenOrientation="portrait" >
         </activity>
          <activity
-            android:name="com.wxxiaomi.electricbicycle.view.activity.RegisterActivity"
+            android:name="com.wxxiaomi.electricbicycle.view.activity.RegisterTwoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+         <activity
+            android:name="com.wxxiaomi.electricbicycle.view.activity.RegisterOneActivity"
             android:screenOrientation="portrait" >
         </activity>
     </application>
