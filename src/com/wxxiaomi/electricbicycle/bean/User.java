@@ -1,15 +1,17 @@
 package com.wxxiaomi.electricbicycle.bean;
 
-/**
- * 前期用户bean
- * @author Mr.W
- *
- */
+
 public class User {
 
 	public int id;
 	public String username;
 	public String password;
-	public String head;
-	public String name;
+	public UserCommonInfo userCommonInfo;
+	
+	public static class UserCommonInfo{
+		public int userid;
+		public String name;
+		public String head;
+		public String emname;
+	}
 }

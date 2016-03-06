@@ -1,8 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.wxxiaomi.electricbicycle.SplashActivity" >
 
    <com.baidu.mapapi.map.MapView
@@ -10,5 +9,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
     />
+   
+   <LinearLayout 
+      android:layout_alignParentBottom="true"
+       android:layout_margin="3dp"
+       android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        
+       >
+       
+       <Button 
+           android:id="@+id/btn_route"
+           android:text="路线"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+        android:layout_height="wrap_content"
+           />
+        <Button 
+            android:id="@+id/btn_personal"
+           android:text="我的"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+        android:layout_height="wrap_content"
+           />
+         <Button 
+             android:id="@+id/btn_contact"
+           android:text="联系人"
+           android:layout_weight="1"
+           android:layout_width="0dp"
+        android:layout_height="wrap_content"
+           />
+   </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

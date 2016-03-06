@@ -2,9 +2,11 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -73,12 +75,23 @@ public class HomeActivity extends BaseActivity {
 	 * 如果一样就不用更新ui
 	 */
 	private double lastLatitude = 0.0;
+	
+	private Button btn_route;
+	private Button btn_personal;
+	private Button btn_contact;
+	
 
 	@Override
 	protected void initView() {
 		checkBaiduKey();
 		myListener = new MyLocationListener();
 		setContentView(R.layout.activity_home);
+		btn_route = (Button) findViewById(R.id.btn_route);
+		btn_personal = (Button) findViewById(R.id.btn_personal);
+		btn_contact = (Button) findViewById(R.id.btn_contact);
+		btn_route.setOnClickListener(this);
+		btn_personal.setOnClickListener(this);
+		btn_contact.setOnClickListener(this);
 		mapview = (MapView) findViewById(R.id.mpaview);
 		initBaiduMap();
 		pop = View.inflate(this, R.layout.pop, null);
@@ -243,7 +256,6 @@ public class HomeActivity extends BaseActivity {
 		setOverLay(overlay,userLocatList);
 		mapview.getOverlays().add(overlay);
 		mapview.refresh();
-		
 	}
 
 	/**
@@ -257,7 +269,7 @@ public class HomeActivity extends BaseActivity {
 		for(int i = 0;i<userLocatList.size();i++){
 			point = new GeoPoint((int)(userLocatList.get(i).locat[0]*1E6)
 					, (int)(userLocatList.get(i).locat[1]*1E6));
-			item = new OverlayItem(point, userLocatList.get(i).user.name, "附近的人");
+			item = new OverlayItem(point, userLocatList.get(i).userCommonInfo.name, "附近的人");
 			overlay.addItem(item);
 		}
 		
@@ -269,7 +281,16 @@ public class HomeActivity extends BaseActivity {
 	 */
 	@Override
 	protected void processClick(View v) {
-		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.btn_contact:
+			//联系人页面
+			Intent intent = new Intent(ct,ContactActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
 
 	}
 

@@ -8,10 +8,19 @@ public interface ConstantValue {
 	String KEY="7586D98848407A4891F6FBA3C2E64ACD1F4D08BE";
 	
 	/**
-	 * 服务器地址
+	 *新浪sae服务器地址
 	 */
 //	public static String SERVER_URL = "http://haoming1994.applinzi.com/";
-	public static String SERVER_URL = "http://192.168.211.1:8080/ElectricBicycleServer/";
+	
+	/**
+	 * 笔记本服务器地址
+	 */
+//	public static String SERVER_URL = "http://192.168.211.1:8080/ElectricBicycleServer/";
+	
+	/**
+	 * 台式机服务器地址
+	 */
+	public static String SERVER_URL = "http://192.168.78.195:8080/ElectricBicycleServer/";
 	
 	/**
 	 * 登录操作的url

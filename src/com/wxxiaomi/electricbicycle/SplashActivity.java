@@ -59,6 +59,7 @@ public class SplashActivity extends Activity {
 					boolean isRemUser = SharePrefUtil.getBoolean(SplashActivity.this, "isRemUser", false);
 					if(isRemUser){
 						//本地有记住账号,实现登录功能
+						//->DemoHelper.getInstance().isLoggedIn()再判断em有没有登陆过
 					}else{
 						//检测不到本地账号的话就去注册页面(里面有登录功能)
 						Intent intent = new Intent(SplashActivity.this,RegisterOneActivity.class);

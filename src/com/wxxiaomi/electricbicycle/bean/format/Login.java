@@ -1,5 +1,6 @@
 package com.wxxiaomi.electricbicycle.bean.format;
 
+
 import com.wxxiaomi.electricbicycle.bean.User;
 
 /**
@@ -10,4 +11,6 @@ import com.wxxiaomi.electricbicycle.bean.User;
 public class Login {
 
 	public User userInfo;
+	
+//	public List<UserCommonInfo> friendList;
 }
