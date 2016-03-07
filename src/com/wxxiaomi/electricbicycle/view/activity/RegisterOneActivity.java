@@ -43,6 +43,11 @@ public class RegisterOneActivity extends BaseActivity {
 	 * 已有账号，转移到登陆页面按钮
 	 */
 	private Button btn_hava;
+	
+	/**
+	 * 进入地图调试模式
+	 */
+	private Button btn_debug;
 
 	// private boolean itCanRegister = false;
 
@@ -58,6 +63,8 @@ public class RegisterOneActivity extends BaseActivity {
 		btn_ok.setVisibility(View.GONE);
 		btn_hava = (Button) findViewById(R.id.btn_hava);
 		btn_hava.setOnClickListener(this);
+		btn_debug = (Button) findViewById(R.id.btn_debug);
+		btn_debug.setOnClickListener(this);
 
 	}
 
@@ -129,6 +136,11 @@ public class RegisterOneActivity extends BaseActivity {
 			Intent intent = new Intent(ct, LoginActivity.class);
 			startActivity(intent);
 			break;
+		case R.id.btn_debug:
+			
+			Intent intent1 = new Intent(ct, HomeActivity2.class);
+			startActivity(intent1);
+				break;
 		default:
 			break;
 		}

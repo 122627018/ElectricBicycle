@@ -130,7 +130,7 @@ public class RegisterTwoActivity extends BaseActivity {
 					if(result.state == 200){
 						//登录成功
 						GlobalParams.user = result.infos.userInfo;
-						Intent intent = new Intent(ct,HomeActivity.class);
+						Intent intent = new Intent(ct,HomeActivity2.class);
 						startActivity(intent);
 						finish();
 					}else{

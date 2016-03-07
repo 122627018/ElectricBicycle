@@ -189,7 +189,7 @@ public class LoginActivity extends BaseActivity {
 						//登录成功
 						GlobalParams.user = userInfo;
 						GlobalParams.friendList = result.infos.friendList;
-						Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+						Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
 						startActivity(intent);
 						finish();
 //						LoginFromEM(result.infos.userInfo);
