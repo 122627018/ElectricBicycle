@@ -19,4 +19,9 @@ public class GlobalParams {
 //	public static boolean isFirst = true;
 	
 	public static List<UserCommonInfo> friendList = null;
+	
+	/**
+	 * 初始化是否成功
+	 */
+	public static boolean isInitSuccess = true;
 }

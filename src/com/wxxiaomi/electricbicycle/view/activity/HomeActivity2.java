@@ -2,11 +2,11 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -21,8 +21,8 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MarkerOptions.MarkerAnimateType;
+import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
@@ -39,41 +39,39 @@ public class HomeActivity2 extends BaseActivity {
 	LocationClient mLocClient;
 	public MyLocationListenner myListener = new MyLocationListenner();
 	private LocationMode mCurrentMode;
-	BitmapDescriptor mCurrentMarker;
-//	private static final int accuracyCircleFillColor = 0xAAFFFF88;
-//	private static final int accuracyCircleStrokeColor = 0xAA00FF00;
-
-	MapView mMapView;
-	BaiduMap mBaiduMap;
+//	private BitmapDescriptor mCurrentMarker;
+	
+	private MapView mMapView;
+	private BaiduMap mBaiduMap;
 
 	// UI相关
-	OnCheckedChangeListener radioButtonListener;
-	Button requestLocButton;
+	private Button btn_contact;
+	
 	boolean isFirstLoc = true; // 是否首次定位
+	
+	
 
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_home);
 		mCurrentMode = LocationMode.NORMAL;
-	
+		// 地图初始化
+		mMapView = (MapView) findViewById(R.id.mpaview);
+		mBaiduMap = mMapView.getMap();
+		btn_contact = (Button) findViewById(R.id.btn_contact);
+		btn_contact.setOnClickListener(this);
 	}
 
 	@Override
 	protected void initData() {
-		// 地图初始化
-		mMapView = (MapView) findViewById(R.id.mpaview);
-		mBaiduMap = mMapView.getMap();
 		// 开启定位图层
 		mBaiduMap.setMyLocationEnabled(true);
 		/**
-		 * mode - 定位图层显示方式, 默认为 LocationMode.NORMAL 普通态
-enableDirection - 是否允许显示方向信息
-customMarker - 设置用户自定义定位图标，可以为 null
-
+		 * mode - 定位图层显示方式, 默认为 LocationMode.NORMAL 普通态 enableDirection -
+		 * 是否允许显示方向信息 customMarker - 设置用户自定义定位图标，可以为 null
 		 */
-		mBaiduMap
-        .setMyLocationConfigeration(new MyLocationConfiguration(
-                mCurrentMode, true, null));
+		mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
+				mCurrentMode, true, null));
 		// 定位初始化
 		mLocClient = new LocationClient(this);
 		mLocClient.registerLocationListener(myListener);
@@ -82,14 +80,22 @@ customMarker - 设置用户自定义定位图标，可以为 null
 		option.setCoorType("bd09ll"); // 设置坐标类型
 		option.setScanSpan(1000);
 		mLocClient.setLocOption(option);
-		Log.i("wang", "mLocClient.start()的上面");
 		mLocClient.start();
-		
+
 	}
 
 	@Override
 	protected void processClick(View v) {
-		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.btn_contact:
+			//联系人
+			Intent intent = new Intent(ct,ContactActivity.class);
+			startActivity(intent);
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
@@ -127,16 +133,16 @@ customMarker - 设置用户自定义定位图标，可以为 null
 
 	}
 
-//	privaye List<Marker>
-//	private Marker mMarkerA;
+	// privaye List<Marker>
+	// private Marker mMarkerA;
 	protected void processNearByData(List<UserLocatInfo> userLocatList) {
 		Marker mMarker;
 		// 初始化全局 bitmap 信息，不用时及时 recycle
 		BitmapDescriptor bdA = BitmapDescriptorFactory
 				.fromResource(R.drawable.icon_marka);
-		for(UserLocatInfo user : userLocatList){
+		for (UserLocatInfo user : userLocatList) {
 			LatLng point = new LatLng(user.locat[0], user.locat[1]);
-			//构建MarkerOption，用于在地图上添加Marker  
+			// 构建MarkerOption，用于在地图上添加Marker
 			MarkerOptions ooA = new MarkerOptions().position(point).icon(bdA)
 					.zIndex(9).draggable(true);
 			ooA.animateType(MarkerAnimateType.drop);
@@ -144,14 +150,14 @@ customMarker - 设置用户自定义定位图标，可以为 null
 			mMarker.setZIndex(user.userCommonInfo.userid);
 		}
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
-			
+
 			@Override
 			public boolean onMarkerClick(Marker marker) {
-//				Log.i("wang", "点击了：id="+marker.getZIndex());
+				// Log.i("wang", "点击了：id="+marker.getZIndex());
 				return false;
 			}
 		});
-		
+
 	}
 
 	/**
@@ -161,17 +167,17 @@ customMarker - 设置用户自定义定位图标，可以为 null
 
 		@Override
 		public void onReceiveLocation(BDLocation location) {
-			Log.i("wang", "location.getLocType()="+location.getLocType());
+			Log.i("wang", "location.getLocType()=" + location.getLocType());
 			// map view 销毁后不在处理新接收的位置
 			if (location == null || mMapView == null) {
 				return;
 			}
 			double latitude = location.getLatitude();
 			double longitude = location.getLongitude();
-			
+
 			MyLocationData locData = new MyLocationData.Builder()
 					.accuracy(0)
-//					.accuracy(location.getRadius())
+					// .accuracy(location.getRadius())
 					// 此处设置开发者获取到的方向信息，顺时针0-360
 					.direction(100).latitude(location.getLatitude())
 					.longitude(location.getLongitude()).build();
@@ -184,7 +190,7 @@ customMarker - 设置用户自定义定位图标，可以为 null
 				builder.target(ll).zoom(18.0f);
 				mBaiduMap.animateMapStatus(MapStatusUpdateFactory
 						.newMapStatus(builder.build()));
-				getNearByFromServer(latitude,longitude);
+				getNearByFromServer(latitude, longitude);
 			}
 		}
 

@@ -2471,7 +2471,7 @@ containing a value of this type.
         public static final int round=0x7f0200fc;
     }
     public static final class id {
-        public static final int action0=0x7f0b00c2;
+        public static final int action0=0x7f0b00c3;
         public static final int action_bar=0x7f0b0043;
         public static final int action_bar_activity_content=0x7f0b0003;
         public static final int action_bar_container=0x7f0b0042;
@@ -2480,13 +2480,13 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0b0024;
         public static final int action_bar_title=0x7f0b0023;
         public static final int action_context_bar=0x7f0b0044;
-        public static final int action_divider=0x7f0b00c6;
+        public static final int action_divider=0x7f0b00c7;
         public static final int action_menu_divider=0x7f0b0005;
         public static final int action_menu_presenter=0x7f0b0006;
         public static final int action_mode_bar=0x7f0b0040;
         public static final int action_mode_bar_stub=0x7f0b003f;
         public static final int action_mode_close_button=0x7f0b0025;
-        public static final int action_settings=0x7f0b00d0;
+        public static final int action_settings=0x7f0b00d1;
         public static final int activity_chooser_view_content=0x7f0b0026;
         public static final int alertTitle=0x7f0b0032;
         public static final int alert_message=0x7f0b0069;
@@ -2511,7 +2511,7 @@ containing a value of this type.
         public static final int btn_set_mode_voice=0x7f0b00a9;
         public static final int bubble=0x7f0b0089;
         public static final int buttonPanel=0x7f0b002d;
-        public static final int cancel_action=0x7f0b00c3;
+        public static final int cancel_action=0x7f0b00c4;
         public static final int chat_menu_container=0x7f0b00a3;
         public static final int chat_swipe_layout=0x7f0b006c;
         public static final int chatting_content_iv=0x7f0b0093;
@@ -2520,7 +2520,7 @@ containing a value of this type.
         public static final int chatting_status_btn=0x7f0b0097;
         public static final int chatting_video_data_area=0x7f0b0094;
         public static final int checkbox=0x7f0b003b;
-        public static final int chronometer=0x7f0b00c8;
+        public static final int chronometer=0x7f0b00c9;
         public static final int close=0x7f0b0009;
         public static final int collapseActionView=0x7f0b001c;
         public static final int contact_list=0x7f0b0077;
@@ -2536,7 +2536,7 @@ containing a value of this type.
         public static final int emojicon=0x7f0b007a;
         public static final int emojicon_menu_container=0x7f0b00a7;
         public static final int end=0x7f0b0021;
-        public static final int end_padder=0x7f0b00cc;
+        public static final int end_padder=0x7f0b00cd;
         public static final int et_code=0x7f0b005e;
         public static final int et_name=0x7f0b005b;
         public static final int et_password=0x7f0b0058;
@@ -2559,7 +2559,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f0b001d;
         public static final int image=0x7f0b0028;
         public static final int indicator_view=0x7f0b00b5;
-        public static final int info=0x7f0b00cb;
+        public static final int info=0x7f0b00cc;
         public static final int input_menu=0x7f0b0072;
         public static final int iv_call_icon=0x7f0b0098;
         public static final int iv_expression=0x7f0b007b;
@@ -2573,8 +2573,8 @@ containing a value of this type.
         public static final int iv_voice=0x7f0b0099;
         public static final int left_image=0x7f0b00bd;
         public static final int left_layout=0x7f0b00bc;
-        public static final int line1=0x7f0b00c7;
-        public static final int line3=0x7f0b00ca;
+        public static final int line1=0x7f0b00c8;
+        public static final int line3=0x7f0b00cb;
         public static final int list=0x7f0b006d;
         public static final int listMode=0x7f0b000c;
         public static final int list_itease_layout=0x7f0b007d;
@@ -2583,7 +2583,7 @@ containing a value of this type.
         public static final int ll_loading=0x7f0b0091;
         public static final int loading_layout=0x7f0b0066;
         public static final int lv_listview=0x7f0b0052;
-        public static final int media_actions=0x7f0b00c5;
+        public static final int media_actions=0x7f0b00c6;
         public static final int message=0x7f0b0084;
         public static final int message_list=0x7f0b0073;
         public static final int mic_image=0x7f0b00c0;
@@ -2615,9 +2615,9 @@ containing a value of this type.
         public static final int rl_bottom=0x7f0b00a8;
         public static final int rl_face=0x7f0b00ae;
         public static final int rl_picture=0x7f0b009f;
-        public static final int roads=0x7f0b00cf;
+        public static final int roads=0x7f0b00d0;
         public static final int root=0x7f0b00bb;
-        public static final int round=0x7f0b00ce;
+        public static final int round=0x7f0b00cf;
         public static final int screen=0x7f0b0017;
         public static final int scrollIndicatorDown=0x7f0b0037;
         public static final int scrollIndicatorUp=0x7f0b0034;
@@ -2647,13 +2647,13 @@ containing a value of this type.
         public static final int src_atop=0x7f0b0018;
         public static final int src_in=0x7f0b0019;
         public static final int src_over=0x7f0b001a;
-        public static final int status_bar_latest_event_content=0x7f0b00c4;
+        public static final int status_bar_latest_event_content=0x7f0b00c5;
         public static final int submit_area=0x7f0b004e;
         public static final int tabMode=0x7f0b000e;
         public static final int tab_bar=0x7f0b00b6;
         public static final int tab_container=0x7f0b00b8;
         public static final int text=0x7f0b006b;
-        public static final int text2=0x7f0b00c9;
+        public static final int text2=0x7f0b00ca;
         public static final int textSpacerNoButtons=0x7f0b0036;
         public static final int textView=0x7f0b0068;
         public static final int time=0x7f0b0082;
@@ -2665,6 +2665,7 @@ containing a value of this type.
         public static final int tv_ack=0x7f0b009d;
         public static final int tv_chatcontent=0x7f0b0090;
         public static final int tv_delivered=0x7f0b009e;
+        public static final int tv_emname=0x7f0b00c2;
         public static final int tv_file_name=0x7f0b008c;
         public static final int tv_file_size=0x7f0b008d;
         public static final int tv_file_state=0x7f0b008e;
@@ -2675,7 +2676,7 @@ containing a value of this type.
         public static final int unread_msg_number=0x7f0b0080;
         public static final int up=0x7f0b0001;
         public static final int useLogo=0x7f0b0015;
-        public static final int user_info=0x7f0b00cd;
+        public static final int user_info=0x7f0b00ce;
         public static final int vPager=0x7f0b006f;
         public static final int voice_recorder=0x7f0b0074;
         public static final int withText=0x7f0b001f;
@@ -2800,19 +2801,20 @@ containing a value of this type.
         public static final int ease_widget_switch_button=0x7f03004f;
         public static final int ease_widget_title_bar=0x7f030050;
         public static final int ease_widget_voice_recorder=0x7f030051;
-        public static final int notification_media_action=0x7f030052;
-        public static final int notification_media_cancel_action=0x7f030053;
-        public static final int notification_template_big_media=0x7f030054;
-        public static final int notification_template_big_media_narrow=0x7f030055;
-        public static final int notification_template_lines=0x7f030056;
-        public static final int notification_template_media=0x7f030057;
-        public static final int notification_template_part_chronometer=0x7f030058;
-        public static final int notification_template_part_time=0x7f030059;
-        public static final int pop=0x7f03005a;
-        public static final int select_dialog_item_material=0x7f03005b;
-        public static final int select_dialog_multichoice_material=0x7f03005c;
-        public static final int select_dialog_singlechoice_material=0x7f03005d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03005e;
+        public static final int item_contact=0x7f030052;
+        public static final int notification_media_action=0x7f030053;
+        public static final int notification_media_cancel_action=0x7f030054;
+        public static final int notification_template_big_media=0x7f030055;
+        public static final int notification_template_big_media_narrow=0x7f030056;
+        public static final int notification_template_lines=0x7f030057;
+        public static final int notification_template_media=0x7f030058;
+        public static final int notification_template_part_chronometer=0x7f030059;
+        public static final int notification_template_part_time=0x7f03005a;
+        public static final int pop=0x7f03005b;
+        public static final int select_dialog_item_material=0x7f03005c;
+        public static final int select_dialog_multichoice_material=0x7f03005d;
+        public static final int select_dialog_singlechoice_material=0x7f03005e;
+        public static final int support_simple_spinner_dropdown_item=0x7f03005f;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

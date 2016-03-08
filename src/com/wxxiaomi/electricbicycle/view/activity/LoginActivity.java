@@ -2,6 +2,7 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,17 +49,17 @@ public class LoginActivity extends BaseActivity {
 		switch (v.getId()) {
 		case R.id.btn_ok:
 			//点击确定按钮
-			
 			String username = et_username.getText().toString().trim();
 			String password = et_password.getText().toString().trim();
 			if(checkInputString(username,password)){
-				showLoadingDialog("正在登录..");
+//				showLoadingDialog("正在登录..");
 				LoginFromServer(username,password);
+				return;
 			}
-				
 			break;
 		case R.id.btn_register:
-			Intent intent = new Intent(ct,RegisterTwoActivity.class);
+			Log.i("wang", "case R.id.btn_register");
+			Intent intent = new Intent(ct,RegisterOneActivity.class);
 			startActivity(intent);
 			finish();
 			break;
@@ -109,11 +110,11 @@ public class LoginActivity extends BaseActivity {
 	 * @param userInfo
 	 */
 	protected void LoginFromEM(final User userInfo) {
+		Log.i("wang", "LoginFromEM,"+userInfo.username+userInfo.password);
 		EMClient.getInstance().login(userInfo.username, userInfo.password, new EMCallBack() {
-
 			@Override
 			public void onSuccess() {
-				closeLoadingDialog();
+//				closeLoadingDialog();
 //				if (!LoginActivity.this.isFinishing() && pd.isShowing()) {
 //					pd.dismiss();
 //				}
@@ -137,7 +138,7 @@ public class LoginActivity extends BaseActivity {
 //						HomeActivity.class);
 //				startActivity(intent);
 //				finish();
-			    
+			    Log.i("wang", "登陆em服务器成功");
 			    AfterLoginCheck(userInfo);
 			    
 			}
@@ -149,7 +150,7 @@ public class LoginActivity extends BaseActivity {
 
 			@Override
 			public void onError(final int code, final String message) {
-//				Log.d(TAG, "login: onError: " + code);
+				Log.d("wang", "login: onError: " + code+"---message="+message);
 //				if (!progressShow) {
 //					return;
 //				}
@@ -160,8 +161,8 @@ public class LoginActivity extends BaseActivity {
 //								Toast.LENGTH_SHORT).show();
 //					}
 //				});
-				closeLoadingDialog();
-				showMsgDialog("登陆聊天服务器失败，请重新登陆");
+//				closeLoadingDialog();
+//				showMsgDialog("登陆聊天服务器失败，请重新登陆");
 			}
 		});
 	}
@@ -172,8 +173,10 @@ public class LoginActivity extends BaseActivity {
 	 * 如果没有就连接服务器获取
 	 */
 	protected void AfterLoginCheck(final User userInfo) {
-		// 先设置没有
-		showLoadingDialog("正在初始化账号相关信息");
+		//本地是否有该账号信息
+//		boolean isHasUserInfo = false;
+		// 先默认没有该账号信息
+//		showLoadingDialog("正在初始化账号相关信息");
 		new AsyncTask<String, Void, ReceiceData<InitUserInfo>>() {
 			@Override
 			protected ReceiceData<InitUserInfo> doInBackground(String... params) {
@@ -194,10 +197,14 @@ public class LoginActivity extends BaseActivity {
 						finish();
 //						LoginFromEM(result.infos.userInfo);
 					}else{
+						GlobalParams.user = userInfo;
+						Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
+						startActivity(intent);
+						finish();
 						showMsgDialog("初始化失败"+result.error);
 					}
 				} else {
-					showMsgDialog("初始化失败，连接不上服务器");
+					showMsgDialog("连接不上服务器");
 				}
 			}
 		}.execute();

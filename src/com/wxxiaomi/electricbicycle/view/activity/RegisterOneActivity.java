@@ -135,6 +135,7 @@ public class RegisterOneActivity extends BaseActivity {
 			// 进入登陆页面
 			Intent intent = new Intent(ct, LoginActivity.class);
 			startActivity(intent);
+			finish();
 			break;
 		case R.id.btn_debug:
 			
