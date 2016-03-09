@@ -20,7 +20,12 @@ public interface ConstantValue {
 	/**
 	 * 台式机服务器地址
 	 */
-	public static String SERVER_URL = "http://192.168.1.104:8080/ElectricBicycleServer/";
+//	public static String SERVER_URL = "http://192.168.1.104:8080/ElectricBicycleServer/";
+	
+	/**
+	 * 校园网wifi笔记本
+	 */
+	public static String SERVER_URL = "http://10.15.135.51:8080/ElectricBicycleServer/";
 	
 	/**
 	 * 登录操作的url

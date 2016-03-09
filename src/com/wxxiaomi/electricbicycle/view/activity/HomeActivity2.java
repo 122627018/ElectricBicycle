@@ -2,8 +2,12 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +30,10 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.hyphenate.EMMessageListener;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.utils.EaseCommonUtils;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson.UserLocatInfo;
@@ -39,17 +47,15 @@ public class HomeActivity2 extends BaseActivity {
 	LocationClient mLocClient;
 	public MyLocationListenner myListener = new MyLocationListenner();
 	private LocationMode mCurrentMode;
-//	private BitmapDescriptor mCurrentMarker;
-	
+	// private BitmapDescriptor mCurrentMarker;
+
 	private MapView mMapView;
 	private BaiduMap mBaiduMap;
 
 	// UI相关
 	private Button btn_contact;
-	
+
 	boolean isFirstLoc = true; // 是否首次定位
-	
-	
 
 	@Override
 	protected void initView() {
@@ -88,8 +94,8 @@ public class HomeActivity2 extends BaseActivity {
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_contact:
-			//联系人
-			Intent intent = new Intent(ct,ContactActivity.class);
+			// 联系人
+			Intent intent = new Intent(ct, ContactActivity.class);
 			startActivity(intent);
 			break;
 
@@ -197,6 +203,70 @@ public class HomeActivity2 extends BaseActivity {
 		public void onReceivePoi(BDLocation poiLocation) {
 		}
 	}
+	
+	
+//	private LocalBroadcastManager broadcastManager;
+//	 private BroadcastReceiver broadcastReceiver;
+//	private void registerBroadcastReceiver() {
+//        broadcastManager = LocalBroadcastManager.getInstance(this);
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction(Constant.ACTION_CONTACT_CHANAGED);
+//        intentFilter.addAction(Constant.ACTION_GROUP_CHANAGED);
+//        broadcastReceiver = new BroadcastReceiver() {
+//            
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                updateUnreadLabel();
+//                updateUnreadAddressLable();
+//                if (currentTabIndex == 0) {
+//                    // 当前页面如果为聊天历史页面，刷新此页面
+//                    if (conversationListFragment != null) {
+//                        conversationListFragment.refresh();
+//                    }
+//                } else if (currentTabIndex == 1) {
+//                    if(contactListFragment != null) {
+//                        contactListFragment.refresh();
+//                    }
+//                }
+//                String action = intent.getAction();
+//                if(action.equals(Constant.ACTION_GROUP_CHANAGED)){
+//                    if (EaseCommonUtils.getTopActivity(MainActivity.this).equals(GroupsActivity.class.getName())) {
+//                        GroupsActivity.instance.onResume();
+//                    }
+//                }
+//            }
+//        };
+//        broadcastManager.registerReceiver(broadcastReceiver, intentFilter);
+//    }
+
+	EMMessageListener messageListener = new EMMessageListener() {
+
+		@Override
+		public void onMessageReceived(List<EMMessage> messages) {
+			// 提示新消息
+			for (EMMessage message : messages) {
+				// DemoHelper.getInstance().getNotifier().onNewMsg(message);
+				Log.i("wang", "提示新消息");
+			}
+			// refreshUIWithMessage();
+		}
+
+		@Override
+		public void onCmdMessageReceived(List<EMMessage> messages) {
+		}
+
+		@Override
+		public void onMessageReadAckReceived(List<EMMessage> messages) {
+		}
+
+		@Override
+		public void onMessageDeliveryAckReceived(List<EMMessage> message) {
+		}
+
+		@Override
+		public void onMessageChanged(EMMessage message, Object change) {
+		}
+	};
 
 	@Override
 	protected void onPause() {
@@ -206,13 +276,16 @@ public class HomeActivity2 extends BaseActivity {
 
 	@Override
 	protected void onResume() {
-		mMapView.onResume();
 		super.onResume();
+		mMapView.onResume();
+		EMClient.getInstance().chatManager().addMessageListener(messageListener);
 	}
 
 	@Override
 	protected void onDestroy() {
+		EMClient.getInstance().chatManager().removeMessageListener(messageListener);
 		// 退出时销毁定位
+		
 		mLocClient.stop();
 		// 关闭定位图层
 		mBaiduMap.setMyLocationEnabled(false);
