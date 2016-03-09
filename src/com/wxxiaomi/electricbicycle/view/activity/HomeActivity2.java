@@ -173,7 +173,7 @@ public class HomeActivity2 extends BaseActivity {
 
 		@Override
 		public void onReceiveLocation(BDLocation location) {
-			Log.i("wang", "location.getLocType()=" + location.getLocType());
+//			Log.i("wang", "location.getLocType()=" + location.getLocType());
 			// map view 销毁后不在处理新接收的位置
 			if (location == null || mMapView == null) {
 				return;
