@@ -12,13 +12,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.domain.EaseEmojicon;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.easeui.ui.EaseChatFragment.EaseChatFragmentListener;
+import com.hyphenate.easeui.widget.EaseChatInputMenu.ChatInputMenuListener;
 import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.util.EasyUtils;
 import com.hyphenate.util.PathUtil;
@@ -46,6 +49,26 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentLi
 
     @Override
     protected void setUpView() {
+    	inputMenu.setChatInputMenuListener(new ChatInputMenuListener() {
+			
+			@Override
+			public void onSendMessage(String content) {
+				
+				
+			}
+			
+			@Override
+			public boolean onPressToSpeakBtnTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public void onBigExpressionClicked(EaseEmojicon emojicon) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         setChatFragmentListener(this);
 //        if (chatType == Constant.CHATTYPE_SINGLE) { //single
 //            Map<String,RobotUser> robotMap = DemoHelper.getInstance().getRobotList();

@@ -2,6 +2,7 @@ package com.wxxiaomi.electricbicycle;
 
 import java.util.List;
 
+import com.baidu.mapapi.search.core.PoiInfo;
 import com.wxxiaomi.electricbicycle.bean.User;
 import com.wxxiaomi.electricbicycle.bean.User.UserCommonInfo;
 
@@ -24,4 +25,15 @@ public class GlobalParams {
 	 * 初始化是否成功
 	 */
 	public static boolean isInitSuccess = true;
+	
+	/**
+	 * 测试用,當前位置
+	 */
+	public static double latitude ;
+	public static double longitude ;
+	
+	/**
+	 * 获取路线的结果,终点
+	 */
+	public static PoiInfo poiInf;
 }

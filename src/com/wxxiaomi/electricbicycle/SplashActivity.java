@@ -2,6 +2,7 @@ package com.wxxiaomi.electricbicycle;
 
 import com.wxxiaomi.electricbicycle.util.SharePrefUtil;
 import com.wxxiaomi.electricbicycle.view.activity.RegisterOneActivity;
+import com.wxxiaomi.electricbicycle.view.activity.ScanCodeActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -62,10 +63,11 @@ public class SplashActivity extends Activity {
 				if (isFirstRun) {
 					// 第一次使用
 					Intent intent = new Intent(SplashActivity.this,
-							RegisterOneActivity.class);
+							ScanCodeActivity.class);
 					startActivity(intent);
 					SharePrefUtil.saveBoolean(SplashActivity.this, "firstGo",
 							false);
+					
 					finish();
 				} else {
 					// 检测本地是否得到账号

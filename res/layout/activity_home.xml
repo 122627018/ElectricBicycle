@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.wxxiaomi.electricbicycle.SplashActivity" >
 
+    
+    
    <com.baidu.mapapi.map.MapView
         android:id="@+id/mpaview"
         android:layout_width="match_parent"
@@ -18,10 +20,16 @@
         android:orientation="horizontal"
         
        >
-       
        <Button 
-           android:id="@+id/btn_route"
-           android:text="路线"
+           android:id="@+id/btn_go"
+          android:layout_weight="1"
+         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="出发"
+        />
+       <Button 
+           android:id="@+id/btn_nav"
+           android:text="导航"
            android:layout_weight="1"
            android:layout_width="0dp"
         android:layout_height="wrap_content"

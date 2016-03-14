@@ -6,6 +6,7 @@ import android.content.Context;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.controller.EaseUI;
+import com.hyphenate.easeui.model.EaseNotifier;
 
 public class EMHelper {
 	
@@ -42,6 +43,14 @@ public class EMHelper {
 //			broadcastManager = LocalBroadcastManager.getInstance(appContext);
 //	        initDbDao();
 		}
+	}
+	
+	/**
+	 * 获取消息通知类
+	 * @return
+	 */
+	public EaseNotifier getNotifier(){
+	    return easeUI.getNotifier();
 	}
 	
 	private EMOptions initChatOptions(){

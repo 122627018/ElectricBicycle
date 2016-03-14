@@ -18,6 +18,11 @@ import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
+/**
+ * 登陆页面
+ * @author Mr.W
+ *
+ */
 public class LoginActivity extends BaseActivity {
 
 	private EditText et_username;

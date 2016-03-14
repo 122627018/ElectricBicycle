@@ -1,21 +1,22 @@
 package com.wxxiaomi.electricbicycle.view.activity;
 
-import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
-import com.hyphenate.EMMessageListener;
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.util.EasyUtils;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.view.fragment.ChatFragment;
 
+/**
+ * 聊天页面
+ * @author Mr.W
+ *
+ */
 public class ChatActivity extends FragmentActivity {
 
 	public static ChatActivity activityInstance;
@@ -27,16 +28,24 @@ public class ChatActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_chat);
+		
+//		EaseUI.getInstance().init(this);
 		activityInstance = this;
 		// 聊天人或群id
 		toChatUsername = getIntent().getExtras().getString("userId");
 		// 可以直接new EaseChatFratFragment使用
 		chatFragment = new ChatFragment();
 		// 传入参数
-		chatFragment.setArguments(getIntent().getExtras());
+//		chatFragment.setArguments(getIntent().getExtras());
+		
+		Bundle args = new Bundle();
+//		 args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
+		 args.putString(EaseConstant.EXTRA_USER_ID, toChatUsername);
+		 chatFragment.setArguments(args);
+		 
 		 getSupportFragmentManager().beginTransaction().add(R.id.container,
 		 chatFragment).commit();
-		 EMClient.getInstance().chatManager().addMessageListener(msgListener);
+//		 EMClient.getInstance().chatManager().addMessageListener(msgListener);
 
 	}
 
@@ -44,7 +53,7 @@ public class ChatActivity extends FragmentActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 		activityInstance = null;
-		EMClient.getInstance().chatManager().removeMessageListener(msgListener);
+//		EMClient.getInstance().chatManager().removeMessageListener(msgListener);
 	}
 
 	@Override
@@ -73,34 +82,34 @@ public class ChatActivity extends FragmentActivity {
 		return toChatUsername;
 	}
 	
-	EMMessageListener msgListener = new EMMessageListener() {
-		 
-		@Override
-		public void onMessageReceived(List<EMMessage> messages) {
-			//收到消息
-			Log.i("wang", "收到消息");
-		}
-	 
-		@Override
-		public void onCmdMessageReceived(List<EMMessage> messages) {
-			//收到透传消息
-		}
-	 
-		@Override
-		public void onMessageReadAckReceived(List<EMMessage> messages) {
-			//收到已读回执
-		}
-	 
-		@Override
-		public void onMessageDeliveryAckReceived(List<EMMessage> message) {
-			//收到已送达回执
-		}
-	 
-		@Override
-		public void onMessageChanged(EMMessage message, Object change) {
-			//消息状态变动
-		}
-	};
+//	EMMessageListener msgListener = new EMMessageListener() {
+//		 
+//		@Override
+//		public void onMessageReceived(List<EMMessage> messages) {
+//			//收到消息
+//			Log.i("wang", "chatactivity收到消息,"+messages.get(0).toString());
+//		}
+//	 
+//		@Override
+//		public void onCmdMessageReceived(List<EMMessage> messages) {
+//			//收到透传消息
+//		}
+//	 
+//		@Override
+//		public void onMessageReadAckReceived(List<EMMessage> messages) {
+//			//收到已读回执
+//		}
+//	 
+//		@Override
+//		public void onMessageDeliveryAckReceived(List<EMMessage> message) {
+//			//收到已送达回执
+//		}
+//	 
+//		@Override
+//		public void onMessageChanged(EMMessage message, Object change) {
+//			//消息状态变动
+//		}
+//	};
 	 
 
 }
