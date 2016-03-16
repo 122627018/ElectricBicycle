@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 
 import com.baidu.navisdk.adapter.BNRouteGuideManager;
@@ -21,7 +20,6 @@ import com.baidu.navisdk.adapter.BNRouteGuideManager.CustomizedLayerItem;
 import com.baidu.navisdk.adapter.BNRouteGuideManager.OnNavigationListener;
 import com.baidu.navisdk.adapter.BNRoutePlanNode.CoordinateType;
 import com.wxxiaomi.electricbicycle.R;
-import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 /**
  * 导航页面
@@ -158,7 +156,8 @@ public class BaiduGuideActivity extends Activity {
 
     };
 
-    private void addCustomizedLayerItems() {
+    @SuppressWarnings("deprecation")
+	private void addCustomizedLayerItems() {
         List<CustomizedLayerItem> items = new ArrayList<CustomizedLayerItem>();
         CustomizedLayerItem item1 = null;
         if (mBNRoutePlanNode != null) {

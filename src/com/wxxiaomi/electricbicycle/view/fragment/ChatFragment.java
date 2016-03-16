@@ -29,13 +29,13 @@ import com.hyphenate.util.PathUtil;
 public class ChatFragment extends EaseChatFragment implements EaseChatFragmentListener{
 	
 	 //避免和基类定义的常量可能发生的冲突，常量从11开始定义
-    private static final int ITEM_VIDEO = 11;
-    private static final int ITEM_FILE = 12;
+//    private static final int ITEM_VIDEO = 11;
+//    private static final int ITEM_FILE = 12;
     
     private static final int REQUEST_CODE_SELECT_VIDEO = 11;
     private static final int REQUEST_CODE_SELECT_FILE = 12;
-    private static final int REQUEST_CODE_GROUP_DETAIL = 13;
-    private static final int REQUEST_CODE_CONTEXT_MENU = 14;
+//    private static final int REQUEST_CODE_GROUP_DETAIL = 13;
+//    private static final int REQUEST_CODE_CONTEXT_MENU = 14;
     
     /**
      * 是否为环信小助手

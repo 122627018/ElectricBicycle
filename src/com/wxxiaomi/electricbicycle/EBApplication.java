@@ -1,18 +1,10 @@
 package com.wxxiaomi.electricbicycle;
 
-import java.util.Iterator;
-import java.util.List;
 
-import android.app.ActivityManager;
 import android.app.Application;
-import android.content.pm.PackageManager;
-import android.os.Environment;
 import android.util.Log;
 
 import com.baidu.mapapi.SDKInitializer;
-import com.baidu.navisdk.adapter.BaiduNaviManager;
-import com.baidu.navisdk.adapter.BaiduNaviManager.NaviInitListener;
-import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.controller.EaseUI;
 
@@ -30,9 +22,9 @@ public class EBApplication extends Application {
 		super.onCreate();
 		Log.i("wang", "进入application-oncreate()");
 		// EMHelper.getInstance().init(this);
-		 SDKInitializer.initialize(this);
+		 
 		 initEM();
-
+		 SDKInitializer.initialize(this);
 	}
 
 	private void initEM() {

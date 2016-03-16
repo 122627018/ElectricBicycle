@@ -93,6 +93,11 @@ public abstract class BaseActivity extends AppCompatActivity implements
 //			dialog.dismiss();
 //	}
 //
+//	
+//	public void setLoadingViewContent(String content){
+//		
+//	}
+//	
 //	public void showLoadingView() {
 //		if (loadingView != null)
 //			loadingView.setVisibility(View.VISIBLE);
@@ -147,7 +152,14 @@ public abstract class BaseActivity extends AppCompatActivity implements
 			dialog.dismiss();
 		}
 	}
+	
+	protected void setloadingViewContent(String content){
+		if(dialog != null){
+			dialog.setMessage(content);
+		}
+	}
 
+	
 	protected abstract void initView();
 
 	protected abstract void initData();

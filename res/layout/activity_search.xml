@@ -1,30 +1,39 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    android:orientation="vertical" xmlns:app1="http://schemas.android.com/apk/res/com.wxxiaomi.electricbicycle">
 
-    <LinearLayout 
-        android:id="@+id/ll"
+    <RelativeLayout 
         android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
+        android:layout_height="56dp"
         >
-        <AutoCompleteTextView 
-    android:id="@+id/et_endlocation"
-    android:hint="请输入终点"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="3"
-    />
-<Button 
-    android:id="@+id/btn_ok"
-    android:text="确定"
-    android:layout_weight="1"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    />
-    </LinearLayout>
-    
-
+        
+    <android.support.v7.widget.Toolbar
+        app1:title=""
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/titleBlue"
+        android:minHeight="?attr/actionBarSize"
+         />
+    <EditText 
+        android:id="@+id/et_serach"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:hint="请输入地点"
+        android:layout_marginLeft="50dp"
+         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@null"
+        android:scrollbars="none" />
+
+</LinearLayout>
