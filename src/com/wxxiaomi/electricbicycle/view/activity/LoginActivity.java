@@ -1,7 +1,6 @@
 package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +15,7 @@ import com.wxxiaomi.electricbicycle.bean.format.InitUserInfo;
 import com.wxxiaomi.electricbicycle.bean.format.Login;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
+import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 /**
@@ -29,6 +29,7 @@ public class LoginActivity extends BaseActivity {
 	private EditText et_password;
 	private Button btn_ok;
 	private Button btn_register;
+	private UserEngineImpl engine;
 	
 	@Override
 	protected void initView() {
@@ -43,7 +44,7 @@ public class LoginActivity extends BaseActivity {
 
 	@Override
 	protected void initData() {
-		
+		engine = new UserEngineImpl(ct);
 	}
 
 	/**
@@ -81,32 +82,53 @@ public class LoginActivity extends BaseActivity {
 	 * @param password
 	 */
 	private void LoginFromServer(final String username, final String password) {
-		new AsyncTask<String, Void, ReceiceData<Login>>() {
+//		new AsyncTask<String, Void, ReceiceData<Login>>() {
+//			@Override
+//			protected ReceiceData<Login> doInBackground(String... params) {
+//				UserEngineImpl engine = new UserEngineImpl();
+//				return engine.Login(username, password,true);
+//			}
+//
+//			@Override
+//			protected void onPostExecute(ReceiceData<Login> result) {
+////				closeLoadingDialog();
+//				if (result!=null) {
+//					if(result.state == 200){
+//						//登录成功
+////						GlobalParams.user = result.infos.userInfo;
+////						Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+////						startActivity(intent);
+////						finish();
+//						LoginFromEM(result.infos.userInfo);
+//					}else{
+//						showMsgDialog("登录失败"+result.error);
+//					}
+//				} else {
+//					showMsgDialog("登录失败，连接不上服务器");
+//				}
+//			}
+//		}.execute();
+		engine.Login(username, password, true, new ResultByGetDataListener<Login>() {
+			
 			@Override
-			protected ReceiceData<Login> doInBackground(String... params) {
-				UserEngineImpl engine = new UserEngineImpl();
-				return engine.Login(username, password,true);
-			}
-
-			@Override
-			protected void onPostExecute(ReceiceData<Login> result) {
-//				closeLoadingDialog();
-				if (result!=null) {
-					if(result.state == 200){
-						//登录成功
-//						GlobalParams.user = result.infos.userInfo;
-//						Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-//						startActivity(intent);
-//						finish();
-						LoginFromEM(result.infos.userInfo);
-					}else{
-						showMsgDialog("登录失败"+result.error);
-					}
-				} else {
-					showMsgDialog("登录失败，连接不上服务器");
+			public void success(ReceiceData<Login> result) {
+				if(result.state == 200){
+//					//登录成功
+					GlobalParams.user = result.infos.userInfo;
+					Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
+					startActivity(intent);
+					finish();
+					LoginFromEM(result.infos.userInfo);
+				}else{
+					showMsgDialog("登录失败"+result.error);
 				}
+				
 			}
-		}.execute();
+			@Override
+			public void error(String error) {
+				showMsgDialog("登录失败，连接不上服务器");
+			}
+		});
 		
 	}
 
@@ -182,38 +204,65 @@ public class LoginActivity extends BaseActivity {
 //		boolean isHasUserInfo = false;
 		// 先默认没有该账号信息
 //		showLoadingDialog("正在初始化账号相关信息");
-		new AsyncTask<String, Void, ReceiceData<InitUserInfo>>() {
+//		new AsyncTask<String, Void, ReceiceData<InitUserInfo>>() {
+//			@Override
+//			protected ReceiceData<InitUserInfo> doInBackground(String... params) {
+//				UserEngineImpl engine = new UserEngineImpl();
+//				return engine.initUserInfoData(userInfo.username, userInfo.password);
+//			}
+//
+//			@Override
+//			protected void onPostExecute(ReceiceData<InitUserInfo> result) {
+////				closeLoadingDialog();
+//				if (result!=null) {
+//					if(result.state == 200){
+//						//登录成功
+//						GlobalParams.user = userInfo;
+//						GlobalParams.friendList = result.infos.friendList;
+//						Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
+//						startActivity(intent);
+//						finish();
+////						LoginFromEM(result.infos.userInfo);
+//					}else{
+//						GlobalParams.user = userInfo;
+//						Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
+//						startActivity(intent);
+//						finish();
+//						showMsgDialog("初始化失败"+result.error);
+//					}
+//				} else {
+//					showMsgDialog("连接不上服务器");
+//				}
+//			}
+//		}.execute();
+		engine.initUserInfoData(userInfo.username, userInfo.password, new ResultByGetDataListener<InitUserInfo>() {
+			
 			@Override
-			protected ReceiceData<InitUserInfo> doInBackground(String... params) {
-				UserEngineImpl engine = new UserEngineImpl();
-				return engine.initUserInfoData(userInfo.username, userInfo.password);
-			}
-
-			@Override
-			protected void onPostExecute(ReceiceData<InitUserInfo> result) {
-//				closeLoadingDialog();
-				if (result!=null) {
-					if(result.state == 200){
-						//登录成功
-						GlobalParams.user = userInfo;
-						GlobalParams.friendList = result.infos.friendList;
-						Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
-						startActivity(intent);
-						finish();
-//						LoginFromEM(result.infos.userInfo);
-					}else{
-						GlobalParams.user = userInfo;
-						Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
-						startActivity(intent);
-						finish();
-						showMsgDialog("初始化失败"+result.error);
-					}
-				} else {
-					showMsgDialog("连接不上服务器");
+			public void success(ReceiceData<InitUserInfo> result) {
+				if(result.state == 200){
+//					//登录成功
+					GlobalParams.user = userInfo;
+					GlobalParams.friendList = result.infos.friendList;
+					Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
+					startActivity(intent);
+					finish();
+//					LoginFromEM(result.infos.userInfo);
+				}else{
+					GlobalParams.user = userInfo;
+					Intent intent = new Intent(LoginActivity.this,HomeActivity2.class);
+					startActivity(intent);
+					finish();
+					showMsgDialog("初始化失败"+result.error);
 				}
+				
 			}
-		}.execute();
-		
+			
+			@Override
+			public void error(String error) {
+				// TODO Auto-generated method stub
+				showMsgDialog("连接不上服务器");
+			}
+		});
 	}
 
 	/**

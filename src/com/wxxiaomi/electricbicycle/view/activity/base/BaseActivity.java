@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -148,7 +149,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	 * 关闭加载dialog
 	 */
 	protected void closeLoadingDialog(){
+		Log.i("wang", "closeLoadingDialog");
 		if(dialog != null){
+			Log.i("wang", "closeLoadingDialog2");
 			dialog.dismiss();
 		}
 	}

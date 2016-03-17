@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="libs/commons-lang3-3.0-beta.jar"/>
 	<classpathentry kind="lib" path="libs/gson-2.2.1.jar"/>
 	<classpathentry kind="lib" path="libs/locSDK_6.13.jar"/>
+	<classpathentry kind="lib" path="libs/volley.jar"/>
+	<classpathentry kind="lib" path="libs/zxing.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -2,12 +2,11 @@ package com.wxxiaomi.electricbicycle;
 
 import com.wxxiaomi.electricbicycle.util.SharePrefUtil;
 import com.wxxiaomi.electricbicycle.view.activity.RegisterOneActivity;
-import com.wxxiaomi.electricbicycle.view.activity.ScanCodeActivity;
+import com.wxxiaomi.electricbicycle.view.activity.WelcomeActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,7 +22,7 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Log.i("wang", "进入splash");
+		// Log.i("wang", "进入splash");
 		// new Thread(new Runnable() {
 		// @Override
 		// public void run() {
@@ -38,7 +37,6 @@ public class SplashActivity extends Activity {
 		// }
 		// }).start();
 		init();
-
 	}
 
 	// https://github.com/122627018/ElectricBicycle.git
@@ -65,11 +63,10 @@ public class SplashActivity extends Activity {
 				if (isFirstRun) {
 					// 第一次使用
 					Intent intent = new Intent(SplashActivity.this,
-							ScanCodeActivity.class);
+							WelcomeActivity.class);
 					startActivity(intent);
 					SharePrefUtil.saveBoolean(SplashActivity.this, "firstGo",
 							false);
-					
 					finish();
 				} else {
 					// 检测本地是否得到账号
@@ -78,8 +75,7 @@ public class SplashActivity extends Activity {
 					if (isRemUser) {
 						// 本地有记住账号,实现登录功能
 						/**
-						 * 1.取出账号密码进行服务器登陆 
-						 * 2.当服务器登陆成功后进行EM登陆
+						 * 1.取出账号密码进行服务器登陆 2.当服务器登陆成功后进行EM登陆
 						 * 3.当EM登陆成功，检查本地是否有此用户相关信息
 						 * 4.如果有，直接进入主界面；如果没有，连接服务器做初始化操作
 						 */

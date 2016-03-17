@@ -2,8 +2,8 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import java.util.List;
 
+
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +38,7 @@ import com.wxxiaomi.electricbicycle.bean.format.NearByPerson;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson.UserLocatInfo;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.MapEngineImpl;
+import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 /**
@@ -85,6 +86,8 @@ public class HomeActivity2 extends BaseActivity {
 	 * 查询路线 startactivity的statecode
 	 */
 	// public static int GETROUTERESULT = 11;
+	
+	MapEngineImpl engine;
 
 	@Override
 	protected void initView() {
@@ -95,8 +98,6 @@ public class HomeActivity2 extends BaseActivity {
 		mBaiduMap = mMapView.getMap();
 		btn_contact = (Button) findViewById(R.id.btn_contact);
 		btn_contact.setOnClickListener(this);
-//		btn_nav = (Button) findViewById(R.id.btn_nav);
-//		btn_nav.setOnClickListener(this);
 		btn_go = (FloatingActionButton) findViewById(R.id.btn_go);
 		btn_go.setOnClickListener(this);
 		setZoomInVis();
@@ -153,28 +154,76 @@ public class HomeActivity2 extends BaseActivity {
 	 */
 	private void getNearByFromServer(final double latitude,
 			final double longitude) {
-		new AsyncTask<String, Void, ReceiceData<NearByPerson>>() {
+//		RequestQueue mQueue = Volley.newRequestQueue(this); 
+//		String url = ConstantValue.SERVER_URL+"ActionServlet?action=getnearby&userid=19"
+//				+"&latitude="+latitude
+//				+"&longitude="+longitude;
+//		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,  
+//		        new Response.Listener<JSONObject>() {  
+//		            @Override  
+//		            public void onResponse(JSONObject response) {  
+////		                Log.d("TAG", response.toString());  
+//		            	Log.i("wang", " response.toString()="+response.toString());
+//		            }  
+//		        }, new Response.ErrorListener() {  
+//		            @Override  
+//		            public void onErrorResponse(VolleyError error) {  
+//		                Log.i("wang", error.getMessage(), error);  
+//		            }  
+//		        });  
+//		mQueue.add(jsonObjectRequest);  
+//		new AsyncTask<String, Void, ReceiceData<NearByPerson>>() {
+//			@Override
+//			protected ReceiceData<NearByPerson> doInBackground(String... params) {
+//				MapEngineImpl engine = new MapEngineImpl();
+//				return engine.getNearByFromServer(latitude, longitude);
+//			}
+//
+//			@Override
+//			protected void onPostExecute(ReceiceData<NearByPerson> result) {
+//				if (result != null) {
+//					if (result.state == 200) {
+//						// 新增覆盖物
+//						processNearByData(result.infos.userLocatList);
+//					} else {
+//						Log.i("wang", "登录失败，错误信息：" + result.error);
+//					}
+//				} else {
+//					Log.i("wang", "登录失败，连接不上服务器");
+//				}
+//			}
+//		}.execute();
+		engine = new MapEngineImpl(this);
+		engine.getNearByFromServer1(latitude, longitude, new ResultByGetDataListener<NearByPerson>() {
+			
 			@Override
-			protected ReceiceData<NearByPerson> doInBackground(String... params) {
-				MapEngineImpl engine = new MapEngineImpl();
-				return engine.getNearByFromServer(latitude, longitude);
+			public void success(ReceiceData<NearByPerson> result) {
+				// TODO Auto-generated method stub
+				processNearByData(result.infos.userLocatList);
 			}
-
+			
 			@Override
-			protected void onPostExecute(ReceiceData<NearByPerson> result) {
-				if (result != null) {
-					if (result.state == 200) {
-						// 新增覆盖物
-						processNearByData(result.infos.userLocatList);
-					} else {
-						Log.i("wang", "登录失败，错误信息：" + result.error);
-					}
-				} else {
-					Log.i("wang", "登录失败，连接不上服务器");
-				}
+			public void error(String error) {
+				// TODO Auto-generated method stub
+//				Log.i("wang", "：" + error);
+				showMsgDialog("不能连接服务器");
 			}
-		}.execute();
-
+		});
+		
+//		engine.getNearByFromServer1(latitude, longitude, new NetListener<NearByPerson>() {
+//			
+//			@Override
+//			public void success(ReceiceData<NearByPerson> data) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void error(String error) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
 	}
 
 	/**

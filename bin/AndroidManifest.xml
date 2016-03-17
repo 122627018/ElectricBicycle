@@ -114,7 +114,19 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name="com.wxxiaomi.electricbicycle.view.activity.ScanCodeActivity1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.wxxiaomi.electricbicycle.view.activity.WelcomeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="com.wxxiaomi.electricbicycle.view.activity.RoutePlanActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.wxxiaomi.electricbicycle.view.activity.BicycleWelcomeInfoActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity

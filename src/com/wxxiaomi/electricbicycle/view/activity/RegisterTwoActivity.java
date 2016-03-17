@@ -1,7 +1,6 @@
 package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +11,7 @@ import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.format.Register;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
+import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 public class RegisterTwoActivity extends BaseActivity {
@@ -25,6 +25,8 @@ public class RegisterTwoActivity extends BaseActivity {
 	 * 上一个activity带过的phone
 	 */
 	private String phone;
+	private int carid;
+	private UserEngineImpl engine;
 	
 	@Override
 	protected void initView() {
@@ -40,20 +42,24 @@ public class RegisterTwoActivity extends BaseActivity {
 
 	@Override
 	protected void initData() {
+		engine = new UserEngineImpl(ct);
+		carid = getIntent().getIntExtra("carid", 0);
+		Log.i("wang", "registeractivity中carid="+carid);
 		phone = getIntent().getBundleExtra("value").getString("phone");
-		Log.i("wang", "在第二个注册页面的initData()中取得的phone="+phone);
+//		Log.i("wang", "在第二个注册页面的initData()中取得的phone="+phone);
 	}
 
 	@Override
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_ok:
+			showLoadingDialog("正在注册");
 			String passwordOne = et_password_one.getText().toString().trim();
 			String passwordTwo = et_password_two.getText().toString().trim();
 			String name = et_name.getText().toString().trim();
 			boolean checkParsResult = checkPars(passwordOne,passwordTwo,name);
 			if(checkParsResult){
-				//连接服务器进行注册
+//				连接服务器进行注册
 				RegisterFromServer(phone,passwordOne,name);
 			}
 			
@@ -116,33 +122,92 @@ public class RegisterTwoActivity extends BaseActivity {
 
 	private void RegisterFromServer(final String username, final String password,
 			final String name) {
-		new AsyncTask<String, Void, ReceiceData<Register>>() {
+//		new AsyncTask<String, Void, ReceiceData<Register>>() {
+//			@Override
+//			protected ReceiceData<Register> doInBackground(String... params) {
+//				UserEngineImpl engine = new UserEngineImpl();
+//				return engine.Register(username, password, name);
+//			}
+//
+//			@Override
+//			protected void onPostExecute(ReceiceData<Register> result) {
+//				closeLoadingDialog();
+//				if (result!=null) {
+//					if(result.state == 200){
+//						//登录成功
+//						GlobalParams.user = result.infos.userInfo;
+//						Intent intent = new Intent(ct,HomeActivity2.class);
+//						startActivity(intent);
+//						finish();
+//					}else{
+////						Log.i("wang", "登录失败，错误信息："+result.error);
+//						showMsgDialog("注册失败"+result.error);
+//					}
+//				} else {
+//					showMsgDialog("注册失败，连接不上服务器");
+////					Log.i("wang", "登录失败，连接不上服务器");
+//				}
+//			}
+//		}.execute();
+		engine.Register(username, password, name, new ResultByGetDataListener<Register>() {
+			
 			@Override
-			protected ReceiceData<Register> doInBackground(String... params) {
-				UserEngineImpl engine = new UserEngineImpl();
-				return engine.Register(username, password, name);
-			}
-
-			@Override
-			protected void onPostExecute(ReceiceData<Register> result) {
-				closeLoadingDialog();
-				if (result!=null) {
-					if(result.state == 200){
-						//登录成功
-						GlobalParams.user = result.infos.userInfo;
-						Intent intent = new Intent(ct,HomeActivity2.class);
+			public void success(ReceiceData<Register> result) {
+				if(result.state == 200){
+//					//登录成功
+					GlobalParams.user = result.infos.userInfo;
+					Intent intent = new Intent(ct,HomeActivity2.class);
+					if(carid == 0){
+						closeLoadingDialog();
 						startActivity(intent);
 						finish();
 					}else{
-//						Log.i("wang", "登录失败，错误信息："+result.error);
-						showMsgDialog("注册失败"+result.error);
+						setloadingViewContent("正在绑定车子");
+						bundCar(carid,result.infos.userInfo.id);
 					}
-				} else {
-					showMsgDialog("注册失败，连接不上服务器");
-//					Log.i("wang", "登录失败，连接不上服务器");
+//					
+				}else{
+//					Log.i("wang", "登录失败，错误信息："+result.error);
+					showMsgDialog("注册失败"+result.error);
 				}
+				
 			}
-		}.execute();
+			
+			@Override
+			public void error(String error) {
+				showMsgDialog("注册失败，连接不上服务器");
+			}
+		});
+	}
+
+	/**
+	 * 绑定车子
+	 * @param carid2
+	 * @param id
+	 */
+	protected void bundCar(int carid2, int userid) {
+		engine.BundCar(userid, carid2, new ResultByGetDataListener<String>() {
+			
+			@Override
+			public void success(ReceiceData<String> result) {
+				closeLoadingDialog();
+				if(result.state == 200){
+					showMsgDialog("绑定成功");
+					Intent intent = new Intent(ct,HomeActivity2.class);
+					startActivity(intent);
+					finish();
+				}else{
+					showMsgDialog("绑定失败");
+				}
+				
+			}
+			
+			@Override
+			public void error(String error) {
+				showMsgDialog("连接不上服务器");
+				
+			}
+		});
 		
 	}
 

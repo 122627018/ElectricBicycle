@@ -6,6 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.wxxiaomi.electricbicycle.R;
+import com.wxxiaomi.electricbicycle.bean.Bicycle;
+import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
+import com.wxxiaomi.electricbicycle.engine.BicycleEngineImpl;
+import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 /**
@@ -39,6 +43,7 @@ public class ScanCodeActivity extends BaseActivity {
 	private Button btn_scan;
 	
 	private Button btn_debug;
+	private BicycleEngineImpl engine;
 	
 	@Override
 	protected void initView() {
@@ -54,7 +59,7 @@ public class ScanCodeActivity extends BaseActivity {
 
 	@Override
 	protected void initData() {
-		// TODO Auto-generated method stub
+		engine = new BicycleEngineImpl(ct);
 
 	}
 
@@ -68,8 +73,9 @@ public class ScanCodeActivity extends BaseActivity {
 			break;
 		case R.id.btn_scan:
 			String carid = et_carid.getText().toString().trim();
-			simulationScan(carid);
+			simulationScan(Integer.valueOf(carid));
 			//模拟扫描
+			break;
 		case R.id.btn_debug:
 			Intent intent1 = new Intent(ct, HomeActivity2.class);
 			startActivity(intent1);
@@ -85,9 +91,27 @@ public class ScanCodeActivity extends BaseActivity {
 	 * 模拟扫描
 	 * @param carid 车辆id
 	 */
-	private void simulationScan(String carid) {
+	private void simulationScan(int carid) {
 		//连接服务器
-		
+//		engine.getBicycleInfo(carid,new ResultByGetDataListener<Bicycle>() {
+//			
+//			@Override
+//			public void success(ReceiceData<Bicycle> result) {
+//				if(result.state == 200){
+//					Intent intent = new Intent(ct,BicycleWelcomeInfoActivity.class);
+//					intent.putExtra("value", result.infos);
+//					startActivity(intent);
+//				}else{
+//					showMsgDialog(result.error);
+//				}
+//			}
+//			
+//			@Override
+//			public void error(String error) {
+//				showMsgDialog("连接服务器失败");
+//				
+//			}
+//		});
 	}
 
 }
