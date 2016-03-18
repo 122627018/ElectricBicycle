@@ -1,6 +1,7 @@
 package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,10 +28,12 @@ public class RegisterTwoActivity extends BaseActivity {
 	private String phone;
 	private int carid;
 	private UserEngineImpl engine;
+	private TextInputLayout sd;
 	
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_register_two);
+		
 		et_password_one = (EditText) findViewById(R.id.et_password_one);
 		et_password_two = (EditText) findViewById(R.id.et_password_two);
 		et_name = (EditText) findViewById(R.id.et_name);
