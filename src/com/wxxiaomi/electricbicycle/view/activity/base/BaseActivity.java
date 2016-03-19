@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.view.custom.LoadingDialog;
 
 
@@ -124,7 +125,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	
 	AlertDialog msgDialog ;
 	protected void showMsgDialog(String content){
-		msgDialog = new AlertDialog.Builder(ct).setMessage(content).setPositiveButton("确定", null).create();
+		msgDialog = new AlertDialog.Builder(ct,R.style.MingDialog).setMessage(content).setPositiveButton("确定", null).create();
 //		msgDialog.set
 		msgDialog.show();
 	}

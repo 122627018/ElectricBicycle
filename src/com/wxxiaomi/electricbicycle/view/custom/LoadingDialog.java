@@ -23,7 +23,7 @@ public class LoadingDialog {
 	public LoadingDialog builder() {
 		View view = LayoutInflater.from(ct).inflate(R.layout.dialog_loading,
 				null);
-		dialog = new AlertDialog.Builder(ct).setView(view).setCancelable(false).create();
+		dialog = new AlertDialog.Builder(ct,R.style.MingDialog).setView(view).setCancelable(false).create();
 		return this;
 	}
 	

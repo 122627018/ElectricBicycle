@@ -1,11 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:app1="http://schemas.android.com/apk/res/com.wxxiaomi.electricbicycle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/titleBlue" >
 
     <android.support.v7.widget.Toolbar
+            xmlns:app1="http://schemas.android.com/apk/res/com.wxxiaomi.electricbicycle"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,59 +19,44 @@
         android:layout_height="match_parent" >
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:background="@color/titleBlue"
-                android:orientation="vertical"
+            <!-- 这里放置头像 -->
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-                
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Basic" >
+                android:layout_height="72dp"
+                android:id="@+id/til_name"
+                android:hint="帐号名称" >
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-    </android.support.design.widget.TextInputLayout>
-                
-            </LinearLayout>
-             <EditText
-        android:id="@+id/et_password_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入登录密码"
-        android:textSize="14sp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:hint="一句话描述" 
+                android:id="@+id/til_description">
 
-    <EditText
-        android:id="@+id/et_password_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="再次确认登录密码"
-        android:textSize="14sp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入账号名称"
-        android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/btn_ok"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="确定" />
+            <Button
+                android:background="@drawable/home_right_btnshape"
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="确定" />
         </LinearLayout>
     </ScrollView>
-
-
-   
 
 </LinearLayout>

@@ -64,27 +64,17 @@ public class UserEngineImpl {
 	 * @param phone
 	 *            发送号码
 	 */
-	public void getPhoneCodeMsg(String phone,final ResultByGetDataListener<String> lis){
-		String url = ConstantValue.SERVER_URL+"ActionServlet?action=checkphone"+"&phone="+phone;
-//		String json = HttpClientUtil.doGet(url);
-//		try {
-//			Log.i("wang", "检查手机号后返回的json="+json);
-//			Gson gson = new Gson();
-//			ReceiceData<String> fromJson = gson.fromJson(json, new TypeToken<ReceiceData<String>>(){}.getType());
-//			return fromJson;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return null;
+	public void registerUser(String username,String password,final ResultByGetDataListener<Register> lis){
+		String url = ConstantValue.SERVER_URL+"ActionServlet?action=register"+"&username="+username+"&password="+password;
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
 						// processJsonResult(response.toString());
 						Gson gson = new Gson();
-						ReceiceData<String> result = gson.fromJson(
+						ReceiceData<Register> result = gson.fromJson(
 								response.toString(),
-								new TypeToken<ReceiceData<String>>() {
+								new TypeToken<ReceiceData<Register>>() {
 								}.getType());
 						lis.success(result);
 					}
@@ -177,23 +167,19 @@ public class UserEngineImpl {
 	
 	/**
 	 * 注册一个用户
+	 * @param userid 
 	 * @param username 账号
 	 * @param password 密码
 	 * @param name 用户名
+	 * @param headUrl2 
 	 * @return
 	 */
-	public void Register(String username,String password,String name
-			,final ResultByGetDataListener<Register> lis){
-		String url = ConstantValue.SERVER_URL+"ActionServlet?action=register&name="+name+"&username="+username+"&password="+password;
-//		String json = HttpClientUtil.doGet(url);
-//		try {
-//			Gson gson = new Gson();
-//			ReceiceData<Register> fromJson = gson.fromJson(json, new TypeToken<ReceiceData<Register>>(){}.getType());
-//			return fromJson;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return null;
+	public void ImproveUserInfo(int userid, String username,String name,String description,String headUrl
+			, final ResultByGetDataListener<Register> lis){
+		String url = ConstantValue.SERVER_URL+"ActionServlet?action=improveuserinfo&name="
+			+name+"&description="+description+"&headUrl="+headUrl
+			+"&userid="+userid+"&username="+username;
+		Log.i("wang", "url="+url);
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override

@@ -6,10 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.wxxiaomi.electricbicycle.R;
-import com.wxxiaomi.electricbicycle.bean.Bicycle;
-import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.BicycleEngineImpl;
-import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 /**

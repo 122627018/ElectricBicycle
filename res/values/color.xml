@@ -129,7 +129,7 @@
     <color name="shadowcolor">#333333</color>
     <color name="naming">#ABABAB</color>
     <color name="red">#FF0000</color>
-    <color name="background">#272727</color>
+    <color name="background">#EBEBEB</color>
     <color name="orange_yellow">#9b9ba0</color>
 
     <drawable name="semi_black">#80000000</drawable>

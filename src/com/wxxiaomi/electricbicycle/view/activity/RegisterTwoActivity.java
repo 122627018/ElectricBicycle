@@ -5,10 +5,10 @@ import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
+import com.wxxiaomi.electricbicycle.bean.User;
 import com.wxxiaomi.electricbicycle.bean.format.Register;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
@@ -17,38 +17,35 @@ import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 public class RegisterTwoActivity extends BaseActivity {
 
-	private EditText et_password_one;
-	private EditText et_password_two;
-	private EditText et_name;
+//	private EditText et_name;
 	private Button btn_ok;
 	
 	/**
 	 * 上一个activity带过的phone
 	 */
-	private String phone;
+//	private String userid;
+	private User userInfo;
 	private int carid;
 	private UserEngineImpl engine;
-	private TextInputLayout sd;
+	private TextInputLayout til_name;
+	private TextInputLayout til_description;
 	
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_register_two);
-		
-		et_password_one = (EditText) findViewById(R.id.et_password_one);
-		et_password_two = (EditText) findViewById(R.id.et_password_two);
-		et_name = (EditText) findViewById(R.id.et_name);
+		til_name = (TextInputLayout) findViewById(R.id.til_name);
+		til_description = (TextInputLayout) findViewById(R.id.til_description);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
 		btn_ok.setOnClickListener(this);
 		
-		//https://github.com/122627018/ElectricBicycle.git
 	}
 
 	@Override
 	protected void initData() {
 		engine = new UserEngineImpl(ct);
 		carid = getIntent().getIntExtra("carid", 0);
-		Log.i("wang", "registeractivity中carid="+carid);
-		phone = getIntent().getBundleExtra("value").getString("phone");
+		userInfo = (User) getIntent().getExtras().get("userInfo");
+		Log.i("wang", "userInfo.id="+userInfo.id);
 //		Log.i("wang", "在第二个注册页面的initData()中取得的phone="+phone);
 	}
 
@@ -57,13 +54,12 @@ public class RegisterTwoActivity extends BaseActivity {
 		switch (v.getId()) {
 		case R.id.btn_ok:
 			showLoadingDialog("正在注册");
-			String passwordOne = et_password_one.getText().toString().trim();
-			String passwordTwo = et_password_two.getText().toString().trim();
-			String name = et_name.getText().toString().trim();
-			boolean checkParsResult = checkPars(passwordOne,passwordTwo,name);
-			if(checkParsResult){
+			String name = til_name.getEditText().getText().toString();
+			String description = til_description.getEditText().getText().toString();
+//			boolean checkParsResult = checkPars(name,description,name);
+			if(true){
 //				连接服务器进行注册
-				RegisterFromServer(phone,passwordOne,name);
+				improveUserInfo(name,description,"",userInfo.id,userInfo.username);
 			}
 			
 //			showLoadingDialog("正在注册..");
@@ -86,79 +82,40 @@ public class RegisterTwoActivity extends BaseActivity {
 	 * @param passwordOne
 	 * @param passwordTwo
 	 * @param name
+	 * @param username 
+	 * @param userid 
 	 * @return
 	 */
-	private boolean checkPars(String passwordOne, String passwordTwo, String name) {
-		boolean flag = false;
-		if("".equals(passwordOne)){
-			//密码为空
-		}else if("".equals(passwordTwo)){
-			//验证密码为空
-		}else if("".equals(name)){
-			//姓名为空
-		}else{
-			boolean checkResult = checkSameAsPassword(passwordOne,passwordTwo);
-			if(checkResult){
-				//俩个密码一样
-				flag = true;
-			}else{
-				//俩个密码不一样
-			}
-		}
-		return flag;
-	}
-
-
-	/**
-	 * 检查俩个密码是否相同
-	 * @param passwordOne
-	 * @param passwordTwo
-	 */
-	private boolean checkSameAsPassword(String passwordOne, String passwordTwo) {
-		boolean flag = false;
-		if(passwordOne.equals(passwordTwo)){
-			flag = true;
-		}
-		return flag;
-		
-	}
-
-	private void RegisterFromServer(final String username, final String password,
-			final String name) {
-//		new AsyncTask<String, Void, ReceiceData<Register>>() {
-//			@Override
-//			protected ReceiceData<Register> doInBackground(String... params) {
-//				UserEngineImpl engine = new UserEngineImpl();
-//				return engine.Register(username, password, name);
+//	private boolean checkPars(String passwordOne, String passwordTwo, String name) {
+//		boolean flag = false;
+//		if("".equals(passwordOne)){
+//			//密码为空
+//		}else if("".equals(passwordTwo)){
+//			//验证密码为空
+//		}else if("".equals(name)){
+//			//姓名为空
+//		}else{
+//			boolean checkResult = checkSameAsPassword(passwordOne,passwordTwo);
+//			if(checkResult){
+//				//俩个密码一样
+//				flag = true;
+//			}else{
+//				//俩个密码不一样
 //			}
-//
-//			@Override
-//			protected void onPostExecute(ReceiceData<Register> result) {
-//				closeLoadingDialog();
-//				if (result!=null) {
-//					if(result.state == 200){
-//						//登录成功
-//						GlobalParams.user = result.infos.userInfo;
-//						Intent intent = new Intent(ct,HomeActivity2.class);
-//						startActivity(intent);
-//						finish();
-//					}else{
-////						Log.i("wang", "登录失败，错误信息："+result.error);
-//						showMsgDialog("注册失败"+result.error);
-//					}
-//				} else {
-//					showMsgDialog("注册失败，连接不上服务器");
-////					Log.i("wang", "登录失败，连接不上服务器");
-//				}
-//			}
-//		}.execute();
-		engine.Register(username, password, name, new ResultByGetDataListener<Register>() {
+//		}
+//		return flag;
+//	}
+
+
+
+	private void improveUserInfo(final String name, final String description,
+			final String headUrl, int userid, String username) {
+		engine.ImproveUserInfo(userid,username,name, description, headUrl, new ResultByGetDataListener<Register>() {
 			
 			@Override
 			public void success(ReceiceData<Register> result) {
 				if(result.state == 200){
-//					//登录成功
-					GlobalParams.user = result.infos.userInfo;
+					GlobalParams.user.userCommonInfo = result.infos.userInfo.userCommonInfo;
 					Intent intent = new Intent(ct,HomeActivity2.class);
 					if(carid == 0){
 						closeLoadingDialog();
@@ -166,11 +123,10 @@ public class RegisterTwoActivity extends BaseActivity {
 						finish();
 					}else{
 						setloadingViewContent("正在绑定车子");
-						bundCar(carid,result.infos.userInfo.id);
+						bundCar(carid,GlobalParams.user.id);
 					}
 //					
 				}else{
-//					Log.i("wang", "登录失败，错误信息："+result.error);
 					showMsgDialog("注册失败"+result.error);
 				}
 				
