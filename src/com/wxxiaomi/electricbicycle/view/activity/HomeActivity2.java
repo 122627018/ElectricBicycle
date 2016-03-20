@@ -2,12 +2,15 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import java.util.List;
 
-
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ZoomControls;
 
 import com.baidu.location.BDLocation;
@@ -15,9 +18,11 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BaiduMap.OnMapClickListener;
 import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -34,6 +39,7 @@ import com.hyphenate.chat.EMMessage;
 import com.wxxiaomi.electricbicycle.EMHelper;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
+import com.wxxiaomi.electricbicycle.bean.User.UserCommonInfo;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson.UserLocatInfo;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
@@ -76,7 +82,7 @@ public class HomeActivity2 extends BaseActivity {
 	 * 联系人按钮
 	 */
 	private Button btn_contact;
-//	private Button btn_nav;
+	// private Button btn_nav;
 
 	boolean isFirstLoc = true; // 是否首次定位
 
@@ -86,8 +92,16 @@ public class HomeActivity2 extends BaseActivity {
 	 * 查询路线 startactivity的statecode
 	 */
 	// public static int GETROUTERESULT = 11;
-	
+
 	MapEngineImpl engine;
+	
+	
+	private LinearLayout ll_nearbyview;
+	private TextView tv_near_name;
+	private UserCommonInfo currentNearPerson;
+	
+	private ImageView iv_near_add;
+	private ImageView iv_near_cancle;
 
 	@Override
 	protected void initView() {
@@ -100,25 +114,65 @@ public class HomeActivity2 extends BaseActivity {
 		btn_contact.setOnClickListener(this);
 		btn_go = (FloatingActionButton) findViewById(R.id.btn_go);
 		btn_go.setOnClickListener(this);
+		ll_nearbyview = (LinearLayout) findViewById(R.id.ll_nearbyview);
+		tv_near_name = (TextView) findViewById(R.id.tv_near_name);
+		iv_near_add = (ImageView) findViewById(R.id.iv_near_add);
+		iv_near_cancle = (ImageView) findViewById(R.id.iv_near_cancle);
 		setZoomInVis();
 	}
-	
-	private void setZoomInVis(){
-		   int childCount = mMapView.getChildCount();
-           View zoom = null;
-           for (int i = 0; i < childCount; i++) {
-                   View child = mMapView.getChildAt(i);
-                   if (child instanceof ZoomControls) {
-                           zoom = child;
-                           break;
-                   }
-           }
-           zoom.setVisibility(View.GONE);
+
+	private void setZoomInVis() {
+		int childCount = mMapView.getChildCount();
+		View zoom = null;
+		for (int i = 0; i < childCount; i++) {
+			View child = mMapView.getChildAt(i);
+			if (child instanceof ZoomControls) {
+				zoom = child;
+				break;
+			}
+		}
+		zoom.setVisibility(View.GONE);
 	}
 
 	@Override
 	protected void initData() {
 		initLocationPars();
+//		mBaiduMap.setOnMapTouchListener(new OnMapTouchListener() {
+//			@Override
+//			public void onTouch(MotionEvent arg0) {
+//				ll_nearbyview.setVisibility(View.GONE);
+//				arg0.
+//			}
+//		});
+		mBaiduMap.setOnMapClickListener(new OnMapClickListener() {
+			
+			@Override
+			public boolean onMapPoiClick(MapPoi arg0) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+			@Override
+			public void onMapClick(LatLng arg0) {
+				ll_nearbyview.setVisibility(View.GONE);
+				
+			}
+		});
+		iv_near_add.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			Log.i("wang", "添加"+currentNearPerson.name+"为好友");
+				
+			}
+		});
+		iv_near_cancle.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				ll_nearbyview.setVisibility(View.GONE);
+				
+			}
+		});
 	}
 
 	/**
@@ -154,106 +208,66 @@ public class HomeActivity2 extends BaseActivity {
 	 */
 	private void getNearByFromServer(final double latitude,
 			final double longitude) {
-//		RequestQueue mQueue = Volley.newRequestQueue(this); 
-//		String url = ConstantValue.SERVER_URL+"ActionServlet?action=getnearby&userid=19"
-//				+"&latitude="+latitude
-//				+"&longitude="+longitude;
-//		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,  
-//		        new Response.Listener<JSONObject>() {  
-//		            @Override  
-//		            public void onResponse(JSONObject response) {  
-////		                Log.d("TAG", response.toString());  
-//		            	Log.i("wang", " response.toString()="+response.toString());
-//		            }  
-//		        }, new Response.ErrorListener() {  
-//		            @Override  
-//		            public void onErrorResponse(VolleyError error) {  
-//		                Log.i("wang", error.getMessage(), error);  
-//		            }  
-//		        });  
-//		mQueue.add(jsonObjectRequest);  
-//		new AsyncTask<String, Void, ReceiceData<NearByPerson>>() {
-//			@Override
-//			protected ReceiceData<NearByPerson> doInBackground(String... params) {
-//				MapEngineImpl engine = new MapEngineImpl();
-//				return engine.getNearByFromServer(latitude, longitude);
-//			}
-//
-//			@Override
-//			protected void onPostExecute(ReceiceData<NearByPerson> result) {
-//				if (result != null) {
-//					if (result.state == 200) {
-//						// 新增覆盖物
-//						processNearByData(result.infos.userLocatList);
-//					} else {
-//						Log.i("wang", "登录失败，错误信息：" + result.error);
-//					}
-//				} else {
-//					Log.i("wang", "登录失败，连接不上服务器");
-//				}
-//			}
-//		}.execute();
 		engine = new MapEngineImpl(this);
-		engine.getNearByFromServer1(latitude, longitude, new ResultByGetDataListener<NearByPerson>() {
-			
-			@Override
-			public void success(ReceiceData<NearByPerson> result) {
-				// TODO Auto-generated method stub
-				processNearByData(result.infos.userLocatList);
-			}
-			
-			@Override
-			public void error(String error) {
-				// TODO Auto-generated method stub
-//				Log.i("wang", "：" + error);
-				showMsgDialog("不能连接服务器");
-			}
-		});
-		
-//		engine.getNearByFromServer1(latitude, longitude, new NetListener<NearByPerson>() {
-//			
-//			@Override
-//			public void success(ReceiceData<NearByPerson> data) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void error(String error) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//		});
+		engine.getNearByFromServer1(latitude, longitude,
+				new ResultByGetDataListener<NearByPerson>() {
+
+					@Override
+					public void success(ReceiceData<NearByPerson> result) {
+						// TODO Auto-generated method stub
+						processNearByData(result.infos.userLocatList);
+					}
+
+					@Override
+					public void error(String error) {
+						// TODO Auto-generated method stub
+						// Log.i("wang", "：" + error);
+						showMsgDialog("不能连接服务器");
+					}
+				});
 	}
 
+	List<UserLocatInfo> userLocatList;
+
 	/**
-	 * ->服务器
-	 * 处理定位返回的结果
+	 * ->服务器 处理定位返回的结果
+	 * 
 	 * @param userLocatList
 	 */
-	protected void processNearByData(List<UserLocatInfo> userLocatList) {
+	protected void processNearByData(List<UserLocatInfo> list) {
+		this.userLocatList = list;
 		Marker mMarker;
 		// 初始化全局 bitmap 信息，不用时及时 recycle
 		BitmapDescriptor bdA = BitmapDescriptorFactory
-				.fromResource(R.drawable.icon_marka);
-		for (UserLocatInfo user : userLocatList) {
+				.fromResource(R.drawable.track_nav_statistic_icon);
+		for (int i = 0; i < list.size(); i++) {
+			UserLocatInfo user = list.get(i);
 			LatLng point = new LatLng(user.locat[0], user.locat[1]);
 			// 构建MarkerOption，用于在地图上添加Marker
 			MarkerOptions ooA = new MarkerOptions().position(point).icon(bdA)
 					.zIndex(9).draggable(true);
 			ooA.animateType(MarkerAnimateType.drop);
 			mMarker = (Marker) (mBaiduMap.addOverlay(ooA));
-			mMarker.setZIndex(user.userCommonInfo.userid);
+			mMarker.setZIndex(i);
 		}
+		// for (UserLocatInfo user : userLocatList) {
+		//
+		// }
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
-
 			@Override
 			public boolean onMarkerClick(Marker marker) {
-				// Log.i("wang", "点击了：id="+marker.getZIndex());
+//				Log.i("wang", "点击了：username=" + userLocatList.get(marker.getZIndex()).userCommonInfo.name);
+				showNearUserInfo(userLocatList.get(marker.getZIndex()).userCommonInfo);
+				currentNearPerson = userLocatList.get(marker.getZIndex()).userCommonInfo;
 				return false;
 			}
 		});
 
+	}
+
+	protected void showNearUserInfo(UserCommonInfo userCommonInfo) {
+		ll_nearbyview.setVisibility(View.VISIBLE);
+		tv_near_name.setText(userCommonInfo.name);
 	}
 
 	/**
@@ -274,7 +288,7 @@ public class HomeActivity2 extends BaseActivity {
 			// 测试用
 			GlobalParams.latitude = latitude;
 			GlobalParams.longitude = longitude;
-//			Log.i("wang", "HomeAcivity里定位成功:" + latitude + "," + longitude);
+			// Log.i("wang", "HomeAcivity里定位成功:" + latitude + "," + longitude);
 
 			MyLocationData locData = new MyLocationData.Builder()
 					.accuracy(0)

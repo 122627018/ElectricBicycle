@@ -1,13 +1,78 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.wxxiaomi.electricbicycle.SplashActivity" >
+    android:layout_height="match_parent" >
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/mpaview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:background="@drawable/home_head"
+        android:visibility="gone"
+        android:id="@+id/ll_nearbyview"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal" >
+
+        <com.wxxiaomi.electricbicycle.view.custom.CircularImageView
+            android:layout_gravity="center"
+            android:id="@+id/iv_head"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.2"
+            android:src="@drawable/tou" />
+
+        <LinearLayout
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="3dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical" >
+
+            <TextView
+                android:gravity="bottom"
+                android:id="@+id/tv_near_name"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="王先生" />
+
+            <TextView
+                android:gravity="top"
+                android:textSize="12sp"
+                android:textColor="#808080"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="16小时前" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_near_add"
+            android:layout_margin="6dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_common_add_press" />
+        <ImageView
+            android:id="@+id/iv_near_cancle"
+            android:layout_margin="2dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_edit_label_delete_green" />
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_go"

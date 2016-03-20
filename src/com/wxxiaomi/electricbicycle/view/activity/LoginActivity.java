@@ -99,15 +99,15 @@ public class LoginActivity extends BaseActivity {
 						if (result.state == 200) {
 							// //登录成功
 							GlobalParams.user = result.infos.userInfo;
-							Intent intent = new Intent(LoginActivity.this,
-									HomeActivity2.class);
-							startActivity(intent);
-							finish();
 							LoginFromEM(result.infos.userInfo);
+//							Intent intent = new Intent(LoginActivity.this,
+//									HomeActivity2.class);
+//							startActivity(intent);
+//							finish();
+							
 						} else {
 							showMsgDialog("登录失败" + result.error);
 						}
-
 					}
 
 					@Override
