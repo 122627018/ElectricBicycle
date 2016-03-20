@@ -22,6 +22,7 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		AppManager.getAppManager().addActivity(this);
 		// Log.i("wang", "进入splash");
 		// new Thread(new Runnable() {
 		// @Override
@@ -91,6 +92,13 @@ public class SplashActivity extends Activity {
 
 			}
 		}).start();
+	}
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		AppManager.getAppManager().finishActivity(this);
+		super.onDestroy();
+	
 	}
 
 	@Override

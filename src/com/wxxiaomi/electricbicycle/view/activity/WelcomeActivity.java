@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.Bicycle;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
@@ -23,10 +24,12 @@ public class WelcomeActivity extends BaseActivity {
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_welcome);
+		AppManager.getAppManager().addActivity(this);
 		btn_scan = (Button) findViewById(R.id.btn_scan);
 		btn_login = (Button) findViewById(R.id.btn_login);
 		btn_login.setOnClickListener(this);
 		btn_scan.setOnClickListener(this);
+		
 	}
 
 	@Override
@@ -102,5 +105,13 @@ public class WelcomeActivity extends BaseActivity {
 						showMsgDialog("连接服务器失败");
 					}
 				});
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		AppManager.getAppManager().finishActivity(this);
+		super.onDestroy();
+
 	}
 }

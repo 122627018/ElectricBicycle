@@ -4,6 +4,8 @@ package com.wxxiaomi.electricbicycle.view.activity.base;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,107 +28,64 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	protected ImageButton rightImgBtn;
 	protected TextView titleTv;
 	protected TextView rightbutton;
+	protected static UIHandler handler = new UIHandler(Looper.getMainLooper());
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 //		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		ct = this;
+		setHandler();
 		initView();
 		initData();
+		
+	}
+	
+	  private void setHandler() {
+	        handler.setHandler(new IHandler() {
+	            public void handleMessage(Message msg) {
+	                handler(msg);//有消息就提交给子类实现的方法
+	            }
+	        });     
+	    }
+	  //让子类处理消息
+	    
+
+	protected void handler(Message msg) {
+		switch (msg.what) {
+		case 1:
+			showLoadingDialog("正在登陆");
+			break;
+		case 2:
+			closeLoadingDialog();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	protected void showLoginLoadding(){
+		Message msg = new Message();
+		msg.what = 1;
+		handler(msg);
+	}
+	protected void closeLoginLoadding(){
+		Message msg = new Message();
+		msg.what = 1;
+		handler(msg);
 	}
 
 	protected void initTitleBar() {
 	}
 
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-	}
-
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-//		AppManager.getAppManager().finishActivity(this);
-	}
 
 	@Override
 	public void onClick(View v) {
 		processClick(v);
-		switch (v.getId()) {
-//		case R.id.activity_selectimg_back:
-//			this.finish();
-//			break;
-		default:
-			break;
-		}
-		
-
 	}
-
-//	protected void showToast(String msg) {
-//		showToast(msg, 0);
-//	}
-
-//	protected void showToast(String msg, int time) {
-//		CustomToast customToast = new CustomToast(ct, msg, time);
-//		customToast.show();
-//	}
-//
-//	protected CustomProgressDialog dialog;
-//
-//	protected void showProgressDialog(String content) {
-//		if (dialog == null && ct != null) {
-//			dialog = (CustomProgressDialog) DialogUtils.createProgressDialog(ct,
-//					content);
-//		}
-//		dialog.show();
-//	}
-//
-//	protected void closeProgressDialog() {
-//		if (dialog != null)
-//			dialog.dismiss();
-//	}
-//
-//	
-//	public void setLoadingViewContent(String content){
-//		
-//	}
-//	
-//	public void showLoadingView() {
-//		if (loadingView != null)
-//			loadingView.setVisibility(View.VISIBLE);
-//	}
-//
-//	public void dismissLoadingView() {
-//		if (loadingView != null)
-//			loadingView.setVisibility(View.INVISIBLE);
-//	}
-//
-//	public void showLoadFailView() {
-//		if (loadingView != null) {
-//			loadingView.setVisibility(View.VISIBLE);
-//			loadfailView.setVisibility(View.VISIBLE);
-//		}
-//
-//	}
-//
-//	public void dismissLoadFailView() {
-//		if (loadingView != null)
-//			loadfailView.setVisibility(View.INVISIBLE);
-//	}
-	
 	AlertDialog msgDialog ;
 	protected void showMsgDialog(String content){
 		msgDialog = new AlertDialog.Builder(ct,R.style.MingDialog).setMessage(content).setPositiveButton("确定", null).create();
-//		msgDialog.set
 		msgDialog.show();
 	}
 	
@@ -150,7 +109,6 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	 * 关闭加载dialog
 	 */
 	protected void closeLoadingDialog(){
-		Log.i("wang", "closeLoadingDialog");
 		if(dialog != null){
 			Log.i("wang", "closeLoadingDialog2");
 			dialog.dismiss();
@@ -175,6 +133,23 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	protected void onActivityResult(int arg0, int arg1, Intent arg2) {
 		super.onActivityResult(arg0, arg1, arg2);
 	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	
 	
 
 	

@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.view.codeview.camera.CameraManager;
 import com.wxxiaomi.electricbicycle.view.codeview.decoding.CaptureActivityHandler;
@@ -47,6 +48,7 @@ public class ScanCodeActivity1 extends Activity implements Callback {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scancode1);
+		AppManager.getAppManager().addActivity(this);
 		//ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
@@ -102,6 +104,7 @@ public class ScanCodeActivity1 extends Activity implements Callback {
 	@Override
 	protected void onDestroy() {
 		inactivityTimer.shutdown();
+		AppManager.getAppManager().finishActivity(this);
 		super.onDestroy();
 	}
 	
@@ -221,5 +224,6 @@ public class ScanCodeActivity1 extends Activity implements Callback {
 			mediaPlayer.seekTo(0);
 		}
 	};
+	
 
 }

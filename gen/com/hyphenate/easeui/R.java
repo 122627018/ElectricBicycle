@@ -286,7 +286,7 @@ public final class R {
 		public static final int ee_7 = 0x7f0200f3;
 		public static final int ee_8 = 0x7f0200f4;
 		public static final int ee_9 = 0x7f0200f5;
-		public static final int ic_launcher = 0x7f0200fa;
+		public static final int ic_launcher = 0x7f0200fb;
 	}
 	public static final class id {
 		public static final int alert_message = 0x7f0700a9;

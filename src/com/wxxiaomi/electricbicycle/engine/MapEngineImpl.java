@@ -60,6 +60,7 @@ public class MapEngineImpl {
 					public void onResponse(JSONObject response) {
 						// processJsonResult(response.toString());
 						Gson gson = new Gson();
+					Log.i("wang", "json="+response.toString());
 						ReceiceData<NearByPerson> result = gson.fromJson(
 								response.toString(),
 								new TypeToken<ReceiceData<NearByPerson>>() {
@@ -70,7 +71,6 @@ public class MapEngineImpl {
 					@Override
 					public void onErrorResponse(VolleyError error) {
 						Log.i("wang", error.toString(), error);
-//						Log.i("wang", "error.networkResponse"+error.);
 						lis.error(error.getMessage());
 					}
 				});

@@ -36,6 +36,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.EMHelper;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
@@ -43,9 +44,11 @@ import com.wxxiaomi.electricbicycle.bean.User.UserCommonInfo;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson.UserLocatInfo;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
+import com.wxxiaomi.electricbicycle.engine.ImageEngineImpl;
 import com.wxxiaomi.electricbicycle.engine.MapEngineImpl;
 import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
+import com.wxxiaomi.electricbicycle.view.custom.CircularImageView;
 
 /**
  * 主页面
@@ -94,7 +97,7 @@ public class HomeActivity2 extends BaseActivity {
 	// public static int GETROUTERESULT = 11;
 
 	MapEngineImpl engine;
-	
+	private CircularImageView iv_head;
 	
 	private LinearLayout ll_nearbyview;
 	private TextView tv_near_name;
@@ -106,6 +109,7 @@ public class HomeActivity2 extends BaseActivity {
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_home);
+		AppManager.getAppManager().finishAllActivity();
 		mCurrentMode = LocationMode.NORMAL;
 		// 地图初始化
 		mMapView = (MapView) findViewById(R.id.mpaview);
@@ -118,6 +122,7 @@ public class HomeActivity2 extends BaseActivity {
 		tv_near_name = (TextView) findViewById(R.id.tv_near_name);
 		iv_near_add = (ImageView) findViewById(R.id.iv_near_add);
 		iv_near_cancle = (ImageView) findViewById(R.id.iv_near_cancle);
+		iv_head = (CircularImageView) findViewById(R.id.iv_head);
 		setZoomInVis();
 	}
 
@@ -136,6 +141,7 @@ public class HomeActivity2 extends BaseActivity {
 
 	@Override
 	protected void initData() {
+		imageEngine	= new ImageEngineImpl(ct);
 		initLocationPars();
 //		mBaiduMap.setOnMapTouchListener(new OnMapTouchListener() {
 //			@Override
@@ -256,18 +262,24 @@ public class HomeActivity2 extends BaseActivity {
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
-//				Log.i("wang", "点击了：username=" + userLocatList.get(marker.getZIndex()).userCommonInfo.name);
-				showNearUserInfo(userLocatList.get(marker.getZIndex()).userCommonInfo);
-				currentNearPerson = userLocatList.get(marker.getZIndex()).userCommonInfo;
-				return false;
+				if(currentNearPerson == userLocatList.get(marker.getZIndex()).userCommonInfo){
+					return false;
+				}else{
+					currentNearPerson = userLocatList.get(marker.getZIndex()).userCommonInfo;
+					showNearUserInfo(currentNearPerson);
+					return false;
+				}
 			}
 		});
 
 	}
 
+	ImageEngineImpl imageEngine ;
 	protected void showNearUserInfo(UserCommonInfo userCommonInfo) {
 		ll_nearbyview.setVisibility(View.VISIBLE);
 		tv_near_name.setText(userCommonInfo.name);
+		Log.i("wang", "userCommonInfo.head="+userCommonInfo.head);
+		imageEngine.getHeadImageByUrl(iv_head, userCommonInfo.head);
 	}
 
 	/**

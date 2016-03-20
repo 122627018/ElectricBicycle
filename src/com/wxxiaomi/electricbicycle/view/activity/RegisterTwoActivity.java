@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.User;
@@ -33,6 +34,7 @@ public class RegisterTwoActivity extends BaseActivity {
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_register_two);
+		AppManager.getAppManager().addActivity(this);
 		til_name = (TextInputLayout) findViewById(R.id.til_name);
 		til_description = (TextInputLayout) findViewById(R.id.til_description);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
@@ -169,5 +171,13 @@ public class RegisterTwoActivity extends BaseActivity {
 		});
 		
 	}
+	
+	@Override
+		protected void onDestroy() {
+			// TODO Auto-generated method stub
+		AppManager.getAppManager().finishActivity(this);
+			super.onDestroy();
+			
+		}
 
 }

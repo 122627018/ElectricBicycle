@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.User;
@@ -42,6 +43,7 @@ public class RegisterOneActivity extends BaseActivity {
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_register_one);
+		AppManager.getAppManager().addActivity(this);
 //		et_username = (EditText) findViewById(R.id.et_username);
 		til_username = (TextInputLayout) findViewById(R.id.til_username);
 		til_password = (TextInputLayout) findViewById(R.id.til_password);
@@ -129,6 +131,14 @@ public class RegisterOneActivity extends BaseActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		AppManager.getAppManager().finishActivity(this);
+		super.onDestroy();
+		
 	}
 
 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.User;
@@ -38,6 +39,7 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_login);
+		AppManager.getAppManager().addActivity(this);
 		til_username = (TextInputLayout) findViewById(R.id.til_username);
 		til_password = (TextInputLayout) findViewById(R.id.til_password);
 		btn_ok = (Button) findViewById(R.id.btn_ok);
@@ -62,6 +64,8 @@ public class LoginActivity extends BaseActivity {
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_ok:
+			showLoginLoadding();
+//			showLoadingDialog("正在登陆");
 			// 点击确定按钮
 			String username = til_username.getEditText().getText().toString().trim();
 			String password = til_password.getEditText().getText().toString().trim();
@@ -96,22 +100,21 @@ public class LoginActivity extends BaseActivity {
 
 					@Override
 					public void success(ReceiceData<Login> result) {
+						
 						if (result.state == 200) {
+//							closeLoadingDialog();
 							// //登录成功
 							GlobalParams.user = result.infos.userInfo;
 							LoginFromEM(result.infos.userInfo);
-//							Intent intent = new Intent(LoginActivity.this,
-//									HomeActivity2.class);
-//							startActivity(intent);
-//							finish();
-							
 						} else {
+//							closeLoadingDialog();
 							showMsgDialog("登录失败" + result.error);
 						}
 					}
 
 					@Override
 					public void error(String error) {
+//						closeLoadingDialog();
 						showMsgDialog("登录失败，连接不上服务器");
 					}
 				});
@@ -124,7 +127,9 @@ public class LoginActivity extends BaseActivity {
 	 * @param userInfo
 	 */
 	protected void LoginFromEM(final User userInfo) {
-		Log.i("wang", "LoginFromEM," + userInfo.username + userInfo.password);
+//		showLoadingDialog("正在登陆聊天服务器");
+//		setloadingViewContent("正在登陆聊天服务器");
+//		Log.i("wang", "LoginFromEM," + userInfo.username + userInfo.password);
 		EMClient.getInstance().login(userInfo.username, userInfo.password,
 				new EMCallBack() {
 					@Override
@@ -183,7 +188,8 @@ public class LoginActivity extends BaseActivity {
 						// }
 						// });
 						// closeLoadingDialog();
-						// showMsgDialog("登陆聊天服务器失败，请重新登陆");
+//						closeLoadingDialog();
+//						 showMsgDialog("登陆聊天服务器失败，请尝试重新登陆");
 					}
 				});
 	}
@@ -192,6 +198,9 @@ public class LoginActivity extends BaseActivity {
 	 * 检查本地是否有此账号相关的信息 如果有就取出 如果没有就连接服务器获取
 	 */
 	protected void AfterLoginCheck(final User userInfo) {
+//		closeLoadingDialog();
+//		setloadingViewContent("正在初始化用户信息");
+//		showLoadingDialog("正在初始化用户信息");
 		// 本地是否有该账号信息
 		// boolean isHasUserInfo = false;
 		// 先默认没有该账号信息
@@ -202,21 +211,25 @@ public class LoginActivity extends BaseActivity {
 					@Override
 					public void success(ReceiceData<InitUserInfo> result) {
 						if (result.state == 200) {
+							closeLoginLoadding();
 							// //登录成功
 							GlobalParams.user = userInfo;
 							GlobalParams.friendList = result.infos.friendList;
 							Intent intent = new Intent(LoginActivity.this,
 									HomeActivity2.class);
 							startActivity(intent);
+							
+//							closeLoadingDialog();
 							finish();
 							// LoginFromEM(result.infos.userInfo);
 						} else {
+							closeLoginLoadding();
 							GlobalParams.user = userInfo;
 							Intent intent = new Intent(LoginActivity.this,
 									HomeActivity2.class);
 							startActivity(intent);
 							finish();
-							showMsgDialog("初始化失败" + result.error);
+//							showMsgDialog("初始化失败" + result.error);
 						}
 
 					}
@@ -224,7 +237,8 @@ public class LoginActivity extends BaseActivity {
 					@Override
 					public void error(String error) {
 						// TODO Auto-generated method stub
-						showMsgDialog("连接不上服务器");
+//						closeLoadingDialog();
+//						showMsgDialog("连接不上服务器");
 					}
 				});
 	}
@@ -273,5 +287,12 @@ public class LoginActivity extends BaseActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		AppManager.getAppManager().finishActivity(this);
+		super.onDestroy();
+	
+	}
 
 }
