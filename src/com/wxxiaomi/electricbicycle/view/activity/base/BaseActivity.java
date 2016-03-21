@@ -54,25 +54,49 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	protected void handler(Message msg) {
 		switch (msg.what) {
 		case 1:
-			showLoadingDialog("正在登陆");
+			showLoadingDialog((String)msg.obj);
 			break;
 		case 2:
 			closeLoadingDialog();
+			break;
+		case 3:
+			showMsgDialog((String)msg.obj);
+			break;
+		case 4:
+			setloadingViewContent((String)msg.obj);
 			break;
 		default:
 			break;
 		}
 	}
 	
-	protected void showLoginLoadding(){
+	protected void showLoading1Dialog(String content){
 		Message msg = new Message();
 		msg.what = 1;
-		handler(msg);
+		msg.obj = content;
+//		handler(msg);
+		handler.sendMessage(msg);
 	}
-	protected void closeLoginLoadding(){
+	protected void closeLoading1Dialog(){
 		Message msg = new Message();
-		msg.what = 1;
-		handler(msg);
+		msg.what = 2;
+//		handler(msg);
+		handler.sendMessage(msg);
+	}
+	
+	protected void showErrorDialog(String error){
+		Message msg = new Message();
+		msg.what = 3;
+		msg.obj = error;
+//		handler(msg);
+		handler.sendMessage(msg);
+	}
+	protected void setLoadingContent(String content){
+		Message msg = new Message();
+		msg.what = 4;
+		msg.obj = content;
+//		handler(msg);
+		handler.sendMessage(msg);
 	}
 
 	protected void initTitleBar() {
@@ -84,23 +108,23 @@ public abstract class BaseActivity extends AppCompatActivity implements
 		processClick(v);
 	}
 	AlertDialog msgDialog ;
-	protected void showMsgDialog(String content){
+	private  void showMsgDialog(String content){
 		msgDialog = new AlertDialog.Builder(ct,R.style.MingDialog).setMessage(content).setPositiveButton("确定", null).create();
 		msgDialog.show();
 	}
 	
-	protected void closeMsgDialog(){
-		if(msgDialog != null){
-			msgDialog.dismiss();
-		}
-	}
+//	private void closeMsgDialog(){
+//		if(msgDialog != null){
+//			msgDialog.dismiss();
+//		}
+//	}
 	
 	LoadingDialog dialog;
 	/**
 	 * 显示加载dialog
 	 * @param content  加载dialog显示的内容
 	 */
-	protected void showLoadingDialog(String content){
+	private void showLoadingDialog(String content){
 		dialog = new LoadingDialog(ct).builder().setMessage(content);
 		dialog.show();
 	}
@@ -108,16 +132,17 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	/**
 	 * 关闭加载dialog
 	 */
-	protected void closeLoadingDialog(){
+	private void closeLoadingDialog(){
 		if(dialog != null){
 			Log.i("wang", "closeLoadingDialog2");
 			dialog.dismiss();
 		}
 	}
 	
-	protected void setloadingViewContent(String content){
+	private void setloadingViewContent(String content){
 		if(dialog != null){
 			dialog.setMessage(content);
+			
 		}
 	}
 

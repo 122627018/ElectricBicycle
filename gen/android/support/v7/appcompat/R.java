@@ -456,10 +456,10 @@ public final class R {
 		public static final int abc_textfield_search_activated_mtrl_alpha = 0x7f020042;
 		public static final int abc_textfield_search_default_mtrl_alpha = 0x7f020043;
 		public static final int abc_textfield_search_material = 0x7f020044;
-		public static final int notification_template_icon_bg = 0x7f02010b;
+		public static final int notification_template_icon_bg = 0x7f02010d;
 	}
 	public static final class id {
-		public static final int action0 = 0x7f070104;
+		public static final int action0 = 0x7f070105;
 		public static final int action_bar = 0x7f07006c;
 		public static final int action_bar_activity_content = 0x7f070004;
 		public static final int action_bar_container = 0x7f07006b;
@@ -468,7 +468,7 @@ public final class R {
 		public static final int action_bar_subtitle = 0x7f07004d;
 		public static final int action_bar_title = 0x7f07004c;
 		public static final int action_context_bar = 0x7f07006d;
-		public static final int action_divider = 0x7f070108;
+		public static final int action_divider = 0x7f070109;
 		public static final int action_menu_divider = 0x7f070006;
 		public static final int action_menu_presenter = 0x7f070007;
 		public static final int action_mode_bar = 0x7f070069;
@@ -479,9 +479,9 @@ public final class R {
 		public static final int always = 0x7f07002b;
 		public static final int beginning = 0x7f070030;
 		public static final int buttonPanel = 0x7f070056;
-		public static final int cancel_action = 0x7f070105;
+		public static final int cancel_action = 0x7f070106;
 		public static final int checkbox = 0x7f070064;
-		public static final int chronometer = 0x7f07010a;
+		public static final int chronometer = 0x7f07010b;
 		public static final int collapseActionView = 0x7f07002c;
 		public static final int contentPanel = 0x7f07005c;
 		public static final int custom = 0x7f070062;
@@ -491,7 +491,7 @@ public final class R {
 		public static final int disableHome = 0x7f07001f;
 		public static final int edit_query = 0x7f07006e;
 		public static final int end = 0x7f070031;
-		public static final int end_padder = 0x7f07010e;
+		public static final int end_padder = 0x7f07010f;
 		public static final int expand_activities_button = 0x7f070050;
 		public static final int expanded_menu = 0x7f070063;
 		public static final int home = 0x7f070001;
@@ -499,12 +499,12 @@ public final class R {
 		public static final int icon = 0x7f070054;
 		public static final int ifRoom = 0x7f07002d;
 		public static final int image = 0x7f070051;
-		public static final int info = 0x7f07010d;
-		public static final int line1 = 0x7f070109;
-		public static final int line3 = 0x7f07010c;
+		public static final int info = 0x7f07010e;
+		public static final int line1 = 0x7f07010a;
+		public static final int line3 = 0x7f07010d;
 		public static final int listMode = 0x7f07001c;
 		public static final int list_item = 0x7f070053;
-		public static final int media_actions = 0x7f070107;
+		public static final int media_actions = 0x7f070108;
 		public static final int middle = 0x7f070032;
 		public static final int multiply = 0x7f070026;
 		public static final int never = 0x7f07002e;
@@ -538,13 +538,13 @@ public final class R {
 		public static final int src_atop = 0x7f070028;
 		public static final int src_in = 0x7f070029;
 		public static final int src_over = 0x7f07002a;
-		public static final int status_bar_latest_event_content = 0x7f070106;
+		public static final int status_bar_latest_event_content = 0x7f070107;
 		public static final int submit_area = 0x7f070077;
 		public static final int tabMode = 0x7f07001e;
-		public static final int text = 0x7f0700ab;
-		public static final int text2 = 0x7f07010b;
+		public static final int text = 0x7f0700ac;
+		public static final int text2 = 0x7f07010c;
 		public static final int textSpacerNoButtons = 0x7f07005f;
-		public static final int time = 0x7f0700c0;
+		public static final int time = 0x7f0700c1;
 		public static final int title = 0x7f070055;
 		public static final int title_template = 0x7f07005a;
 		public static final int topPanel = 0x7f070059;

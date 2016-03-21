@@ -81,28 +81,33 @@ public class WelcomeActivity extends BaseActivity {
 	 * @param scanResult
 	 */
 	private void getBicycleInfo(String scanResult) {
-		showLoadingDialog("正在获取车辆信息");
+//		showLoadingDialog("正在获取车辆信息");
+		showLoading1Dialog("正在获取车辆信息");
 		// 连接服务器
 		engine.getBicycleInfo(scanResult,
 				new ResultByGetDataListener<Bicycle>() {
 
 					@Override
 					public void success(ReceiceData<Bicycle> result) {
-						closeLoadingDialog();
+//						closeLoadingDialog();
+						closeLoading1Dialog();
 						if (result.state == 200) {
 							Intent intent = new Intent(ct,
 									BicycleWelcomeInfoActivity.class);
 							intent.putExtra("value", result.infos);
 							startActivity(intent);
 						} else {
-							showMsgDialog(result.error);
+//							showMsgDialog(result.error);
+							showErrorDialog(result.error);
 						}
 					}
 
 					@Override
 					public void error(String error) {
-						closeLoadingDialog();
-						showMsgDialog("连接服务器失败");
+//						closeLoadingDialog();
+						closeLoading1Dialog();
+//						showMsgDialog("连接服务器失败");
+						showErrorDialog("连接服务器失败");
 					}
 				});
 	}

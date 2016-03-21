@@ -12,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ import com.baidu.mapapi.search.sug.SuggestionResult;
 import com.baidu.mapapi.search.sug.SuggestionResult.SuggestionInfo;
 import com.baidu.mapapi.search.sug.SuggestionSearch;
 import com.baidu.mapapi.search.sug.SuggestionSearchOption;
+import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
@@ -57,14 +59,17 @@ public class SearchActivity extends BaseActivity implements
 	 * 搜索建议结果adapter
 	 */
 	private PoiSearchResultAdapter sugAdapter;
+	private TextView tv_noresult;
 
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_search);
+		AppManager.getAppManager().addActivity(this);
 		mRecyclerView = (RecyclerView) findViewById(android.R.id.list);
 		mLayoutManager = new LinearLayoutManager(this);
 		mRecyclerView.setLayoutManager(mLayoutManager);
 		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+		//设置Item增加、移除动画
 		toolbar = (Toolbar) findViewById(R.id.toolbar);
 		// 标题的文字需在setSupportActionBar之前，不然会无效
 		toolbar.setTitleTextColor(Color.parseColor("#ffffff"));
@@ -74,7 +79,7 @@ public class SearchActivity extends BaseActivity implements
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setHomeButtonEnabled(true); // 设置返回键可用
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+		tv_noresult = (TextView) findViewById(R.id.tv_noresult);
 		mPoiSearch = PoiSearch.newInstance();
 		mSuggestionSearch = SuggestionSearch.newInstance();
 		mSuggestionSearch.setOnGetSuggestionResultListener(this);
@@ -92,24 +97,16 @@ public class SearchActivity extends BaseActivity implements
 		sugAdapter = new PoiSearchResultAdapter(ct,new MyPoiSuggrestionResultClickListener() {
 			@Override
 			public void click(int position) {
-				showLoadingDialog("正在加载中");
-				Log.i("wang", "position="+position);
-				
+				showLoading1Dialog("正在加载中");
 				SuggestionInfo suggestionInfo = sugAdapter.getInfoList().get(position);
 				LatLng pt = suggestionInfo.pt;
-//				showLoadingDialog("正在加载路线");
 				PoiInfo poiInf = new PoiInfo();
 				poiInf.location = pt;
 				GlobalParams.poiInf = poiInf;
 				Intent intent = new Intent(ct,
 						RoutePlanActivity.class);
-				closeLoadingDialog();
+				closeLoading1Dialog();
 				startActivity(intent);
-//				finish();
-//				mPoiSearch.searchInCity((new PoiCitySearchOption())
-//						.city("梅州")
-//						.keyword(et_serach.getText().toString().trim())
-//						.pageNum(1));
 			}
 		});
 		mRecyclerView.setAdapter(sugAdapter);
@@ -146,7 +143,7 @@ public class SearchActivity extends BaseActivity implements
 			public boolean onEditorAction(TextView v, int actionId,
 					KeyEvent event) {
 				if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-					showLoadingDialog("正在加载路线");
+					showLoading1Dialog("正在加载路线");
 					mPoiSearch.searchInCity((new PoiCitySearchOption())
 							.city("梅州")
 							.keyword(et_serach.getText().toString().trim())
@@ -161,30 +158,18 @@ public class SearchActivity extends BaseActivity implements
 
 					@Override
 					public void onGetPoiResult(PoiResult result) {
-						closeLoadingDialog();
+//						closeLoadingDialog();
+						closeLoading1Dialog();
 						if (result == null
 								|| result.error == SearchResult.ERRORNO.RESULT_NOT_FOUND) {
-							showMsgDialog("未找到结果");
+//							showMsgDialog("未找到结果");
+							showErrorDialog("未找到结果");
 							// Toast.makeText(PoiSearchDemo.this, "未找到结果",
 							// Toast.LENGTH_LONG)
 							// .show();
 							// return;
 						}
 						if (result.error == SearchResult.ERRORNO.NO_ERROR) {
-							// mBaiduMap.clear();
-							// PoiOverlay overlay = new MyPoiOverlay(mBaiduMap);
-							// mBaiduMap.setOnMarkerClickListener(overlay);
-							// overlay.setData(result);
-							// overlay.addToMap();
-							// overlay.zoomToSpan();
-							// Intent intent = getIntent();
-							// // intent.pute
-							// Bundle bundle = new Bundle();
-							// bundle.putSerializable("route", (Serializable)
-							// result.getAllPoi().get(0));
-							// Log.i("wang",
-							// "result.getAllPoi().size()="+result.getAllPoi().size());
-							//
 							Log.i("wang", "address="
 									+ result.getAllPoi().get(0).address);
 							Log.i("wang", "result.getAllPoi().get(0).location="
@@ -221,7 +206,8 @@ public class SearchActivity extends BaseActivity implements
 					public void onGetPoiDetailResult(PoiDetailResult result) {
 						if (result.error != SearchResult.ERRORNO.NO_ERROR) {
 							// 抱歉，未找到结果
-							showMsgDialog("抱歉未找到结果");
+//							showMsgDialog("抱歉未找到结果");
+							showErrorDialog("抱歉未找到结果");
 						} else {
 							Log.i("wang",
 									"PoiSearchDemo.this, result.getName()  + result.getAddress()="
@@ -234,22 +220,10 @@ public class SearchActivity extends BaseActivity implements
 
 	}
 
-	// GetRouteSuccessListener getRouteSuccessListener;
-	//
-	// public interface GetRouteSuccessListener{
-	// void processRoute(PoiInfo poiInfo);
-	// }
 
 	@Override
 	protected void processClick(View v) {
-		// switch (v.getId()) {
-		// case R.id.btn_ok:
-		//
-		// break;
-		//
-		// default:
-		// break;
-		// }
+		
 	}
 
 	@Override
@@ -267,6 +241,7 @@ public class SearchActivity extends BaseActivity implements
 	protected void onDestroy() {
 		mPoiSearch.destroy();
 		mSuggestionSearch.destroy();
+		AppManager.getAppManager().finishActivity(this);
 		super.onDestroy();
 	}
 
@@ -282,20 +257,29 @@ public class SearchActivity extends BaseActivity implements
 
 	@Override
 	public void onGetSuggestionResult(SuggestionResult res) {
-		Log.i("wang", "onGetSuggestionResult(SuggestionResult res)");
+		sugAdapter.clear();
 		if (res == null || res.getAllSuggestions() == null) {
+			tv_noresult.setVisibility(View.VISIBLE);
 			return;
 		}
-		sugAdapter.clear();
-
+		tv_noresult.setVisibility(View.GONE);
 		for (SuggestionResult.SuggestionInfo info : res.getAllSuggestions()) {
 			if (info.key != null) {
-				// Log.i("wang", "info.key="+info.key);
 				sugAdapter.addInfo(info);
 			}
 
 		}
 		sugAdapter.notifyDataSetChanged();
+	}
+	
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }

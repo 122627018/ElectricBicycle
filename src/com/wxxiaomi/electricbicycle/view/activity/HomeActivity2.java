@@ -7,6 +7,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -98,13 +100,15 @@ public class HomeActivity2 extends BaseActivity {
 
 	MapEngineImpl engine;
 	private CircularImageView iv_head;
-	
+
 	private LinearLayout ll_nearbyview;
 	private TextView tv_near_name;
 	private UserCommonInfo currentNearPerson;
-	
+
 	private ImageView iv_near_add;
 	private ImageView iv_near_cancle;
+	private TranslateAnimation mShowAction;
+	private TranslateAnimation mHiddenAction;
 
 	@Override
 	protected void initView() {
@@ -124,6 +128,31 @@ public class HomeActivity2 extends BaseActivity {
 		iv_near_cancle = (ImageView) findViewById(R.id.iv_near_cancle);
 		iv_head = (CircularImageView) findViewById(R.id.iv_head);
 		setZoomInVis();
+		mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		mShowAction.setDuration(500);
+		mHiddenAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF,
+				0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				-1.0f);
+		mHiddenAction.setDuration(500);
+		
+		
+	}
+
+	private void setNearByViewGone(){
+		ll_nearbyview.clearAnimation();
+		ll_nearbyview.setAnimation(mHiddenAction);
+		ll_nearbyview.startAnimation(mHiddenAction);
+		ll_nearbyview.setVisibility(View.INVISIBLE);
+	}
+
+	private void setNearByViewVis() {
+		ll_nearbyview.clearAnimation();
+		ll_nearbyview.setAnimation(mShowAction);
+		ll_nearbyview.startAnimation(mShowAction);
+		ll_nearbyview.setVisibility(View.VISIBLE);
 	}
 
 	private void setZoomInVis() {
@@ -141,42 +170,45 @@ public class HomeActivity2 extends BaseActivity {
 
 	@Override
 	protected void initData() {
-		imageEngine	= new ImageEngineImpl(ct);
+		imageEngine = new ImageEngineImpl(ct);
 		initLocationPars();
-//		mBaiduMap.setOnMapTouchListener(new OnMapTouchListener() {
-//			@Override
-//			public void onTouch(MotionEvent arg0) {
-//				ll_nearbyview.setVisibility(View.GONE);
-//				arg0.
-//			}
-//		});
+		// mBaiduMap.setOnMapTouchListener(new OnMapTouchListener() {
+		// @Override
+		// public void onTouch(MotionEvent arg0) {
+		// ll_nearbyview.setVisibility(View.GONE);
+		// arg0.
+		// }
+		// });
 		mBaiduMap.setOnMapClickListener(new OnMapClickListener() {
-			
+
 			@Override
 			public boolean onMapPoiClick(MapPoi arg0) {
 				// TODO Auto-generated method stub
 				return false;
 			}
-			
+
 			@Override
 			public void onMapClick(LatLng arg0) {
-				ll_nearbyview.setVisibility(View.GONE);
-				
+//				ll_nearbyview.setVisibility(View.GONE);
+				setNearByViewGone();
+
 			}
 		});
 		iv_near_add.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-			Log.i("wang", "添加"+currentNearPerson.name+"为好友");
-				
+				Log.i("wang", "添加" + currentNearPerson.name + "为好友");
+
 			}
 		});
 		iv_near_cancle.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ll_nearbyview.setVisibility(View.GONE);
-				
+//				ll_nearbyview.setVisibility(View.GONE);
+				currentNearPerson = null;
+				setNearByViewGone();
+
 			}
 		});
 	}
@@ -228,7 +260,8 @@ public class HomeActivity2 extends BaseActivity {
 					public void error(String error) {
 						// TODO Auto-generated method stub
 						// Log.i("wang", "：" + error);
-						showMsgDialog("不能连接服务器");
+						// showMsgDialog("不能连接服务器");
+						showErrorDialog("不能连接服务器");
 					}
 				});
 	}
@@ -262,9 +295,9 @@ public class HomeActivity2 extends BaseActivity {
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
-				if(currentNearPerson == userLocatList.get(marker.getZIndex()).userCommonInfo){
+				if (currentNearPerson == userLocatList.get(marker.getZIndex()).userCommonInfo) {
 					return false;
-				}else{
+				} else {
 					currentNearPerson = userLocatList.get(marker.getZIndex()).userCommonInfo;
 					showNearUserInfo(currentNearPerson);
 					return false;
@@ -274,11 +307,14 @@ public class HomeActivity2 extends BaseActivity {
 
 	}
 
-	ImageEngineImpl imageEngine ;
+	ImageEngineImpl imageEngine;
+
 	protected void showNearUserInfo(UserCommonInfo userCommonInfo) {
-		ll_nearbyview.setVisibility(View.VISIBLE);
+		if(ll_nearbyview.getVisibility() != View.VISIBLE){
+			setNearByViewVis();
+		}
 		tv_near_name.setText(userCommonInfo.name);
-		Log.i("wang", "userCommonInfo.head="+userCommonInfo.head);
+//		Log.i("wang", "userCommonInfo.head=" + userCommonInfo.head);
 		imageEngine.getHeadImageByUrl(iv_head, userCommonInfo.head);
 	}
 

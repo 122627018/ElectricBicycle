@@ -64,7 +64,7 @@ public class LoginActivity extends BaseActivity {
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_ok:
-			showLoginLoadding();
+			showLoading1Dialog("正在登陆");
 //			showLoadingDialog("正在登陆");
 			// 点击确定按钮
 			String username = til_username.getEditText().getText().toString().trim();
@@ -102,20 +102,22 @@ public class LoginActivity extends BaseActivity {
 					public void success(ReceiceData<Login> result) {
 						
 						if (result.state == 200) {
+							
 //							closeLoadingDialog();
 							// //登录成功
 							GlobalParams.user = result.infos.userInfo;
 							LoginFromEM(result.infos.userInfo);
+//							AfterLoginCheck(result.infos.userInfo);
 						} else {
-//							closeLoadingDialog();
-							showMsgDialog("登录失败" + result.error);
+							closeLoading1Dialog();
+							showErrorDialog("登录失败" + result.error);
 						}
 					}
 
 					@Override
 					public void error(String error) {
-//						closeLoadingDialog();
-						showMsgDialog("登录失败，连接不上服务器");
+						closeLoading1Dialog();
+						showErrorDialog("登录失败，连接不上服务器");
 					}
 				});
 
@@ -127,9 +129,7 @@ public class LoginActivity extends BaseActivity {
 	 * @param userInfo
 	 */
 	protected void LoginFromEM(final User userInfo) {
-//		showLoadingDialog("正在登陆聊天服务器");
-//		setloadingViewContent("正在登陆聊天服务器");
-//		Log.i("wang", "LoginFromEM," + userInfo.username + userInfo.password);
+		setLoadingContent("正在登陆聊天服务器");
 		EMClient.getInstance().login(userInfo.username, userInfo.password,
 				new EMCallBack() {
 					@Override
@@ -174,22 +174,10 @@ public class LoginActivity extends BaseActivity {
 
 					@Override
 					public void onError(final int code, final String message) {
-						Log.d("wang", "login: onError: " + code + "---message="
+						Log.i("wang", "login: onError: " + code + "---message="
 								+ message);
-						// if (!progressShow) {
-						// return;
-						// }
-						// runOnUiThread(new Runnable() {
-						// public void run() {
-						// pd.dismiss();
-						// Toast.makeText(getApplicationContext(),
-						// getString(R.string.Login_failed) + message,
-						// Toast.LENGTH_SHORT).show();
-						// }
-						// });
-						// closeLoadingDialog();
-//						closeLoadingDialog();
-//						 showMsgDialog("登陆聊天服务器失败，请尝试重新登陆");
+						closeLoading1Dialog();
+						showErrorDialog("登陆聊天服务器失败，请尝试重新登陆");
 					}
 				});
 	}
@@ -205,40 +193,36 @@ public class LoginActivity extends BaseActivity {
 		// boolean isHasUserInfo = false;
 		// 先默认没有该账号信息
 		// showLoadingDialog("正在初始化账号相关信息");
+		setLoadingContent("正在初始化帐号相关信息");
 		engine.initUserInfoData(userInfo.username, userInfo.password,
 				new ResultByGetDataListener<InitUserInfo>() {
 
 					@Override
 					public void success(ReceiceData<InitUserInfo> result) {
 						if (result.state == 200) {
-							closeLoginLoadding();
+							closeLoading1Dialog();
 							// //登录成功
 							GlobalParams.user = userInfo;
 							GlobalParams.friendList = result.infos.friendList;
 							Intent intent = new Intent(LoginActivity.this,
 									HomeActivity2.class);
 							startActivity(intent);
-							
-//							closeLoadingDialog();
 							finish();
-							// LoginFromEM(result.infos.userInfo);
 						} else {
-							closeLoginLoadding();
+							closeLoading1Dialog();
 							GlobalParams.user = userInfo;
 							Intent intent = new Intent(LoginActivity.this,
 									HomeActivity2.class);
 							startActivity(intent);
 							finish();
-//							showMsgDialog("初始化失败" + result.error);
 						}
 
 					}
 
 					@Override
 					public void error(String error) {
-						// TODO Auto-generated method stub
-//						closeLoadingDialog();
-//						showMsgDialog("连接不上服务器");
+						closeLoading1Dialog();
+						showErrorDialog("连接不上服务器");
 					}
 				});
 	}
@@ -255,23 +239,28 @@ public class LoginActivity extends BaseActivity {
 		boolean flag = true;
 		if ("".equals(username)) {
 			// 用户名不能为空
-			showMsgDialog("用户名不能为空");
+//			showMsgDialog("用户名不能为空");
+			showErrorDialog("用户名不能为空");
 			flag = false;
 		} else if ("".equals(password)) {
 			// 密码不能为空
-			showMsgDialog("密码不能为空");
+//			showMsgDialog("密码不能为空");
+			showErrorDialog("密码不能为空");
 			flag = false;
 		} else if (username.contains(" ")) {
 			// 用户名出现空格
-			showMsgDialog("用户名出现空格");
+//			showMsgDialog("用户名出现空格");
+			showErrorDialog("用户名出现空格");
 			flag = false;
 		} else if (username.length() < 6) {
 			// 用户名长度少于6位
-			showMsgDialog("用户名长度少于6位");
+//			showMsgDialog("用户名长度少于6位");
+			showErrorDialog("用户名长度少于6位");
 			flag = false;
 		} else if (password.length() < 6) {
 			// 密码少于6位
-			showMsgDialog("密码少于6位");
+//			showMsgDialog("密码少于6位");
+			showErrorDialog("密码少于6位");
 			flag = false;
 		}
 		return flag;

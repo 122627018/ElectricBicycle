@@ -21,9 +21,6 @@ public class PoiSearchResultAdapter  extends RecyclerView.Adapter<ViewHolder>{
 	private Context context;
 	private MyPoiSuggrestionResultClickListener lis;
 	
-//	public void setOnPoiSuggestioniResultClickListener(PoiSuggrestionResultClickListener lis){
-//		
-//	}
 	
 	public List<SuggestionInfo> getInfoList(){
 		return infos;
@@ -51,7 +48,6 @@ public class PoiSearchResultAdapter  extends RecyclerView.Adapter<ViewHolder>{
 
 	@Override
 	public int getItemCount() {
-		// TODO Auto-generated method stub
 		return infos.size();
 	}
 

@@ -36,6 +36,7 @@ public class LoadingDialog {
 	}
 	public LoadingDialog setMessage(String msg){
 		dialog.setMessage(msg);
+//		dialog.
 		return this;
 	}
 }

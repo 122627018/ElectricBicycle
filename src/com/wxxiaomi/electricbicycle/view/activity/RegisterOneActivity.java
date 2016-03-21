@@ -67,7 +67,7 @@ public class RegisterOneActivity extends BaseActivity {
 		case R.id.btn_ok:
 			username = til_username.getEditText().getText().toString().trim();
 			password = til_password.getEditText().getText().toString().trim();
-			showLoadingDialog("正在验证....");
+			showLoading1Dialog("正在验证....");
 			getPhoneCodeMessage(username,password);
 			break;
 		case R.id.btn_debug:
@@ -93,14 +93,15 @@ public class RegisterOneActivity extends BaseActivity {
 			
 			@Override
 			public void success(ReceiceData<Register> result) {
-				closeLoadingDialog();
+				closeLoading1Dialog();
 				if (result.state == 200) {
 //					// 获取短信成功,也就是此手机号可以注册
 					GlobalParams.user = result.infos.userInfo;
 					GoToNext(result.infos.userInfo);
 //					btn_ok.setVisibility(View.VISIBLE);
 				} else {
-					showMsgDialog(result.error);
+//					showMsgDialog(result.error);
+					showErrorDialog(result.error);
 				}
 				
 			}
@@ -108,7 +109,7 @@ public class RegisterOneActivity extends BaseActivity {
 			@Override
 			public void error(String error) {
 				// TODO Auto-generated method stub
-				showMsgDialog("连接不上服务器");
+				showErrorDialog("连接不上服务器");
 			}
 		});
 	}

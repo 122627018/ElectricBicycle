@@ -102,7 +102,8 @@ public class DrivingRouteOverlay extends OverlayManager {
             
             List<LatLng> points = new ArrayList<LatLng>();
             ArrayList<Integer> traffics = new ArrayList<Integer>();
-            int totalTraffic = 0;
+            @SuppressWarnings("unused")
+			int totalTraffic = 0;
             for (int i = 0; i < stepNum ; i++) {
                 if (i == stepNum - 1) {
                     points.addAll(steps.get(i).getWayPoints());

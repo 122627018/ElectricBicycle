@@ -58,7 +58,8 @@ public class RoutePlanActivity extends BaseActivity implements OnGetRoutePlanRes
 		btn_nav.setOnClickListener(this);
 		mSearch = RoutePlanSearch.newInstance();
         mSearch.setOnGetRoutePlanResultListener(this);
-        showLoadingDialog("正在加载路线");
+//        showLoadingDialog("正在加载路线");
+        showLoading1Dialog("正在加载路线");
 	}
 
 	@Override
@@ -68,7 +69,7 @@ public class RoutePlanActivity extends BaseActivity implements OnGetRoutePlanRes
 		PlanNode sNode = PlanNode.withLocation(new LatLng(GlobalParams.latitude, GlobalParams.longitude));
 		mSearch.bikingSearch((new BikingRoutePlanOption())
                 .from(sNode).to(enNode));
-		closeLoadingDialog();
+		closeLoading1Dialog();
 	}
 
 
@@ -256,7 +257,7 @@ public class RoutePlanActivity extends BaseActivity implements OnGetRoutePlanRes
         @Override
         public BitmapDescriptor getStartMarker() {
             if (true) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+                return BitmapDescriptorFactory.fromResource(R.drawable.icon_track_navi_end);
             }
             return null;
         }
@@ -265,12 +266,28 @@ public class RoutePlanActivity extends BaseActivity implements OnGetRoutePlanRes
 		@Override
         public BitmapDescriptor getTerminalMarker() {
             if (true) {
-                return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+                return BitmapDescriptorFactory.fromResource(R.drawable.icon_track_navi_start);
             }
             return null;
         }
 
-
     }
+	 @Override
+	    protected void onPause() {
+	        mMapView.onPause();
+	        super.onPause();
+	    }
 
+	    @Override
+	    protected void onResume() {
+	        mMapView.onResume();
+	        super.onResume();
+	    }
+
+	    @Override
+	    protected void onDestroy() {
+	        mSearch.destroy();
+	        mMapView.onDestroy();
+	        super.onDestroy();
+	    }
 }

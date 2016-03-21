@@ -55,7 +55,7 @@ public class RegisterTwoActivity extends BaseActivity {
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_ok:
-			showLoadingDialog("正在注册");
+			showLoading1Dialog("正在注册");
 			String name = til_name.getEditText().getText().toString();
 			String description = til_description.getEditText().getText().toString();
 //			boolean checkParsResult = checkPars(name,description,name);
@@ -120,23 +120,27 @@ public class RegisterTwoActivity extends BaseActivity {
 					GlobalParams.user.userCommonInfo = result.infos.userInfo.userCommonInfo;
 					Intent intent = new Intent(ct,HomeActivity2.class);
 					if(carid == 0){
-						closeLoadingDialog();
+//						closeLoadingDialog();
+						closeLoading1Dialog();
 						startActivity(intent);
 						finish();
 					}else{
-						setloadingViewContent("正在绑定车子");
+//						setloadingViewContent("正在绑定车子");
+						setLoadingContent("正在绑定车子");
 						bundCar(carid,GlobalParams.user.id);
 					}
 //					
 				}else{
-					showMsgDialog("注册失败"+result.error);
+//					showMsgDialog("注册失败"+result.error);
+					showErrorDialog("注册失败"+result.error);
 				}
 				
 			}
 			
 			@Override
 			public void error(String error) {
-				showMsgDialog("注册失败，连接不上服务器");
+//				showMsgDialog("注册失败，连接不上服务器");
+				showErrorDialog("注册失败，连接不上服务器");
 			}
 		});
 	}
@@ -151,21 +155,24 @@ public class RegisterTwoActivity extends BaseActivity {
 			
 			@Override
 			public void success(ReceiceData<String> result) {
-				closeLoadingDialog();
+				closeLoading1Dialog();
 				if(result.state == 200){
-					showMsgDialog("绑定成功");
+//					showMsgDialog("绑定成功");
+					showErrorDialog("绑定成功");
 					Intent intent = new Intent(ct,HomeActivity2.class);
 					startActivity(intent);
 					finish();
 				}else{
-					showMsgDialog("绑定失败");
+					showErrorDialog("绑定失败");
 				}
 				
 			}
 			
 			@Override
 			public void error(String error) {
-				showMsgDialog("连接不上服务器");
+//				showMsgDialog("连接不上服务器");
+				showErrorDialog("连接不上服务器");
+
 				
 			}
 		});
