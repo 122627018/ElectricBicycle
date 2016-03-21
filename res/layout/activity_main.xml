@@ -1,17 +1,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+   
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/eb_splash"
+    android:orientation="vertical"
     tools:context="com.wxxiaomi.electricbicycle.SplashActivity" >
- <android.support.v7.widget.Toolbar
-                android:id="@+id/sd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#000000"
-                android:minHeight="@dimen/abc_action_bar_default_height_material"
-                 />
+
+    <android.support.v7.widget.Toolbar
+         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:minHeight="@dimen/abc_action_bar_default_height_material" />
 
 </LinearLayout>

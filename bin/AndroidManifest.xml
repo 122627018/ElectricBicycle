@@ -98,7 +98,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="heMfZGPSYgsCBiYxGKxC3wSg" />
+            android:value="osck5RsKrnlanHSDR2PAxPdQ" />
 
         <activity
             android:name=".SplashActivity"
