@@ -36,7 +36,7 @@
             android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textWebEmailAddress"
             android:textColor="@color/white"
              >
         </EditText>
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/titleBlue"
-        android:background="@drawable/home_right_btnshape"
+        android:background="@drawable/selector_demo"
         android:text="确定" />
     </LinearLayout>
 

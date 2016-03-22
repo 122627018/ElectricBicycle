@@ -1,7 +1,7 @@
 package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,16 +27,27 @@ public class BicycleWelcomeInfoActivity extends BaseActivity {
 	@Override
 	protected void initData() {
 		bike = (Bicycle) getIntent().getExtras().get("value");
-		Log.i("wang", "weclcome中bikeid=" + bike.id);
+//		Log.i("wang", "weclcome中bikeid=" + bike.id);
+		if(bike.isbund == 1){
+			btn_bund.setBackgroundColor(Color.GRAY);
+//			btn_bund.setClickable(false);
+			btn_bund.setTextColor(Color.BLACK);
+			btn_bund.setText("本车已被绑定");
+		}
 	}
 
 	@Override
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_bund:
-			Intent intent = new Intent(ct, RegisterOneActivity.class);
-			intent.putExtra("carid", bike.id);
-			startActivity(intent);
+			if(bike.isbund == 1){
+				showErrorDialog("本车已经被绑定");
+			}else{
+				Intent intent = new Intent(ct, RegisterOneActivity.class);
+				intent.putExtra("carid", bike.id);
+				startActivity(intent);
+			}
+			
 			// finish();
 			break;
 

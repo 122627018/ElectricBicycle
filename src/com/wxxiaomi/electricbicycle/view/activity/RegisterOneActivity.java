@@ -1,6 +1,10 @@
 package com.wxxiaomi.electricbicycle.view.activity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -54,11 +58,53 @@ public class RegisterOneActivity extends BaseActivity {
 		setSupportActionBar(toolbar);
 
 	}
-
+	private void showSnackBar(String content) {
+		Snackbar.make(toolbar, content, Snackbar.LENGTH_LONG).show();
+	}
 	@Override
 	protected void initData() {
 		engine = new UserEngineImpl(ct);
 		carid = getIntent().getIntExtra("carid", 0);
+	}
+
+	private boolean checkParsError(String username,String password){
+		til_username.setErrorEnabled(true);
+//		 til_username.setError("不能包含中文");
+		 til_password.setErrorEnabled(true);
+	     if(checkChainse(username)){
+//	    	 til_username.setError("不能包含中文");
+	    	 showSnackBar("不能包含中文");
+	    	 return false;
+	     }else if(username.contains(" ")){
+	    	 til_username.setError("不能含有空格");
+	    	 return false;
+	     }else if("".equals(username)){
+	    	 til_username.setError("用户名不能为空");
+	    	 return false;
+	     }else if("".equals(password)){
+	    	 til_password.setError("密码不能为空");
+	    	 return false;
+	     }
+	     else{
+	    	 til_username.setErrorEnabled(false);
+	    	 til_password.setErrorEnabled(false);
+	    	 return true;
+	     }
+	        		
+	}
+	
+	/**
+	 * 检查是否含有中文
+	 * @param username2
+	 */
+	private boolean checkChainse(String str) {
+		Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
+        Matcher m = p.matcher(str);
+        if (m.find()) {
+           
+            return true;
+        }
+        return false;
 	}
 
 	@Override
@@ -68,7 +114,12 @@ public class RegisterOneActivity extends BaseActivity {
 			username = til_username.getEditText().getText().toString().trim();
 			password = til_password.getEditText().getText().toString().trim();
 			showLoading1Dialog("正在验证....");
-			getPhoneCodeMessage(username,password);
+			if(checkParsError(username, password)){
+				getPhoneCodeMessage(username,password);
+			}else{
+				closeLoading1Dialog();
+			}
+			
 			break;
 		case R.id.btn_debug:
 			
@@ -98,9 +149,7 @@ public class RegisterOneActivity extends BaseActivity {
 //					// 获取短信成功,也就是此手机号可以注册
 					GlobalParams.user = result.infos.userInfo;
 					GoToNext(result.infos.userInfo);
-//					btn_ok.setVisibility(View.VISIBLE);
 				} else {
-//					showMsgDialog(result.error);
 					showErrorDialog(result.error);
 				}
 				
@@ -108,7 +157,7 @@ public class RegisterOneActivity extends BaseActivity {
 			
 			@Override
 			public void error(String error) {
-				// TODO Auto-generated method stub
+				closeLoading1Dialog();
 				showErrorDialog("连接不上服务器");
 			}
 		});

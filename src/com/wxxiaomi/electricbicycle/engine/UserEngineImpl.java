@@ -1,5 +1,7 @@
 package com.wxxiaomi.electricbicycle.engine;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import org.json.JSONObject;
 
@@ -21,21 +23,22 @@ import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 
 public class UserEngineImpl {
-	
+
 	@SuppressWarnings("unused")
 	private Context context;
 	RequestQueue mQueue;
-	
-	
-	
+
 	public UserEngineImpl(Context context) {
 		super();
 		this.context = context;
 		mQueue = Volley.newRequestQueue(context);
 	}
 
-	public void initUserInfoData(String username,String password,final ResultByGetDataListener<InitUserInfo> lis){
-		String url = ConstantValue.SERVER_URL+"ActionServlet?action=inituserinfo"+"&username="+username+"&password="+password;
+	public void initUserInfoData(String username, String password,
+			final ResultByGetDataListener<InitUserInfo> lis) {
+		String url = ConstantValue.SERVER_URL
+				+ "ActionServlet?action=inituserinfo" + "&username=" + username
+				+ "&password=" + password;
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
@@ -57,15 +60,27 @@ public class UserEngineImpl {
 				});
 		mQueue.add(jsonObjectRequest);
 	}
-	
+
+	private String getCodePar(String par) {
+		try {
+			return URLEncoder.encode(par, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return par;
+		}
+
+	}
+
 	/**
 	 * 连接服务器检测手机号是否已被注册 如果未被注册，则获取验证码
 	 * 
 	 * @param phone
 	 *            发送号码
 	 */
-	public void registerUser(String username,String password,final ResultByGetDataListener<Register> lis){
-		String url = ConstantValue.SERVER_URL+"ActionServlet?action=register"+"&username="+username+"&password="+password;
+	public void registerUser(String username, String password,
+			final ResultByGetDataListener<Register> lis) {
+		String url = null;
+		url = ConstantValue.SERVER_URL + "ActionServlet?action=register"
+				+ "&username=" + getCodePar(username) + "&password=" + password;
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
@@ -90,28 +105,25 @@ public class UserEngineImpl {
 
 	/**
 	 * 执行登录操作
-	 * @param username  账号
-	 * @param password  密码
+	 * 
+	 * @param username
+	 *            账号
+	 * @param password
+	 *            密码
 	 * @return
 	 */
-	public void Login(String username,String password,boolean isFirst
-			,final ResultByGetDataListener<Login> lis){
-		String url ;
-		if(isFirst){
-			url= ConstantValue.SERVER_URL+ConstantValue.LOGIN_URL+"&username="+username+"&password="+password+"&isfirst=y";
-		}else{
-			url = ConstantValue.SERVER_URL+ConstantValue.LOGIN_URL+"&username="+username+"&password="+password+"&isfirst=n";
+	public void Login(String username, String password, boolean isFirst,
+			final ResultByGetDataListener<Login> lis) {
+		String url;
+		if (isFirst) {
+			url = ConstantValue.SERVER_URL + ConstantValue.LOGIN_URL
+					+ "&username=" + username + "&password=" + password
+					+ "&isfirst=y";
+		} else {
+			url = ConstantValue.SERVER_URL + ConstantValue.LOGIN_URL
+					+ "&username=" + username + "&password=" + password
+					+ "&isfirst=n";
 		}
-//		String json = HttpClientUtil.doGet(url);
-//		Log.i("wang", "登陆的json="+json);
-//		try {
-//			Gson gson = new Gson();
-//			ReceiceData<Login> fromJson = gson.fromJson(json, new TypeToken<ReceiceData<Login>>(){}.getType());
-//			return fromJson;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return null;
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
@@ -132,17 +144,21 @@ public class UserEngineImpl {
 					}
 				});
 		mQueue.add(jsonObjectRequest);
-		
+
 	}
-	
-//	public void RegisterWithCar(String username,String password,String name,int carid
-//			,final ResultByGetDataListener<Register> lis){
-//		String url = ConstantValue.SERVER_URL+"ActionServlet?action=register&name="+name+"&username="+username+"&password="+password;
-//	}
-	
-	public void BundCar(int userid,int carid
-			,final ResultByGetDataListener<String> lis){
-		String url = ConstantValue.SERVER_URL+"ActionServlet?action=bundbicycle&userid="+userid+"&cardid="+carid;
+
+	// public void RegisterWithCar(String username,String password,String
+	// name,int carid
+	// ,final ResultByGetDataListener<Register> lis){
+	// String url =
+	// ConstantValue.SERVER_URL+"ActionServlet?action=register&name="+name+"&username="+username+"&password="+password;
+	// }
+
+	public void BundCar(int userid, int carid,
+			final ResultByGetDataListener<String> lis) {
+		String url = ConstantValue.SERVER_URL
+				+ "ActionServlet?action=bundbicycle&userid=" + userid
+				+ "&cardid=" + carid;
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
@@ -164,22 +180,28 @@ public class UserEngineImpl {
 				});
 		mQueue.add(jsonObjectRequest);
 	}
-	
+
 	/**
 	 * 注册一个用户
-	 * @param userid 
-	 * @param username 账号
-	 * @param password 密码
-	 * @param name 用户名
-	 * @param headUrl2 
+	 * 
+	 * @param userid
+	 * @param username
+	 *            账号
+	 * @param password
+	 *            密码
+	 * @param name
+	 *            用户名
+	 * @param headUrl2
 	 * @return
 	 */
-	public void ImproveUserInfo(int userid, String username,String name,String description,String headUrl
-			, final ResultByGetDataListener<Register> lis){
-		String url = ConstantValue.SERVER_URL+"ActionServlet?action=improveuserinfo&name="
-			+name+"&description="+description+"&headUrl="+headUrl
-			+"&userid="+userid+"&username="+username;
-		Log.i("wang", "url="+url);
+	public void ImproveUserInfo(int userid, String username, String name,
+			String description, String headUrl,
+			final ResultByGetDataListener<Register> lis) {
+		String url = ConstantValue.SERVER_URL
+				+ "ActionServlet?action=improveuserinfo&name=" + getCodePar(name)
+				+ "&description=" + getCodePar(description) + "&headUrl=" + headUrl
+				+ "&userid=" + userid + "&username=" + username;
+//		Log.i("wang", "url=" + url);
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
@@ -200,6 +222,6 @@ public class UserEngineImpl {
 					}
 				});
 		mQueue.add(jsonObjectRequest);
-//		
+		//
 	}
 }

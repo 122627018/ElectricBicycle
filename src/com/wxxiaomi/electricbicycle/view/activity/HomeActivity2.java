@@ -87,11 +87,6 @@ public class HomeActivity2 extends BaseActivity {
 	 */
 	private BaiduMap mBaiduMap;
 
-	/**
-	 * 联系人按钮
-	 */
-	// private Button btn_contact;
-	// private Button btn_nav;
 
 	boolean isFirstLoc = true; // 是否首次定位
 
@@ -118,8 +113,6 @@ public class HomeActivity2 extends BaseActivity {
 	 */
 	private UserCommonInfo currentNearPerson;
 
-//	private TranslateAnimation mShowAction;
-//	private TranslateAnimation mHiddenAction;
 
 	/**
 	 * 附近的人的view
@@ -147,6 +140,7 @@ public class HomeActivity2 extends BaseActivity {
 	private ImageEngineImpl imageEngine;
 	
 	private ImageView iv_contact;
+	private TextView tv_name;
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -171,6 +165,7 @@ public class HomeActivity2 extends BaseActivity {
 		iv_head = (CircularImageView) rl_nearby_view.findViewById(R.id.iv_head);
 		iv_contact = (ImageView) findViewById(R.id.iv_contact);
 		iv_contact.setOnClickListener(this);
+		tv_name = (TextView) findViewById(R.id.tv_name);
 //		mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
 //				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
 //				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
@@ -225,7 +220,7 @@ public class HomeActivity2 extends BaseActivity {
 		});
 	
 		initMapMarkerClickListener();
-
+		tv_name.setText(GlobalParams.user.userCommonInfo.name);
 	}
 
 	/**
@@ -346,12 +341,9 @@ public class HomeActivity2 extends BaseActivity {
 	 * @param currentNearPerson2
 	 */
 	private void onNearMarkerClick(final Marker marker, UserCommonInfo currentNearPerson2) {
-//		iv_head.setImageBitmap(null);
-//		iv_head.setim
 		tv_near_name.setText(currentNearPerson.name);
 		imageEngine.getHeadImageBySimple(iv_head,
 				currentNearPerson.head,new HeadImageGetSuccess() {
-					
 					@Override
 					public void success(Bitmap arg0) {
 						LatLng ll = marker.getPosition();
@@ -366,6 +358,7 @@ public class HomeActivity2 extends BaseActivity {
 		mInfoWindow = new InfoWindow(rl_nearby_view, ll,
 				-47);
 		mBaiduMap.showInfoWindow(mInfoWindow);
+		
 	}
 
 	
@@ -478,11 +471,11 @@ public class HomeActivity2 extends BaseActivity {
 	@Override
 	protected void processClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_contact:
-			// 联系人
-			Intent intent = new Intent(ct, ContactActivity.class);
-			startActivity(intent);
-			break;
+//		case R.id.btn_contact:
+//			// 联系人
+//			Intent intent = new Intent(ct, ContactActivity.class);
+//			startActivity(intent);
+//			break;
 		case R.id.btn_nav:
 			break;
 		case R.id.btn_go:

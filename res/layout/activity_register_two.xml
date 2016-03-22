@@ -12,13 +12,14 @@
         android:layout_height="wrap_content"
         android:background="@color/titleBlue"
         android:minHeight="?attr/actionBarSize"
-        app1:title="" />
+        app1:title="完善信息" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" >
@@ -42,7 +43,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textPersonName" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -54,14 +55,14 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textShortMessage" />
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_ok"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/home_right_btnshape"
+                android:background="@drawable/selector_demo"
                 android:text="确定" />
         </LinearLayout>
     </ScrollView>

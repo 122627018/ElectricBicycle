@@ -29,13 +29,14 @@
             android:src="@drawable/tou"
             />
         
-        <EditText 
+        <TextView 
+            android:gravity="center_vertical"
+            android:id="@+id/tv_name"
             android:textColor="#666666"
              android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/iv_my_head"
-            android:layout_toLeftOf="@+id/btn_contact"
-            android:hint="desert"
+            android:layout_toLeftOf="@+id/iv_contact"
             android:textColorHint="#666666"
             android:textSize="14sp"
             />

@@ -38,6 +38,7 @@ public class ImageEngineImpl {
 
 	public void getHeadImageBySimple(final ImageView view,String url,final HeadImageGetSuccess lis) {
 		view.setImageResource(R.drawable.ic_launcher);
+		try{
 		ImageRequest imgRequest = new ImageRequest(url,
 				new Response.Listener<Bitmap>() {
 					@Override
@@ -50,8 +51,14 @@ public class ImageEngineImpl {
 					public void onErrorResponse(VolleyError arg0) {
 
 					}
+					
+					
 				});
 		mQueue.add(imgRequest);
+		}catch(Exception e){
+			e.printStackTrace();
+			return;
+		}
 	}
 
 	public void getHeadImageByUrl(ImageView view, String url) {

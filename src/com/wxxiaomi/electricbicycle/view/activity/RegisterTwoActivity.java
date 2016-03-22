@@ -58,19 +58,11 @@ public class RegisterTwoActivity extends BaseActivity {
 			showLoading1Dialog("正在注册");
 			String name = til_name.getEditText().getText().toString();
 			String description = til_description.getEditText().getText().toString();
-//			boolean checkParsResult = checkPars(name,description,name);
-			if(true){
+			boolean checkParsResult = checkPars(name,description);
+			if(checkParsResult){
 //				连接服务器进行注册
 				improveUserInfo(name,description,"",userInfo.id,userInfo.username);
 			}
-			
-//			showLoadingDialog("正在注册..");
-			//确定按钮
-//			String username = et_username.getText().toString().trim();
-//			String password = et_password.getText().toString().trim();
-//			String name = et_name.getText().toString().trim();
-//			RegisterFromServer(username,password,name);
-			
 			break;
 
 		default:
@@ -79,36 +71,16 @@ public class RegisterTwoActivity extends BaseActivity {
 		
 	}
 
-	/**
-	 * 检查所有需要输入的参数
-	 * @param passwordOne
-	 * @param passwordTwo
-	 * @param name
-	 * @param username 
-	 * @param userid 
-	 * @return
-	 */
-//	private boolean checkPars(String passwordOne, String passwordTwo, String name) {
-//		boolean flag = false;
-//		if("".equals(passwordOne)){
-//			//密码为空
-//		}else if("".equals(passwordTwo)){
-//			//验证密码为空
-//		}else if("".equals(name)){
-//			//姓名为空
-//		}else{
-//			boolean checkResult = checkSameAsPassword(passwordOne,passwordTwo);
-//			if(checkResult){
-//				//俩个密码一样
-//				flag = true;
-//			}else{
-//				//俩个密码不一样
-//			}
-//		}
-//		return flag;
-//	}
 
 
+	private boolean checkPars(String name, String description) {
+		if("".equals(name)){
+			return false;
+		}else if("".equals(description)){
+			return false;
+		}
+		return true;
+	}
 
 	private void improveUserInfo(final String name, final String description,
 			final String headUrl, int userid, String username) {
@@ -120,12 +92,10 @@ public class RegisterTwoActivity extends BaseActivity {
 					GlobalParams.user.userCommonInfo = result.infos.userInfo.userCommonInfo;
 					Intent intent = new Intent(ct,HomeActivity2.class);
 					if(carid == 0){
-//						closeLoadingDialog();
 						closeLoading1Dialog();
 						startActivity(intent);
 						finish();
 					}else{
-//						setloadingViewContent("正在绑定车子");
 						setLoadingContent("正在绑定车子");
 						bundCar(carid,GlobalParams.user.id);
 					}
@@ -170,7 +140,6 @@ public class RegisterTwoActivity extends BaseActivity {
 			
 			@Override
 			public void error(String error) {
-//				showMsgDialog("连接不上服务器");
 				showErrorDialog("连接不上服务器");
 
 				
@@ -181,7 +150,6 @@ public class RegisterTwoActivity extends BaseActivity {
 	
 	@Override
 		protected void onDestroy() {
-			// TODO Auto-generated method stub
 		AppManager.getAppManager().finishActivity(this);
 			super.onDestroy();
 			
