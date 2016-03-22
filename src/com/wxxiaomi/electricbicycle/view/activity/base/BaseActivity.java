@@ -1,6 +1,7 @@
 package com.wxxiaomi.electricbicycle.view.activity.base;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	protected ImageButton rightImgBtn;
 	protected TextView titleTv;
 	protected TextView rightbutton;
-	protected static UIHandler handler = new UIHandler(Looper.getMainLooper());
+	protected UIHandler handler = new UIHandler(Looper.getMainLooper());
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,15 @@ public abstract class BaseActivity extends AppCompatActivity implements
 		default:
 			break;
 		}
+	}
+	
+	protected void showLoading2Dialog(Activity ct,String content){
+		this.ct = ct;
+		Message msg = new Message();
+		msg.what = 1;
+		msg.obj = content;
+//		handler(msg);
+		handler.sendMessage(msg);
 	}
 	
 	protected void showLoading1Dialog(String content){
@@ -125,6 +135,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
 	 * @param content  加载dialog显示的内容
 	 */
 	private void showLoadingDialog(String content){
+		Log.i("wang", "name="+ct.getApplicationInfo().className);
 		dialog = new LoadingDialog(ct).builder().setMessage(content);
 		dialog.show();
 	}

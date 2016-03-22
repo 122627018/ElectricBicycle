@@ -81,15 +81,14 @@ public class WelcomeActivity extends BaseActivity {
 	 * @param scanResult
 	 */
 	private void getBicycleInfo(String scanResult) {
-//		showLoadingDialog("正在获取车辆信息");
-		showLoading1Dialog("正在获取车辆信息");
+//		setHandler(new UIHandler(Looper.getMainLooper()));
+		showLoading2Dialog(this,"正在获取车辆信息");
 		// 连接服务器
 		engine.getBicycleInfo(scanResult,
 				new ResultByGetDataListener<Bicycle>() {
 
 					@Override
 					public void success(ReceiceData<Bicycle> result) {
-//						closeLoadingDialog();
 						closeLoading1Dialog();
 						if (result.state == 200) {
 							Intent intent = new Intent(ct,
@@ -97,16 +96,13 @@ public class WelcomeActivity extends BaseActivity {
 							intent.putExtra("value", result.infos);
 							startActivity(intent);
 						} else {
-//							showMsgDialog(result.error);
 							showErrorDialog(result.error);
 						}
 					}
 
 					@Override
 					public void error(String error) {
-//						closeLoadingDialog();
 						closeLoading1Dialog();
-//						showMsgDialog("连接服务器失败");
 						showErrorDialog("连接服务器失败");
 					}
 				});

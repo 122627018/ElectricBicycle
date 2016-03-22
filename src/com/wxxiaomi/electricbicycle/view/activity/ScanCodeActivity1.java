@@ -49,19 +49,8 @@ public class ScanCodeActivity1 extends Activity implements Callback {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scancode1);
 		AppManager.getAppManager().addActivity(this);
-		//ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-		
-//		Button mButtonBack = (Button) findViewById(R.id.button_back);
-//		mButtonBack.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				ScanCodeActivity1.this.finish();
-//				
-//			}
-//		});
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
 	}

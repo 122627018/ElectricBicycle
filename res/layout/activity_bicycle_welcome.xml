@@ -5,61 +5,54 @@
     android:layout_height="match_parent"
     android:background="@drawable/activity_welcome_backgroud" >
 
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:id="@+id/iv_iv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/demo3" />
+
     <TextView
-        android:layout_marginTop="35dp"
-      android:gravity="center"
         android:id="@+id/tv_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="升特锂电电动滑板车"
         android:textColor="#ffffff"
         android:textSize="28sp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tv_name"
-        android:layout_above="@+id/btn_bund"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/lin_shape"
-        android:orientation="vertical"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp" >
+        android:layout_below="@+id/iv_iv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#3949ab"
+        android:orientation="vertical" >
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="2dp"
             android:gravity="center"
-            android:text="此处显示图片" />
-
-        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="2dp"
+            android:layout_weight="1"
             android:text="上架时间：2016-02-26 11:40:01\n商品毛重：20.0kg\n类别：两轮电动车\n价位：4000-4999\n轮径：其它\n电压：36V"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="包装清单:车子x1、充电器x1、打气筒x1、工具包x1、说明书x1 售后包装卡x1 防伪验证卡x1"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
 
-    <Button
-        android:background="#50ff1cae"
-        android:id="@+id/btn_bund"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="绑定此车" />
+            <Button
+                android:id="@+id/btn_bund"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="#50ff1cae"
+                android:text="绑定此车" />
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -97,7 +97,7 @@ public class SearchActivity extends BaseActivity implements
 		sugAdapter = new PoiSearchResultAdapter(ct,new MyPoiSuggrestionResultClickListener() {
 			@Override
 			public void click(int position) {
-				showLoading1Dialog("正在加载中");
+//				showLoading1Dialog("正在加载中");
 				SuggestionInfo suggestionInfo = sugAdapter.getInfoList().get(position);
 				LatLng pt = suggestionInfo.pt;
 				PoiInfo poiInf = new PoiInfo();
@@ -105,7 +105,7 @@ public class SearchActivity extends BaseActivity implements
 				GlobalParams.poiInf = poiInf;
 				Intent intent = new Intent(ct,
 						RoutePlanActivity.class);
-				closeLoading1Dialog();
+//				closeLoading1Dialog();
 				startActivity(intent);
 			}
 		});

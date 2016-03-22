@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -49,6 +50,7 @@ import com.wxxiaomi.electricbicycle.bean.format.NearByPerson;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson.UserLocatInfo;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.ImageEngineImpl;
+import com.wxxiaomi.electricbicycle.engine.ImageEngineImpl.HeadImageGetSuccess;
 import com.wxxiaomi.electricbicycle.engine.MapEngineImpl;
 import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
@@ -143,6 +145,8 @@ public class HomeActivity2 extends BaseActivity {
 	 * 图片引擎
 	 */
 	private ImageEngineImpl imageEngine;
+	
+	private ImageView iv_contact;
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -165,7 +169,8 @@ public class HomeActivity2 extends BaseActivity {
 		 iv_near_cancle = (ImageView)
 		 rl_nearby_view.findViewById(R.id.iv_near_cancle);
 		iv_head = (CircularImageView) rl_nearby_view.findViewById(R.id.iv_head);
-		
+		iv_contact = (ImageView) findViewById(R.id.iv_contact);
+		iv_contact.setOnClickListener(this);
 //		mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
 //				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
 //				-1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
@@ -196,7 +201,6 @@ public class HomeActivity2 extends BaseActivity {
 		zoom.setVisibility(View.GONE);
 	}
 
-	@SuppressWarnings("unused")
 	private void showSnackBar(String content) {
 		Snackbar.make(Layout, content, Snackbar.LENGTH_LONG).show();
 	}
@@ -341,10 +345,23 @@ public class HomeActivity2 extends BaseActivity {
 	 * @param marker
 	 * @param currentNearPerson2
 	 */
-	private void onNearMarkerClick(Marker marker, UserCommonInfo currentNearPerson2) {
+	private void onNearMarkerClick(final Marker marker, UserCommonInfo currentNearPerson2) {
+//		iv_head.setImageBitmap(null);
+//		iv_head.setim
 		tv_near_name.setText(currentNearPerson.name);
-		imageEngine.getHeadImageByUrl(iv_head,
-				currentNearPerson.head);
+		imageEngine.getHeadImageBySimple(iv_head,
+				currentNearPerson.head,new HeadImageGetSuccess() {
+					
+					@Override
+					public void success(Bitmap arg0) {
+						LatLng ll = marker.getPosition();
+						mInfoWindow = new InfoWindow(rl_nearby_view, ll,
+								-47);
+						mBaiduMap.showInfoWindow(mInfoWindow);
+					}
+				});
+//		imageEngine.getHeadImageByUrl(iv_head,
+//				currentNearPerson.head);
 		LatLng ll = marker.getPosition();
 		mInfoWindow = new InfoWindow(rl_nearby_view, ll,
 				-47);
@@ -472,6 +489,8 @@ public class HomeActivity2 extends BaseActivity {
 			Intent intent2 = new Intent(ct, SearchActivity.class);
 			startActivity(intent2);
 			break;
+		case R.id.iv_contact:
+			showSnackBar("beta版本不包含此功能");
 		default:
 			break;
 		}

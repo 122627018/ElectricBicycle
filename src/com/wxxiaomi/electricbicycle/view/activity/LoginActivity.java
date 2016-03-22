@@ -73,6 +73,8 @@ public class LoginActivity extends BaseActivity {
 				// showLoadingDialog("正在登录..");
 				LoginFromServer(username, password);
 				return;
+			}else{
+				closeLoading1Dialog();
 			}
 			break;
 //		case R.id.btn_register:
