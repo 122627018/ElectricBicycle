@@ -48,8 +48,6 @@ public class LoginActivity extends BaseActivity {
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setHomeButtonEnabled(true); // 设置返回键可用
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//		btn_register = (Button) findViewById(R.id.btn_register);
-//		btn_register.setOnClickListener(this);
 	}
 
 	@Override
@@ -238,34 +236,33 @@ public class LoginActivity extends BaseActivity {
 	 */
 	private boolean checkInputString(String username, String password) {
 
-		boolean flag = true;
 		if ("".equals(username)) {
 			// 用户名不能为空
 //			showMsgDialog("用户名不能为空");
-			showErrorDialog("用户名不能为空");
-			flag = false;
+//			showErrorDialog("用户名不能为空");
+			til_username.setError("用户名不能为空");
+			
+			return false;
 		} else if ("".equals(password)) {
 			// 密码不能为空
-//			showMsgDialog("密码不能为空");
 			showErrorDialog("密码不能为空");
-			flag = false;
+			return false;
 		} else if (username.contains(" ")) {
 			// 用户名出现空格
-//			showMsgDialog("用户名出现空格");
 			showErrorDialog("用户名出现空格");
-			flag = false;
+			return false;
 		} else if (username.length() < 6) {
 			// 用户名长度少于6位
-//			showMsgDialog("用户名长度少于6位");
 			showErrorDialog("用户名长度少于6位");
-			flag = false;
+			return false;
 		} else if (password.length() < 6) {
 			// 密码少于6位
-//			showMsgDialog("密码少于6位");
 			showErrorDialog("密码少于6位");
-			flag = false;
+			return false;
+			
+		}else{
+			return true;
 		}
-		return flag;
 	}
 	
 
