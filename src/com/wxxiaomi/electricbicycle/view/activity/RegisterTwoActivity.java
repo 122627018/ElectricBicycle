@@ -2,7 +2,8 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 
@@ -47,8 +48,50 @@ public class RegisterTwoActivity extends BaseActivity {
 		engine = new UserEngineImpl(ct);
 		carid = getIntent().getIntExtra("carid", 0);
 		userInfo = (User) getIntent().getExtras().get("userInfo");
-		Log.i("wang", "userInfo.id="+userInfo.id);
-//		Log.i("wang", "在第二个注册页面的initData()中取得的phone="+phone);
+		til_name.getEditText().addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				til_name.setError("");
+				til_name.setEnabled(false);
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		til_description.getEditText().addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				til_description.setError("");
+				til_description.setEnabled(false);
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	@Override

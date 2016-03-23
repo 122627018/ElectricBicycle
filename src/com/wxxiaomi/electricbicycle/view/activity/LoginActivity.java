@@ -3,6 +3,8 @@ package com.wxxiaomi.electricbicycle.view.activity;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.wxxiaomi.electricbicycle.bean.format.Login;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
 import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
+import com.wxxiaomi.electricbicycle.util.MyUtils;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 /**
@@ -32,7 +35,6 @@ public class LoginActivity extends BaseActivity {
 	private TextInputLayout til_username;
 	private TextInputLayout til_password;
 	private Button btn_ok;
-//	private Button btn_register;
 	private UserEngineImpl engine;
 	private Toolbar toolbar;
 
@@ -53,6 +55,49 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	protected void initData() {
 		engine = new UserEngineImpl(ct);
+		til_username.getEditText().addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				til_username.setError("");
+				til_username.setEnabled(false);
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+//				checkFormat(til_username);
+			}
+		});
+		til_password.getEditText().addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				til_password.setError("");
+				til_password.setEnabled(false);
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+//				checkFormat(til_password);
+			}
+		});
 	}
 
 	/**
@@ -62,26 +107,19 @@ public class LoginActivity extends BaseActivity {
 	protected void processClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_ok:
-			showLoading1Dialog("正在登陆");
-//			showLoadingDialog("正在登陆");
-			// 点击确定按钮
-			String username = til_username.getEditText().getText().toString().trim();
-			String password = til_password.getEditText().getText().toString().trim();
-			if (checkInputString(username, password)) {
-				// showLoadingDialog("正在登录..");
+			
+			String username = til_username.getEditText().getText().toString()
+					.trim();
+			String password = til_password.getEditText().getText().toString()
+					.trim();
+			if (checkFormat(til_username) && checkFormat(til_password)) {
+				showLoading1Dialog("正在登陆");
 				LoginFromServer(username, password);
 				return;
-			}else{
-				closeLoading1Dialog();
+			} else {
+//				closeLoading1Dialog();
 			}
 			break;
-//		case R.id.btn_register:
-//			Log.i("wang", "case R.id.btn_register");
-//			Intent intent = new Intent(ct, RegisterOneActivity.class);
-//			startActivity(intent);
-//			finish();
-//			break;
-
 		default:
 			break;
 		}
@@ -100,14 +138,11 @@ public class LoginActivity extends BaseActivity {
 
 					@Override
 					public void success(ReceiceData<Login> result) {
-						
+
 						if (result.state == 200) {
-							
-//							closeLoadingDialog();
 							// //登录成功
 							GlobalParams.user = result.infos.userInfo;
 							LoginFromEM(result.infos.userInfo);
-//							AfterLoginCheck(result.infos.userInfo);
 						} else {
 							closeLoading1Dialog();
 							showErrorDialog("登录失败" + result.error);
@@ -186,10 +221,7 @@ public class LoginActivity extends BaseActivity {
 	 * 检查本地是否有此账号相关的信息 如果有就取出 如果没有就连接服务器获取
 	 */
 	protected void AfterLoginCheck(final User userInfo) {
-//		closeLoadingDialog();
-//		setloadingViewContent("正在初始化用户信息");
-//		showLoadingDialog("正在初始化用户信息");
-		// 本地是否有该账号信息
+		// 本地是否有该账号信息d
 		// boolean isHasUserInfo = false;
 		// 先默认没有该账号信息
 		// showLoadingDialog("正在初始化账号相关信息");
@@ -227,44 +259,64 @@ public class LoginActivity extends BaseActivity {
 				});
 	}
 
-	/**
-	 * 对输入的用户名和密码进行字符校验
-	 * 
-	 * @param username
-	 * @param password
-	 * @return
-	 */
-	private boolean checkInputString(String username, String password) {
-
-		if ("".equals(username)) {
-			// 用户名不能为空
-//			showMsgDialog("用户名不能为空");
-//			showErrorDialog("用户名不能为空");
-			til_username.setError("用户名不能为空");
-			
+	private boolean checkFormat(TextInputLayout strLayout) {
+		String str = strLayout.getEditText().getText().toString().trim();
+		if ("".equals(str)){
+			strLayout.setError("不能为空");
 			return false;
-		} else if ("".equals(password)) {
-			// 密码不能为空
-			showErrorDialog("密码不能为空");
+		}else if(str.contains(" ")){
+			strLayout.setError("出现非法字符");
 			return false;
-		} else if (username.contains(" ")) {
-			// 用户名出现空格
-			showErrorDialog("用户名出现空格");
+		}else if(MyUtils.checkChainse(str)){
+			strLayout.setError("不能包含中文");
 			return false;
-		} else if (username.length() < 6) {
-			// 用户名长度少于6位
-			showErrorDialog("用户名长度少于6位");
+		}
+		else if(str.length() < 6){
+			strLayout.setError("长度小于6");
 			return false;
-		} else if (password.length() < 6) {
-			// 密码少于6位
-			showErrorDialog("密码少于6位");
-			return false;
-			
 		}else{
+			strLayout.setEnabled(false);
 			return true;
 		}
 	}
-	
+
+//	/**
+//	 * 对输入的用户名和密码进行字符校验
+//	 * 
+//	 * @param username
+//	 * @param password
+//	 * @return
+//	 */
+//	private boolean checkInputString(String username, String password) {
+//
+//		if ("".equals(username)) {
+//			// 用户名不能为空
+//			// showMsgDialog("用户名不能为空");
+//			// showErrorDialog("用户名不能为空");
+//			til_username.setError("用户名不能为空");
+//
+//			return false;
+//		} else if ("".equals(password)) {
+//			// 密码不能为空
+//			showErrorDialog("密码不能为空");
+//			return false;
+//		} else if (username.contains(" ")) {
+//			// 用户名出现空格
+//			showErrorDialog("用户名出现空格");
+//			return false;
+//		} else if (username.length() < 6) {
+//			// 用户名长度少于6位
+//			showErrorDialog("用户名长度少于6位");
+//			return false;
+//		} else if (password.length() < 6) {
+//			// 密码少于6位
+//			showErrorDialog("密码少于6位");
+//			return false;
+//
+//		} else {
+//			return true;
+//		}
+//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -280,7 +332,7 @@ public class LoginActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		AppManager.getAppManager().finishActivity(this);
 		super.onDestroy();
-	
+
 	}
 
 }

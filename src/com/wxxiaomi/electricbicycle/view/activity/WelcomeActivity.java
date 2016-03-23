@@ -29,7 +29,7 @@ public class WelcomeActivity extends BaseActivity {
 		btn_login = (Button) findViewById(R.id.btn_login);
 		btn_login.setOnClickListener(this);
 		btn_scan.setOnClickListener(this);
-		
+
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class WelcomeActivity extends BaseActivity {
 			startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			break;
 		case R.id.btn_login:
-			Intent intent2 = new Intent(ct,LoginActivity.class);
+			Intent intent2 = new Intent(ct, LoginActivity.class);
 			startActivity(intent2);
 			break;
 
@@ -81,33 +81,42 @@ public class WelcomeActivity extends BaseActivity {
 	 * @param scanResult
 	 */
 	private void getBicycleInfo(String scanResult) {
-//		setHandler(new UIHandler(Looper.getMainLooper()));
-		showLoading2Dialog(this,"正在获取车辆信息");
-		// 连接服务器
-		engine.getBicycleInfo(scanResult,
-				new ResultByGetDataListener<Bicycle>() {
+		try {
+			int cardid = Integer.valueOf(scanResult);
+			if ((cardid < 6)) {
+				showLoading2Dialog(this, "正在获取车辆信息");
+				// 连接服务器
+				engine.getBicycleInfo(scanResult,
+						new ResultByGetDataListener<Bicycle>() {
 
-					@Override
-					public void success(ReceiceData<Bicycle> result) {
-						closeLoading1Dialog();
-						if (result.state == 200) {
-							Intent intent = new Intent(ct,
-									BicycleWelcomeInfoActivity.class);
-							intent.putExtra("value", result.infos);
-							startActivity(intent);
-						} else {
-							showErrorDialog(result.error);
-						}
-					}
+							@Override
+							public void success(ReceiceData<Bicycle> result) {
+								closeLoading1Dialog();
+								if (result.state == 200) {
+									Intent intent = new Intent(ct,
+											BicycleWelcomeInfoActivity.class);
+									intent.putExtra("value", result.infos);
+									startActivity(intent);
+								} else {
+									showErrorDialog(result.error);
+								}
+							}
 
-					@Override
-					public void error(String error) {
-						closeLoading1Dialog();
-						showErrorDialog("连接服务器失败");
-					}
-				});
+							@Override
+							public void error(String error) {
+								closeLoading1Dialog();
+								showErrorDialog("连接服务器失败");
+							}
+						});
+			}else{
+				showErrorDialog("非法二维码");
+			}
+		} catch (Exception e) {
+			showErrorDialog("非法二维码");
+		}
+
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
