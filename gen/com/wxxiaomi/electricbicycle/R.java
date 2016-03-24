@@ -3292,28 +3292,29 @@ containing a value of this type.
         public static final int ic_person_add_black_36dp=0x7f02010d;
         public static final int ic_person_add_gray_36dp=0x7f02010e;
         public static final int ic_person_outline_white_36dp=0x7f02010f;
-        public static final int icon_landing_arrow=0x7f020110;
-        public static final int icon_marka=0x7f020111;
-        public static final int icon_markb=0x7f020112;
-        public static final int icon_markc=0x7f020113;
-        public static final int icon_markd=0x7f020114;
-        public static final int icon_track_navi_end=0x7f020115;
-        public static final int icon_track_navi_start=0x7f020116;
-        public static final int lin_image_shape=0x7f020117;
-        public static final int lin_shape=0x7f020118;
-        public static final int notification_template_icon_bg=0x7f020122;
-        public static final int popupmap=0x7f020119;
-        public static final int roads=0x7f02011a;
-        public static final int round=0x7f02011b;
-        public static final int selector_demo=0x7f02011c;
-        public static final int selector_homeact_smallbtn=0x7f02011d;
-        public static final int semi_black=0x7f020123;
-        public static final int snackbar_background=0x7f02011e;
-        public static final int text_black=0x7f020125;
-        public static final int text_white=0x7f020124;
-        public static final int tou=0x7f02011f;
-        public static final int track_nav_statistic_icon=0x7f020120;
-        public static final int wallet_base_coupon_dail=0x7f020121;
+        public static final int ic_person_pin_black_36dp=0x7f020110;
+        public static final int icon_landing_arrow=0x7f020111;
+        public static final int icon_marka=0x7f020112;
+        public static final int icon_markb=0x7f020113;
+        public static final int icon_markc=0x7f020114;
+        public static final int icon_markd=0x7f020115;
+        public static final int icon_track_navi_end=0x7f020116;
+        public static final int icon_track_navi_start=0x7f020117;
+        public static final int lin_image_shape=0x7f020118;
+        public static final int lin_shape=0x7f020119;
+        public static final int notification_template_icon_bg=0x7f020123;
+        public static final int popupmap=0x7f02011a;
+        public static final int roads=0x7f02011b;
+        public static final int round=0x7f02011c;
+        public static final int selector_demo=0x7f02011d;
+        public static final int selector_homeact_smallbtn=0x7f02011e;
+        public static final int semi_black=0x7f020124;
+        public static final int snackbar_background=0x7f02011f;
+        public static final int text_black=0x7f020126;
+        public static final int text_white=0x7f020125;
+        public static final int tou=0x7f020120;
+        public static final int track_nav_statistic_icon=0x7f020121;
+        public static final int wallet_base_coupon_dail=0x7f020122;
     }
     public static final class id {
         public static final int about_version_code=0x7f0a0019;
@@ -3332,8 +3333,8 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0a0068;
         public static final int action_mode_bar_stub=0x7f0a0067;
         public static final int action_mode_close_button=0x7f0a004d;
-        public static final int action_search=0x7f0a010f;
-        public static final int action_settings=0x7f0a010e;
+        public static final int action_search=0x7f0a0110;
+        public static final int action_settings=0x7f0a010f;
         public static final int activity_chooser_view_content=0x7f0a004e;
         public static final int alertTitle=0x7f0a005a;
         public static final int alert_message=0x7f0a00a0;
@@ -3440,8 +3441,8 @@ containing a value of this type.
         public static final int iv_icon=0x7f0a00d5;
         public static final int iv_iv=0x7f0a007b;
         public static final int iv_my_head=0x7f0a0082;
-        public static final int iv_near_add=0x7f0a010c;
-        public static final int iv_near_cancle=0x7f0a010d;
+        public static final int iv_near_add=0x7f0a010d;
+        public static final int iv_near_cancle=0x7f0a010e;
         public static final int iv_switch_close=0x7f0a00f0;
         public static final int iv_switch_open=0x7f0a00ef;
         public static final int iv_unread_voice=0x7f0a00d0;
@@ -3570,6 +3571,7 @@ containing a value of this type.
         public static final int tv_chatcontent=0x7f0a00c5;
         public static final int tv_city=0x7f0a00fa;
         public static final int tv_delivered=0x7f0a00d3;
+        public static final int tv_demoiv=0x7f0a010b;
         public static final int tv_emname=0x7f0a00f8;
         public static final int tv_file_name=0x7f0a00c1;
         public static final int tv_file_size=0x7f0a00c2;
@@ -3577,7 +3579,7 @@ containing a value of this type.
         public static final int tv_length=0x7f0a00cf;
         public static final int tv_location=0x7f0a00c4;
         public static final int tv_name=0x7f0a007c;
-        public static final int tv_near_name=0x7f0a010b;
+        public static final int tv_near_name=0x7f0a010c;
         public static final int tv_noresult=0x7f0a0099;
         public static final int tv_title=0x7f0a00f9;
         public static final int tv_userid=0x7f0a00bf;
@@ -3743,7 +3745,8 @@ containing a value of this type.
         public static final int select_dialog_multichoice_material=0x7f03006d;
         public static final int select_dialog_singlechoice_material=0x7f03006e;
         public static final int support_simple_spinner_dropdown_item=0x7f03006f;
-        public static final int view_home_nearby=0x7f030070;
+        public static final int view_home_demo=0x7f030070;
+        public static final int view_home_nearby=0x7f030071;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;

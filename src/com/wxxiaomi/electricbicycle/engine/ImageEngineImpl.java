@@ -27,6 +27,29 @@ public class ImageEngineImpl {
 		mQueue = Volley.newRequestQueue(context);
 	}
 	
+	public void getHeadBitmap(String url,final HeadImageGetSuccess lis){
+		try{
+			ImageRequest imgRequest = new ImageRequest(url,
+					new Response.Listener<Bitmap>() {
+						@Override
+						public void onResponse(Bitmap arg0) {
+							lis.success(arg0);
+						}
+					}, 300, 200, Config.ARGB_8888, new ErrorListener() {
+						@Override
+						public void onErrorResponse(VolleyError arg0) {
+
+						}
+						
+						
+					});
+			mQueue.add(imgRequest);
+			}catch(Exception e){
+				e.printStackTrace();
+				return;
+			}
+	}
+	
 	/**
 	 * 图片加载完成的监听
 	 * @author Administrator
