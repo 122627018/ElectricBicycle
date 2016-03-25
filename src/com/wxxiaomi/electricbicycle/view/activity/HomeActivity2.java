@@ -4,14 +4,15 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,7 +27,6 @@ import com.baidu.mapapi.map.BaiduMap.OnMapClickListener;
 import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -68,7 +68,7 @@ public class HomeActivity2 extends BaseActivity {
 	 * 定位相关
 	 */
 	private LocationClient mLocClient;
-	private CoordinatorLayout Layout;
+	private CoordinatorLayout sn_layout;
 	/**
 	 * 定位完成后的监听
 	 */
@@ -106,7 +106,7 @@ public class HomeActivity2 extends BaseActivity {
 	/**
 	 * 附近的人的控件上的名字控件
 	 */
-	private TextView tv_near_name;
+	// private TextView tv_near_name;
 	/**
 	 * 当前所点击的附近的人的信息
 	 */
@@ -115,23 +115,23 @@ public class HomeActivity2 extends BaseActivity {
 	/**
 	 * 附近的人的view
 	 */
-	private LinearLayout rl_nearby_view;
+	// private LinearLayout rl_nearby_view;
+	private LinearLayout ll_nearby_view;
 	/**
 	 * 附近的人的头像view
 	 */
-	private CircularImageView iv_head;
+	// private CircularImageView iv_head;
 	/**
 	 * 附近的人的控件上的添加按钮
 	 */
-	private ImageView iv_near_add;
+	// private ImageView iv_near_add;
 	/*
 	 * 附近的人的控件上的删除按钮
 	 */
-	private ImageView iv_near_cancle;
+	// private ImageView iv_near_cancle;
 	/**
 	 * 用于装附近的人view的一个容器
 	 */
-	private InfoWindow mInfoWindow;
 	/**
 	 * 图片引擎
 	 */
@@ -140,42 +140,41 @@ public class HomeActivity2 extends BaseActivity {
 	private ImageView iv_contact;
 	private TextView tv_name;
 
+	/**
+	 * 附近的人view显示位移动画
+	 */
+	private TranslateAnimation mShowAction;
+	/**
+	 * 附近的人view隐藏位移动画
+	 */
+	private TranslateAnimation mHiddenAction;
+	/**
+	 * 当前附近的人infoView是否可见
+	 */
+	private boolean isNearViewVis = false;
+	
+	private CircularImageView near_iv_head;
+	private TextView tv_near_name;
+	private TextView tv_near_description;
+
 	@SuppressLint("InflateParams")
 	@Override
 	protected void initView() {
 		setContentView(R.layout.activity_home);
 		AppManager.getAppManager().finishAllActivity();
-		Layout = (CoordinatorLayout) findViewById(R.id.layout1);
-		rl_nearby_view = (LinearLayout) LayoutInflater.from(ct).inflate(
-				R.layout.view_home_nearby, null);
-//		view_home_demo = (View) LayoutInflater.from(ct).inflate(
-//				R.layout.view_home_demo, null);
-//		tv_demoiv = (ImageView) view_home_demo.findViewById(R.id.tv_demoiv);
-		mCurrentMode = LocationMode.NORMAL;
-		// 地图初始化
+		sn_layout = (CoordinatorLayout) findViewById(R.id.sn_layout);
+		ll_nearby_view = (LinearLayout) findViewById(R.id.ll_nearby_view);
+		near_iv_head = (CircularImageView) ll_nearby_view.findViewById(R.id.near_iv_head);
+		tv_near_name = (TextView) ll_nearby_view.findViewById(R.id.tv_near_name);
+		tv_near_description = (TextView) ll_nearby_view.findViewById(R.id.tv_near_description);
 		mMapView = (MapView) findViewById(R.id.mpaview);
-		mBaiduMap = mMapView.getMap();
-		btn_go = (FloatingActionButton) findViewById(R.id.btn_go);
-		btn_go.setOnClickListener(this);
-		tv_near_name = (TextView) rl_nearby_view
-				.findViewById(R.id.tv_near_name);
-		iv_near_add = (ImageView) rl_nearby_view.findViewById(R.id.iv_near_add);
-		iv_near_cancle = (ImageView) rl_nearby_view
-				.findViewById(R.id.iv_near_cancle);
-		iv_head = (CircularImageView) rl_nearby_view.findViewById(R.id.iv_head);
 		iv_contact = (ImageView) findViewById(R.id.iv_contact);
-		iv_contact.setOnClickListener(this);
 		tv_name = (TextView) findViewById(R.id.tv_name);
-		// mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF,
-		// 0.0f,
-		// Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-		// -1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
-		// mShowAction.setDuration(500);
-		// mHiddenAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF,
-		// 0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
-		// Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
-		// -1.0f);
-		// mHiddenAction.setDuration(500);
+		btn_go = (FloatingActionButton) findViewById(R.id.btn_go);
+		mCurrentMode = LocationMode.NORMAL;
+		mBaiduMap = mMapView.getMap();
+		btn_go.setOnClickListener(this);
+		iv_contact.setOnClickListener(this);
 
 	}
 
@@ -195,17 +194,22 @@ public class HomeActivity2 extends BaseActivity {
 		zoom.setVisibility(View.GONE);
 	}
 
+	/**
+	 * 显示SnackBar
+	 * 
+	 * @param content
+	 */
 	private void showSnackBar(String content) {
-		Snackbar.make(Layout, content, Snackbar.LENGTH_LONG).show();
+		Snackbar.make(sn_layout, content, Snackbar.LENGTH_LONG).show();
 	}
 
 	@Override
 	protected void initData() {
+		initAnimation();
 		setZoomInVis();
 		imageEngine = new ImageEngineImpl(ct);
 		initLocationPars();
 		mBaiduMap.setOnMapClickListener(new OnMapClickListener() {
-
 			@Override
 			public boolean onMapPoiClick(MapPoi arg0) {
 				return false;
@@ -214,13 +218,32 @@ public class HomeActivity2 extends BaseActivity {
 			@Override
 			public void onMapClick(LatLng arg0) {
 				mBaiduMap.hideInfoWindow();
-
+				setNearPersonViewHid(false);
 			}
 		});
-
 		initMapMarkerClickListener();
 		tv_name.setText(GlobalParams.user.userCommonInfo.name);
 	}
+
+	/**
+	 * 初始化动画
+	 */
+	private void initAnimation() {
+		mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				1.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		mShowAction.setDuration(500);
+		mShowAction.setInterpolator(new OvershootInterpolator());
+		mHiddenAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF,
+				0.0f, Animation.RELATIVE_TO_SELF, 0.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				1.0f);
+		mHiddenAction.setDuration(500);
+		mHiddenAction.setInterpolator(new OvershootInterpolator());
+		
+
+	}
+
 
 	/**
 	 * 初始化定位相关的参数
@@ -258,7 +281,6 @@ public class HomeActivity2 extends BaseActivity {
 		engine = new MapEngineImpl(this);
 		engine.getNearByFromServer1(latitude, longitude,
 				new ResultByGetDataListener<NearByPerson>() {
-
 					@Override
 					public void success(ReceiceData<NearByPerson> result) {
 						// TODO Auto-generated method stub
@@ -272,40 +294,6 @@ public class HomeActivity2 extends BaseActivity {
 				});
 	}
 
-//	View view_home_demo;
-//	private ImageView tv_demoiv;
-//	private int size = 0;
-//
-//	private void processNearByData2(List<UserLocatInfo> list) {
-//		this.userLocatList = list;
-//		UserLocatInfo userLocatInfo = list.get(size);
-//		demo(userLocatInfo);
-//
-//	}
-//
-//	private void demo(final UserLocatInfo userLocatInfo) {
-//		imageEngine.getHeadBitmap(userLocatInfo.userCommonInfo.head,
-//				new HeadImageGetSuccess() {
-//					@Override
-//					public void success(Bitmap bitmap) {
-//						tv_demoiv.setImageBitmap(bitmap);
-//						BitmapDescriptor bdA = BitmapDescriptorFactory
-//								.fromView(view_home_demo);
-//						LatLng point = new LatLng(userLocatInfo.locat[0],
-//								userLocatInfo.locat[1]);
-//						// 构建MarkerOption，用于在地图上添加Marker
-//						MarkerOptions ooA = new MarkerOptions().position(point)
-//								.icon(bdA).zIndex(9).draggable(true);
-//						ooA.animateType(MarkerAnimateType.drop);
-//						Marker mMarker = (Marker) (mBaiduMap.addOverlay(ooA));
-//						mMarker.setZIndex(size);
-//						size = size + 1;
-//						demo(userLocatList.get(size));
-//					}
-//				});
-//
-//	}
-
 	/**
 	 * ->服务器 处理定位返回的结果
 	 * 
@@ -315,9 +303,8 @@ public class HomeActivity2 extends BaseActivity {
 		this.userLocatList = list;
 		Marker mMarker;
 		// 初始化全局 bitmap 信息，不用时及时 recycle
-		 BitmapDescriptor bdA = BitmapDescriptorFactory
-		 .fromResource(R.drawable.ic_person_pin_black_36dp);
-//		BitmapDescriptor bdA = BitmapDescriptorFactory.fromView(view_home_demo);
+		BitmapDescriptor bdA = BitmapDescriptorFactory
+				.fromResource(R.drawable.ic_person_pin_black_36dp);
 
 		for (int i = 0; i < list.size(); i++) {
 			UserLocatInfo user = list.get(i);
@@ -342,32 +329,26 @@ public class HomeActivity2 extends BaseActivity {
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(final Marker marker) {
-				if (currentNearPerson == userLocatList.get(marker.getZIndex()).userCommonInfo) {
-					return false;
-				} else {
-					currentNearPerson = userLocatList.get(marker.getZIndex()).userCommonInfo;
-					onNearMarkerClick(marker, currentNearPerson);
-					return true;
-				}
+				onNearMarkerClick(marker, userLocatList.get(marker.getZIndex()).userCommonInfo);
+				return true;
 			}
 		});
-		// 附件的人view的添加按钮的点击事件
-		iv_near_add.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Log.i("wang", "添加" + currentNearPerson.name + "为好友");
-
-			}
-		});
-		// 附近的人view的删除按钮的点击事件
-		iv_near_cancle.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				currentNearPerson = null;
-				mBaiduMap.hideInfoWindow();
-			}
-		});
+		// // 附件的人view的添加按钮的点击事件
+		// iv_near_add.setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// // Log.i("wang", "添加" + currentNearPerson.name + "为好友");
+		//
+		// }
+		// });
+		// // 附近的人view的删除按钮的点击事件
+		// iv_near_cancle.setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// currentNearPerson = null;
+		// mBaiduMap.hideInfoWindow();
+		// }
+		// });
 
 	}
 
@@ -378,23 +359,79 @@ public class HomeActivity2 extends BaseActivity {
 	 * @param currentNearPerson2
 	 */
 	private void onNearMarkerClick(final Marker marker,
-			UserCommonInfo currentNearPerson2) {
-		tv_near_name.setText(currentNearPerson.name);
-		imageEngine.getHeadImageBySimple(iv_head, currentNearPerson.head,
-				new HeadImageGetSuccess() {
-					@Override
-					public void success(Bitmap arg0) {
-						LatLng ll = marker.getPosition();
-						mInfoWindow = new InfoWindow(rl_nearby_view, ll, -47);
-						mBaiduMap.showInfoWindow(mInfoWindow);
-					}
-				});
-		// imageEngine.getHeadImageByUrl(iv_head,
-		// currentNearPerson.head);
-		LatLng ll = marker.getPosition();
-		mInfoWindow = new InfoWindow(rl_nearby_view, ll, -47);
-		mBaiduMap.showInfoWindow(mInfoWindow);
+			final UserCommonInfo currentNearPerson2) {
+		Log.i("wang", "currentNearPerson2.name="+currentNearPerson2.name);
+		if(isNearViewVis){
+			//view可见
+			mHiddenAction.setAnimationListener(new AnimationListener() {
+				@Override
+				public void onAnimationStart(Animation animation) {}
+				@Override
+				public void onAnimationRepeat(Animation animation) {}
+				@Override
+				public void onAnimationEnd(Animation animation) {
+//					Log.i("wang", "currentNearPerson.name="+currentNearPerson.name);
+//					if(currentNearPerson != currentNearPerson2){
+						imageEngine.getHeadImageByUrl(near_iv_head, currentNearPerson2.head);
+						tv_near_name.setText(currentNearPerson2.name);
+						tv_near_description.setText("生活就像海洋,只有意志坚定的人才能到彼岸");
+//					}
+					setNearPersonViewVis();
+				}
+			});
+			setNearPersonViewHid(true);
+		}else{
+			//view不可见
+//			Log.i("wang", "currentNearPerson.name="+currentNearPerson.name);
+			if(currentNearPerson != currentNearPerson2){
+				imageEngine.getHeadImageByUrl(near_iv_head, currentNearPerson2.head);
+				tv_near_name.setText(currentNearPerson2.name);
+				tv_near_description.setText("生活就像海洋,只有意志坚定的人才能到彼岸");
+			}
+			setNearPersonViewVis();
+		}
+		currentNearPerson = currentNearPerson2;
+		// tv_near_name.setText(currentNearPerson.name);
+		// imageEngine.getHeadImageBySimple(iv_head, currentNearPerson.head,
+		// new HeadImageGetSuccess() {
+		// @Override
+		// public void success(Bitmap arg0) {
+		// LatLng ll = marker.getPosition();
+		// mInfoWindow = new InfoWindow(rl_nearby_view, ll, -47);
+		// mBaiduMap.showInfoWindow(mInfoWindow);
+		// }
+		// });
+		// LatLng ll = marker.getPosition();
+		// mInfoWindow = new InfoWindow(rl_nearby_view, ll, -47);
+		// mBaiduMap.showInfoWindow(mInfoWindow);
+	}
 
+
+	/**
+	 * 设置最近的人的信息view可见
+	 */
+	private void setNearPersonViewVis() {
+		ll_nearby_view.clearAnimation();
+		ll_nearby_view.setAnimation(mShowAction);
+		ll_nearby_view.startAnimation(mShowAction);
+		ll_nearby_view.setVisibility(View.VISIBLE);
+		isNearViewVis = !isNearViewVis;
+	}
+
+	/**
+	 * 设置最近的人信息view不可见
+	 */
+	private void setNearPersonViewHid(boolean needShow) {
+		if (isNearViewVis) {
+			if(!needShow){
+				mHiddenAction.setAnimationListener(null);
+			}
+			ll_nearby_view.clearAnimation();
+			ll_nearby_view.setAnimation(mHiddenAction);
+			ll_nearby_view.startAnimation(mHiddenAction);
+			ll_nearby_view.setVisibility(View.GONE);
+			isNearViewVis = !isNearViewVis;
+		}
 	}
 
 	/**
@@ -415,7 +452,6 @@ public class HomeActivity2 extends BaseActivity {
 			// 测试用
 			GlobalParams.latitude = latitude;
 			GlobalParams.longitude = longitude;
-			// Log.i("wang", "HomeAcivity里定位成功:" + latitude + "," + longitude);
 
 			MyLocationData locData = new MyLocationData.Builder()
 					.accuracy(0)
@@ -522,4 +558,6 @@ public class HomeActivity2 extends BaseActivity {
 		}
 
 	}
+	
+	
 }
