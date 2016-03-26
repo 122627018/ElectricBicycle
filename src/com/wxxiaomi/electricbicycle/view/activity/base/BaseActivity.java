@@ -33,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+//		handler.send
 		super.onCreate(savedInstanceState);
 //		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		ct = this;
@@ -71,12 +72,13 @@ public abstract class BaseActivity extends AppCompatActivity implements
 		}
 	}
 	
+	
+	
 	protected void showLoading2Dialog(Activity ct,String content){
 		this.ct = ct;
 		Message msg = new Message();
 		msg.what = 1;
 		msg.obj = content;
-//		handler(msg);
 		handler.sendMessage(msg);
 	}
 	

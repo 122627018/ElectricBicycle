@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -50,7 +51,6 @@ import com.wxxiaomi.electricbicycle.bean.format.NearByPerson;
 import com.wxxiaomi.electricbicycle.bean.format.NearByPerson.UserLocatInfo;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.ImageEngineImpl;
-import com.wxxiaomi.electricbicycle.engine.ImageEngineImpl.HeadImageGetSuccess;
 import com.wxxiaomi.electricbicycle.engine.MapEngineImpl;
 import com.wxxiaomi.electricbicycle.engine.common.ResultByGetDataListener;
 import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
@@ -58,9 +58,7 @@ import com.wxxiaomi.electricbicycle.view.custom.CircularImageView;
 
 /**
  * 主页面
- * 
  * @author Mr.W
- * 
  */
 public class HomeActivity2 extends BaseActivity {
 
@@ -137,7 +135,7 @@ public class HomeActivity2 extends BaseActivity {
 	 */
 	private ImageEngineImpl imageEngine;
 
-	private ImageView iv_contact;
+	private ImageButton iv_contact;
 	private TextView tv_name;
 
 	/**
@@ -168,7 +166,7 @@ public class HomeActivity2 extends BaseActivity {
 		tv_near_name = (TextView) ll_nearby_view.findViewById(R.id.tv_near_name);
 		tv_near_description = (TextView) ll_nearby_view.findViewById(R.id.tv_near_description);
 		mMapView = (MapView) findViewById(R.id.mpaview);
-		iv_contact = (ImageView) findViewById(R.id.iv_contact);
+		iv_contact = (ImageButton) findViewById(R.id.iv_contact);
 		tv_name = (TextView) findViewById(R.id.tv_name);
 		btn_go = (FloatingActionButton) findViewById(R.id.btn_go);
 		mCurrentMode = LocationMode.NORMAL;

@@ -39,41 +39,45 @@
             android:textColorHint="#666666"
             android:textSize="14sp" />
 
-        <ImageView
+        <ImageButton
+            android:elevation="8dp"
             android:id="@+id/iv_contact"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_margin="4dp"
+            android:background="@drawable/selector_homeact_smallbtn"
             android:src="@drawable/ic_group_black_32dp" />
     </RelativeLayout>
- <android.support.design.widget.CoordinatorLayout
+
+    <android.support.design.widget.CoordinatorLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sn_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-    <android.support.design.widget.CoordinatorLayout
-        app:layout_behavior="com.wxxiaomi.electricbicycle.view.custom.HomeSnackBarBehavior"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/layout1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btn_go"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="1dp"
-            android:layout_marginBottom="10dp"
-            app:layout_behavior="com.wxxiaomi.electricbicycle.view.custom.HomeButtonBehavior"
-            android:src="@drawable/icon_landing_arrow"
-            app:borderWidth="0dp" />
+        <android.support.design.widget.CoordinatorLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.wxxiaomi.electricbicycle.view.custom.HomeSnackBarBehavior" >
 
-        <include
-            android:id="@+id/ll_nearby_view"
-            layout="@layout/view_home_nearinfo" />
-    </android.support.design.widget.CoordinatorLayout>
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="1dp"
+                android:layout_marginBottom="10dp"
+                app:layout_behavior="com.wxxiaomi.electricbicycle.view.custom.HomeButtonBehavior"
+                android:src="@drawable/icon_landing_arrow"
+                app:borderWidth="0dp" />
+
+            <include
+                android:id="@+id/ll_nearby_view"
+                layout="@layout/view_home_nearinfo" />
+        </android.support.design.widget.CoordinatorLayout>
     </android.support.design.widget.CoordinatorLayout>
 
 </RelativeLayout>

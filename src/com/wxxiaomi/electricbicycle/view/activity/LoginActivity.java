@@ -16,7 +16,6 @@ import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.GlobalParams;
 import com.wxxiaomi.electricbicycle.R;
 import com.wxxiaomi.electricbicycle.bean.User;
-import com.wxxiaomi.electricbicycle.bean.format.InitUserInfo;
 import com.wxxiaomi.electricbicycle.bean.format.Login;
 import com.wxxiaomi.electricbicycle.bean.format.common.ReceiceData;
 import com.wxxiaomi.electricbicycle.engine.UserEngineImpl;
@@ -225,38 +224,38 @@ public class LoginActivity extends BaseActivity {
 		// boolean isHasUserInfo = false;
 		// 先默认没有该账号信息
 		// showLoadingDialog("正在初始化账号相关信息");
-		setLoadingContent("正在初始化帐号相关信息");
-		engine.initUserInfoData(userInfo.username, userInfo.password,
-				new ResultByGetDataListener<InitUserInfo>() {
-
-					@Override
-					public void success(ReceiceData<InitUserInfo> result) {
-						if (result.state == 200) {
-							closeLoading1Dialog();
+//		setLoadingContent("正在初始化帐号相关信息");
+//		engine.initUserInfoData(userInfo.username, userInfo.password,
+//				new ResultByGetDataListener<InitUserInfo>() {
+//
+//					@Override
+//					public void success(ReceiceData<InitUserInfo> result) {
+//						if (result.state == 200) {
+//							closeLoading1Dialog();
 							// //登录成功
 							GlobalParams.user = userInfo;
-							GlobalParams.friendList = result.infos.friendList;
+//							GlobalParams.friendList = result.infos.friendList;
 							Intent intent = new Intent(LoginActivity.this,
 									HomeActivity2.class);
 							startActivity(intent);
 							finish();
-						} else {
-							closeLoading1Dialog();
-							GlobalParams.user = userInfo;
-							Intent intent = new Intent(LoginActivity.this,
-									HomeActivity2.class);
-							startActivity(intent);
-							finish();
-						}
-
-					}
-
-					@Override
-					public void error(String error) {
-						closeLoading1Dialog();
-						showErrorDialog("连接不上服务器");
-					}
-				});
+//						} else {
+//							closeLoading1Dialog();
+//							GlobalParams.user = userInfo;
+//							Intent intent = new Intent(LoginActivity.this,
+//									HomeActivity2.class);
+//							startActivity(intent);
+//							finish();
+//						}
+//
+//					}
+//
+//					@Override
+//					public void error(String error) {
+//						closeLoading1Dialog();
+//						showErrorDialog("连接不上服务器");
+//					}
+//				});
 	}
 
 	private boolean checkFormat(TextInputLayout strLayout) {

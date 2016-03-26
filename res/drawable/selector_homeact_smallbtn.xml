@@ -2,6 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <item   
         android:state_pressed="true"
-        android:drawable="@drawable/home_small_btnshape_press"/>
+        android:drawable="@drawable/home_right_btnshape_press"
+     />
 
 </selector>

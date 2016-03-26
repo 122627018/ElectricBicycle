@@ -2,9 +2,14 @@ package com.wxxiaomi.electricbicycle.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.wxxiaomi.electricbicycle.AppManager;
 import com.wxxiaomi.electricbicycle.R;
@@ -16,37 +21,96 @@ import com.wxxiaomi.electricbicycle.view.activity.base.BaseActivity;
 
 public class WelcomeActivity extends BaseActivity {
 
-	private Button btn_scan;
-	private Button btn_login;
+	private final static int LOADCOMPLETE = 123;
+	private LinearLayout ll_scan;
+	private LinearLayout ll_login;
 	private final static int SCANNIN_GREQUEST_CODE = 1;
 	private BicycleEngineImpl engine;
+	private TranslateAnimation mShowAction;
+	private TextView tv_load;
+	private LinearLayout ll_towbtn_view;
 
 	@Override
 	protected void initView() {
-		setContentView(R.layout.activity_welcome);
+		setContentView(R.layout.activity_welcome2);
 		AppManager.getAppManager().addActivity(this);
-		btn_scan = (Button) findViewById(R.id.btn_scan);
-		btn_login = (Button) findViewById(R.id.btn_login);
-		btn_login.setOnClickListener(this);
-		btn_scan.setOnClickListener(this);
+		ll_scan = (LinearLayout) findViewById(R.id.ll_scan);
+		ll_login = (LinearLayout) findViewById(R.id.ll_login);
+		tv_load = (TextView) findViewById(R.id.tv_load);
+		ll_scan.setOnClickListener(this);
+		ll_login.setOnClickListener(this);
+		ll_towbtn_view = (LinearLayout) findViewById(R.id.ll_towbtn_view);
+	}
 
+	@Override
+	protected void handler(Message msg) {
+		super.handler(msg);
+		switch (msg.what) {
+		case LOADCOMPLETE:
+			tv_load.setVisibility(View.GONE);
+			showBtn();
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	@Override
 	protected void initData() {
 		engine = new BicycleEngineImpl(ct);
+		mShowAction = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 1.0f,
+				Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
+				0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+		mShowAction.setDuration(1000);
+		mShowAction.setInterpolator(new OvershootInterpolator());
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				long start = System.currentTimeMillis();
+				long costTime = System.currentTimeMillis() - start;
+				if (2000 - costTime > 0) {
+					try {
+						Thread.sleep(2000 - costTime);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				Message msg = new Message();
+				msg.what = LOADCOMPLETE;
+				handler.sendMessage(msg);
+
+			}
+		}).start();
+
+		
+	}
+
+	private void showBtn() {
+//		ll_scan.clearAnimation();
+//		ll_scan.setAnimation(mShowAction);
+//		ll_scan.startAnimation(mShowAction);
+//		ll_scan.setVisibility(View.VISIBLE);
+//		ll_login.clearAnimation();
+//		ll_login.setAnimation(mShowAction);
+//		ll_login.startAnimation(mShowAction);
+//		ll_login.setVisibility(View.VISIBLE);
+		ll_towbtn_view.clearAnimation();
+		ll_towbtn_view.setAnimation(mShowAction);
+		ll_towbtn_view.startAnimation(mShowAction);
+		ll_towbtn_view.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	protected void processClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_scan:
+		case R.id.ll_scan:
 			Intent intent = new Intent();
 			intent.setClass(ct, ScanCodeActivity1.class);
 			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
 			break;
-		case R.id.btn_login:
+		case R.id.ll_login:
 			Intent intent2 = new Intent(ct, LoginActivity.class);
 			startActivity(intent2);
 			break;
@@ -108,7 +172,7 @@ public class WelcomeActivity extends BaseActivity {
 								showErrorDialog("连接服务器失败");
 							}
 						});
-			}else{
+			} else {
 				showErrorDialog("非法二维码");
 			}
 		} catch (Exception e) {
