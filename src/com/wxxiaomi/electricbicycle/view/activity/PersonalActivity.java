@@ -39,9 +39,9 @@ public class PersonalActivity extends BaseActivity implements FragmentCallback {
 
 	@Override
 	protected void initView() {
-		setContentView(R.layout.activity_personal);
+		setContentView(R.layout.activity_personal6);
 		tabLayout = (TabLayout) findViewById(R.id.tab_FindFragment_title);
-		tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+		tabLayout.setTabMode(TabLayout.MODE_FIXED);
 		viewPager = (ViewPager) findViewById(R.id.vp_FindFragment_pager);
 		toolbar = (Toolbar) this.findViewById(R.id.toolbar1);
 		toolbar.setTitleTextColor(Color.parseColor("#ffffff"));
@@ -68,7 +68,7 @@ public class PersonalActivity extends BaseActivity implements FragmentCallback {
 				list_fragment, list_title);
 		viewPager.setAdapter(fAdapter);
 		viewPager.requestDisallowInterceptTouchEvent(true);
-		tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+//		tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 		tabLayout.setupWithViewPager(viewPager);
 	}
 

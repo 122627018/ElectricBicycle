@@ -10,7 +10,6 @@ import com.wxxiaomi.electricbicycle.view.fragment.base.BaseFragment;
 
 public class UserInfoPageFragment extends BaseFragment {
 
-	
 	@SuppressLint("InflateParams") @Override
 	public View initView(LayoutInflater inflater) {
 		view = inflater.inflate(R.layout.fragment_page_userinfo, null);
@@ -20,7 +19,6 @@ public class UserInfoPageFragment extends BaseFragment {
 	@Override
 	public void initData(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 }

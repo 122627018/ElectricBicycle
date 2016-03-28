@@ -164,6 +164,7 @@ public class HomeActivity2 extends BaseActivity {
 		sn_layout = (CoordinatorLayout) findViewById(R.id.sn_layout);
 		ll_nearby_view = (LinearLayout) findViewById(R.id.ll_nearby_view);
 		near_iv_head = (CircularImageView) ll_nearby_view.findViewById(R.id.near_iv_head);
+		near_iv_head.setOnClickListener(this);
 		tv_near_name = (TextView) ll_nearby_view.findViewById(R.id.tv_near_name);
 		tv_near_description = (TextView) ll_nearby_view.findViewById(R.id.tv_near_description);
 		mMapView = (MapView) findViewById(R.id.mpaview);
@@ -553,6 +554,11 @@ public class HomeActivity2 extends BaseActivity {
 		case R.id.iv_my_head:
 			Intent intent3 = new Intent(ct,PersonalActivity.class);
 			startActivity(intent3);
+			break;
+		case R.id.near_iv_head:
+			Log.i("wang", "头像被点击了");
+			Intent intent4 = new Intent(ct,UserInfoActivity.class);
+			startActivity(intent4);
 			break;
 		default:
 			break;

@@ -169,6 +169,10 @@
             android:name="com.wxxiaomi.electricbicycle.view.activity.PersonalActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.wxxiaomi.electricbicycle.view.activity.UserInfoActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
