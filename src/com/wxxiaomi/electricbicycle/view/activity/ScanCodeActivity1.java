@@ -16,6 +16,9 @@ import android.os.Vibrator;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -42,6 +45,7 @@ public class ScanCodeActivity1 extends Activity implements Callback {
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
+	private Button beta;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -51,8 +55,24 @@ public class ScanCodeActivity1 extends Activity implements Callback {
 		AppManager.getAppManager().addActivity(this);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
+		beta = (Button) findViewById(R.id.beta);
 		hasSurface = false;
 		inactivityTimer = new InactivityTimer(this);
+		
+		beta.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent resultIntent = new Intent();
+				Bundle bundle = new Bundle();
+				bundle.putString("result", "1");
+//				bundle.putParcelable("bitmap", barcode);
+				resultIntent.putExtras(bundle);
+				ScanCodeActivity1.this.setResult(RESULT_OK, resultIntent);
+				ScanCodeActivity1.this.finish();
+				
+			}
+		});
 	}
 
 	@SuppressWarnings("deprecation")

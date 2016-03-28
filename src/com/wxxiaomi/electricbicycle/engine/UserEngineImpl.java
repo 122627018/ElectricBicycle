@@ -124,17 +124,26 @@ public class UserEngineImpl {
 					+ "&username=" + username + "&password=" + password
 					+ "&isfirst=n";
 		}
+		Log.i("wang", "url="+url);
+		try{
 		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null,
 				new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
 						// processJsonResult(response.toString());
-						Gson gson = new Gson();
-						ReceiceData<Login> result = gson.fromJson(
-								response.toString(),
-								new TypeToken<ReceiceData<Login>>() {
-								}.getType());
-						lis.success(result);
+						if(response!=null){
+							Gson gson = new Gson();
+							
+							ReceiceData<Login> result = gson.fromJson(
+									response.toString(),
+									new TypeToken<ReceiceData<Login>>() {
+									}.getType());
+							lis.success(result);
+						}else{
+							
+							lis.error("连接不上服务器");
+						}
+						
 					}
 				}, new Response.ErrorListener() {
 					@Override
@@ -144,6 +153,9 @@ public class UserEngineImpl {
 					}
 				});
 		mQueue.add(jsonObjectRequest);
+		}catch(Exception e){
+			lis.error("连接不上服务器");
+		}
 
 	}
 

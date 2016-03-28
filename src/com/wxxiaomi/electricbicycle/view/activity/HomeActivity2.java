@@ -14,7 +14,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ZoomControls;
@@ -151,6 +150,8 @@ public class HomeActivity2 extends BaseActivity {
 	 */
 	private boolean isNearViewVis = false;
 	
+	private CircularImageView iv_my_head;
+	
 	private CircularImageView near_iv_head;
 	private TextView tv_near_name;
 	private TextView tv_near_description;
@@ -169,6 +170,8 @@ public class HomeActivity2 extends BaseActivity {
 		iv_contact = (ImageButton) findViewById(R.id.iv_contact);
 		tv_name = (TextView) findViewById(R.id.tv_name);
 		btn_go = (FloatingActionButton) findViewById(R.id.btn_go);
+		iv_my_head = (CircularImageView) findViewById(R.id.iv_my_head);
+		iv_my_head.setOnClickListener(this);
 		mCurrentMode = LocationMode.NORMAL;
 		mBaiduMap = mMapView.getMap();
 		btn_go.setOnClickListener(this);
@@ -538,11 +541,6 @@ public class HomeActivity2 extends BaseActivity {
 	@Override
 	protected void processClick(View v) {
 		switch (v.getId()) {
-		// case R.id.btn_contact:
-		// // 联系人
-		// Intent intent = new Intent(ct, ContactActivity.class);
-		// startActivity(intent);
-		// break;
 		case R.id.btn_nav:
 			break;
 		case R.id.btn_go:
@@ -551,6 +549,11 @@ public class HomeActivity2 extends BaseActivity {
 			break;
 		case R.id.iv_contact:
 			showSnackBar("beta版本不包含此功能");
+			break;
+		case R.id.iv_my_head:
+			Intent intent3 = new Intent(ct,PersonalActivity.class);
+			startActivity(intent3);
+			break;
 		default:
 			break;
 		}

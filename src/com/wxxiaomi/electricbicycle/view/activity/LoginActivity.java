@@ -132,6 +132,7 @@ public class LoginActivity extends BaseActivity {
 	 * @param password
 	 */
 	private void LoginFromServer(final String username, final String password) {
+		Log.i("wang", "username="+username+",password="+password);
 		engine.Login(username, password, true,
 				new ResultByGetDataListener<Login>() {
 
